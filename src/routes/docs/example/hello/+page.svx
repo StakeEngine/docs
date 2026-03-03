@@ -1,0 +1,35 @@
+---
+title: Hello
+---
+<script>
+import Callout from '$lib/components/docs/Callout.svelte';
+import Steps from '$lib/components/docs/Steps.svelte';
+import ApiTester from '$lib/components/docs/ApiTester.svelte';
+</script>
+
+
+# New Page
+
+Content goes here.
+
+
+
+<Callout type="tip">
+
+  Tip message here.
+
+</Callout>
+
+
+<Steps>
+  {#snippet step1()}
+    First step description.
+  {/snippet}
+  {#snippet step2()}
+    Second step description.
+  {/snippet}
+  {#snippet step3()}
+    Third step description.
+  {/snippet}
+</Steps>
+

@@ -1,0 +1,132 @@
+---
+title: Play
+description: Initiate a game round and debit the bet amount from the player's balance.
+order: 3
+---
+
+<script>
+import ApiTester from '$lib/components/docs/ApiTester.svelte';
+import ApiParamTable from '$lib/components/docs/ApiParamTable.svelte';
+import ApiResponseSection from '$lib/components/docs/ApiResponseSection.svelte';
+
+import Callout from '$lib/components/docs/Callout.svelte';
+
+const endpoint = {
+  method: 'POST',
+  path: '/wallet/play',
+  baseUrl: 'https://rgs.stake-engine.com',
+  title: 'Play',
+  description: 'Initiate a game round and debit the bet amount from the player\'s balance.',
+  params: [
+    {
+      name: 'amount',
+      type: 'integer',
+      location: 'body',
+      required: true,
+      description: 'Bet amount in minor currency units.',
+      example: '1000000'
+    },
+    {
+      name: 'sessionID',
+      type: 'string',
+      location: 'body',
+      required: true,
+      description: 'The session ID issued by the operator platform.',
+      example: ''
+    },
+    {
+      name: 'mode',
+      type: 'string',
+      location: 'body',
+      required: true,
+      description: 'The bet mode for this round (e.g. "BASE", "SUPER").',
+      example: 'BASE'
+    }
+  ],
+  responses: [
+    {
+      status: 200,
+      statusText: 'OK',
+      description: 'Round initiated successfully. Returns updated balance and round data.',
+      exampleBody: JSON.stringify({
+        balance: {
+          amount: 999000000,
+          currency: "USD"
+        },
+        round: {
+          payoutMultiplier: 2.5,
+          costMultiplier: 1.0,
+          state: {}
+        }
+      })
+    },
+    {
+      status: 400,
+      statusText: 'Bad Request',
+      description: 'Invalid request. Common errors: ERR_IPB (insufficient balance), ERR_VAL (invalid parameters).',
+      exampleBody: JSON.stringify({
+        error: "ERR_IPB",
+        message: "Insufficient player balance."
+      })
+    },
+    {
+      status: 401,
+      statusText: 'Unauthorized',
+      description: 'The session ID is missing, expired, or invalid.',
+      exampleBody: JSON.stringify({
+        error: "ERR_IS",
+        message: "Invalid or expired sessionID."
+      })
+    },
+    {
+      status: 500,
+      statusText: 'Internal Server Error',
+      description: 'An unexpected error occurred on the server.',
+      exampleBody: JSON.stringify({
+        error: "ERR_GEN",
+        message: "An unexpected error occurred. Please try again later."
+      })
+    }
+  ]
+};
+</script>
+
+<ApiTester {endpoint}>
+
+# Play
+
+Initiate a game round and debit the bet amount from the player's balance. Returns the updated balance and round data including payout information and game state.
+
+<Callout type="info">
+
+The `amount` must fall within the `minBet` and `maxBet` range returned by the <a href="/docs/api/authenticate">Authenticate</a> endpoint. The `mode` must be a valid bet mode for the game.
+
+</Callout>
+
+## Body Parameters
+
+<ApiParamTable params={endpoint.params} />
+
+## Response Fields
+
+### `balance`
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `amount` | `integer` | Updated balance after the bet debit, in minor currency units. |
+| `currency` | `string` | ISO 4217 currency code. |
+
+### `round`
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `payoutMultiplier` | `float` | Multiplier applied to the bet for calculating total payout. |
+| `costMultiplier` | `float` | Multiplier for calculating total bet cost. |
+| `state` | `object` | Game-specific state data for rendering the round result. |
+
+## Responses
+
+<ApiResponseSection responses={endpoint.responses} />
+
+
+</ApiTester>

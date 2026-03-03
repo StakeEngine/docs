@@ -1,0 +1,105 @@
+---
+title: Frontend Stack
+description: Common frontend technology choices for building games on Stake Engine.
+order: 0
+badge: New
+tags: [frontend, svelte, pixi, gsap, spine, spritesheet, static-build]
+---
+
+<script>
+import Callout from '$lib/components/docs/Callout.svelte';
+</script>
+
+# Frontend Stack
+
+Stake Engine is **frontend-agnostic** - you can build your game client with any web technology that produces a static build. This page describes the stack that most developers in the ecosystem have settled on, not what you are required to use.
+
+<Callout type="info">
+
+This is not a prescription. We are documenting the choices the community has gravitated toward. You are free to use any framework, renderer, or animation tool that fits your team.
+
+</Callout>
+
+## Popular Stack
+
+The most common combination seen across Stake Engine games:
+
+| Layer | Technology | Role |
+|-------|-----------|------|
+| **UI Framework** | Svelte 5 | Reactive UI, HUD, menus, overlays |
+| **Renderer** | PixiJS 8 | 2D WebGL/WebGPU rendering for game visuals |
+| **Animation** | GSAP | Tweens, timelines, easing for UI and game transitions |
+
+### Why Svelte 5
+
+- Minimal runtime overhead - compiles to vanilla JS
+- Runes-based reactivity fits game state management
+- Small bundle size keeps load times low
+- Easy integration with PixiJS canvas via `bind:this`
+
+### Why PixiJS 8
+
+- Industry-standard 2D renderer with WebGPU support
+- Handles sprites, particle effects, masks, filters, and blend modes
+- Large ecosystem of plugins and community resources
+- Performant even on mobile devices
+
+### Why GSAP
+
+- Precise timeline control for sequencing game events (spin, land, win celebration)
+- Easing functions for polished, professional feel
+- Works with both DOM elements (Svelte UI) and PixiJS display objects
+- Battle-tested in production across thousands of games
+
+## Animation Approaches
+
+For character and symbol animations, two approaches are common:
+
+### Spine
+
+**Spine** is considered the most professional option for game animations. It produces smooth skeletal animations with small file sizes.
+
+- Skeletal animation - animate bones, not frames
+- Dramatically smaller file sizes compared to spritesheets
+- Runtime mesh deformation, IK constraints, and blending
+- Requires a Spine license and a designer comfortable with the tool
+- Integrates with PixiJS via `pixi-spine`
+
+### Spritesheet
+
+**Spritesheets** are the traditional frame-by-frame approach and remain a solid choice.
+
+- Simpler pipeline - designer exports frames, developer loads the atlas
+- Predictable performance - no runtime bone calculations
+- Any animation tool can export spritesheets (After Effects, Photoshop, Aseprite)
+- Larger file sizes for complex animations with many frames
+
+<Callout type="tip">
+
+The choice between Spine and Spritesheet is usually made by the designer based on their skillset and the animation complexity required. Both are fully supported by PixiJS.
+
+</Callout>
+
+## Static Build Requirement
+
+The final game build **must be static**. Stake Engine serves your game as static files - there is no server-side rendering or dynamic backend for the frontend.
+
+This means:
+
+- Your build output is plain HTML, CSS, and JS files
+- No SSR, no Node.js server, no API routes in the frontend
+- All game logic runs client-side; the only server communication is with the RGS API
+- Assets (images, sounds, spine files) are bundled or loaded from a CDN
+
+If you are using SvelteKit, configure it with `@sveltejs/adapter-static`. For Vite projects, the default `vite build` output is already static.
+
+## Alternative Stacks
+
+While the Svelte + PixiJS + GSAP combo is the most popular, developers have successfully shipped games with:
+
+- **React** or **Vue** for UI with PixiJS for rendering
+- **Phaser** as an all-in-one game framework
+- **Three.js** for 3D slot experiences
+- **Pure PixiJS** without a UI framework
+
+The only hard requirement is that the final output is a **static build** that communicates with the RGS via its REST API.

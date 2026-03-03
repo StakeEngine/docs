@@ -1,0 +1,40 @@
+---
+title: AI Integration
+nav_title: AI Integration
+description: Connect AI assistants and agents to Stake Engine documentation using the MCP server and Hayden agent.
+order: 2
+icon: Bot
+badge: New
+---
+
+<script>
+import Callout from '$lib/components/docs/Callout.svelte';
+</script>
+
+# AI Integration
+
+Stake Engine provides an MCP (Model Context Protocol) server that gives AI assistants full-text search and retrieval access to all documentation. Combined with the **Hayden** agent prompt, any MCP-compatible client can answer questions about the platform using verified documentation content.
+
+## Components
+
+| Page | Description |
+|------|-------------|
+| [MCP Server](/docs/ai-integration/mcp-server) | Install, build, and configure the documentation MCP server for any compatible client. |
+| [Hayden Agent](/docs/ai-integration/hayden-agent) | Set up the Hayden agent - an AI assistant pre-configured to search and cite Stake Engine docs. |
+
+## How It Works
+
+The MCP server indexes all documentation pages (docs and FAQ) into a searchable index. AI clients connect to the server via **stdio transport** and get access to four tools:
+
+| Tool | Description |
+|------|-------------|
+| `search_docs` | Full-text keyword search with weighted scoring and snippet previews. |
+| `get_page` | Retrieve the full content of a page by its route path. |
+| `list_pages` | Browse all pages with metadata, optionally filtered by section or route prefix. |
+| `get_section_tree` | Get the hierarchical navigation tree of all documentation. |
+
+<Callout type="info">
+
+The MCP server uses the <a href="https://modelcontextprotocol.io" target="_blank">Model Context Protocol</a> - an open standard for connecting AI models to external data sources. Any MCP-compatible client (Claude Code, Claude Desktop, Cursor, Windsurf, etc.) can use it.
+
+</Callout>

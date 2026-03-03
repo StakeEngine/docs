@@ -1,0 +1,183 @@
+---
+title: Currencies
+description: All supported currency codes, symbols, display formats, and formatting helpers on Stake Engine.
+order: 1
+---
+
+<script>
+import Callout from '$lib/components/docs/Callout.svelte';
+import Collapsible from '$lib/components/docs/Collapsible.svelte';
+</script>
+
+# Supported Currencies
+
+All monetary values in the API are expressed as **integers with 6 decimal places** of precision. The `currency` field in API responses uses the ISO 4217 abbreviation (or a platform-specific code for virtual currencies).
+
+<Callout type="info">
+
+The `balance.currency` field returned by the <a href="/docs/api/authenticate">Authenticate</a> endpoint will be one of the abbreviations listed below.
+
+</Callout>
+
+## Understanding Money
+
+Monetary values in the Stake Engine are integers with **six decimal places** of precision. Currency impacts **only** the display layer - it does not affect gameplay logic.
+
+| Raw Value | Actual Amount |
+|-----------|--------------|
+| `100000` | 0.10 |
+| `1000000` | 1.00 |
+| `10000000` | 10.00 |
+| `100000000` | 100.00 |
+| `1000000000` | 1,000.00 |
+
+For example, to place a $1 bet, pass `1000000` as the `amount`.
+
+## Fiat Currencies
+
+| Currency | Abbreviation | Symbol | Decimals | Example |
+|----------|--------------|--------|----------|---------|
+| United States Dollar | `USD` | $ | 2 | $10.00 |
+| Canadian Dollar | `CAD` | CA$ | 2 | CA$10.00 |
+| Japanese Yen | `JPY` | ¥ | 0 | ¥10 |
+| Euro | `EUR` | € | 2 | €10.00 |
+| Russian Ruble | `RUB` | ₽ | 2 | ₽10.00 |
+| Chinese Yuan | `CNY` | CN¥ | 2 | CN¥10.00 |
+| Philippine Peso | `PHP` | ₱ | 2 | ₱10.00 |
+| Indian Rupee | `INR` | ₹ | 2 | ₹10.00 |
+| Indonesian Rupiah | `IDR` | Rp | 0 | Rp10 |
+| South Korean Won | `KRW` | ₩ | 0 | ₩10 |
+| Brazilian Real | `BRL` | R$ | 2 | R$10.00 |
+| Mexican Peso | `MXN` | MX$ | 2 | MX$10.00 |
+| Danish Krone | `DKK` | KR | 2 | 10.00 KR |
+| Polish Złoty | `PLN` | zł | 2 | 10.00 zł |
+| Vietnamese Đồng | `VND` | ₫ | 0 | 10 ₫ |
+| Turkish Lira | `TRY` | ₺ | 2 | ₺10.00 |
+| Chilean Peso | `CLP` | CLP | 0 | 10 CLP |
+| Argentine Peso | `ARS` | ARS | 2 | 10.00 ARS |
+| Peruvian Sol | `PEN` | S/ | 2 | S/10.00 |
+| Nigerian Naira | `NGN` | ₦ | 2 | ₦10.00 |
+| Saudi Arabia Riyal | `SAR` | SAR | 2 | 10.00 SAR |
+| Israel Shekel | `ILS` | ILS | 2 | 10.00 ILS |
+| United Arab Emirates Dirham | `AED` | AED | 2 | 10.00 AED |
+| Taiwan New Dollar | `TWD` | NT$ | 2 | NT$10.00 |
+| Norway Krone | `NOK` | kr | 2 | kr10.00 |
+| Kuwaiti Dinar | `KWD` | KD | 2 | KD10.00 |
+| Jordanian Dinar | `JOD` | JD | 2 | JD10.00 |
+| Costa Rica Colon | `CRC` | ₡ | 2 | ₡10.00 |
+| Tunisian Dinar | `TND` | TND | 2 | 10.00 TND |
+| Singapore Dollar | `SGD` | SG$ | 2 | SG$10.00 |
+| Malaysia Ringgit | `MYR` | RM | 2 | RM10.00 |
+| Oman Rial | `OMR` | OMR | 2 | 10.00 OMR |
+| Qatar Riyal | `QAR` | QAR | 2 | 10.00 QAR |
+| Bahraini Dinar | `BHD` | BD | 2 | BD10.00 |
+
+## Virtual Currencies
+
+Used on [Stake.us social casino](/docs/reference/social-mode). Values are displayed **without** a `$` prefix.
+
+| Currency | Abbreviation | Symbol | Decimals | Example |
+|----------|--------------|--------|----------|---------|
+| Stake Gold Coin | `XGC` | GC | 2 | 10.00 GC |
+| Stake Cash | `XSC` | SC | 2 | 10.00 SC |
+
+## Formatting Helper
+
+<Collapsible title="TypeScript currency formatting reference">
+
+```typescript
+type Currency =
+  | 'USD' | 'CAD' | 'JPY' | 'EUR' | 'RUB' | 'CNY'
+  | 'PHP' | 'INR' | 'IDR' | 'KRW' | 'BRL' | 'MXN'
+  | 'DKK' | 'PLN' | 'VND' | 'TRY' | 'CLP' | 'ARS'
+  | 'PEN' | 'NGN' | 'SAR' | 'ILS' | 'AED' | 'TWD'
+  | 'NOK' | 'KWD' | 'JOD' | 'CRC' | 'TND' | 'SGD'
+  | 'MYR' | 'OMR' | 'QAR' | 'BHD'
+  | 'XGC' | 'XSC';
+
+interface CurrencyInfo {
+  symbol: string;
+  decimals: number;
+  symbolAfter?: boolean;
+}
+
+const CurrencyMeta: Record<Currency, CurrencyInfo> = {
+  USD: { symbol: '$', decimals: 2 },
+  CAD: { symbol: 'CA$', decimals: 2 },
+  JPY: { symbol: '¥', decimals: 0 },
+  EUR: { symbol: '€', decimals: 2 },
+  RUB: { symbol: '₽', decimals: 2 },
+  CNY: { symbol: 'CN¥', decimals: 2 },
+  PHP: { symbol: '₱', decimals: 2 },
+  INR: { symbol: '₹', decimals: 2 },
+  IDR: { symbol: 'Rp', decimals: 0 },
+  KRW: { symbol: '₩', decimals: 0 },
+  BRL: { symbol: 'R$', decimals: 2 },
+  MXN: { symbol: 'MX$', decimals: 2 },
+  DKK: { symbol: 'KR', decimals: 2, symbolAfter: true },
+  PLN: { symbol: 'zł', decimals: 2, symbolAfter: true },
+  VND: { symbol: '₫', decimals: 0, symbolAfter: true },
+  TRY: { symbol: '₺', decimals: 2 },
+  CLP: { symbol: 'CLP', decimals: 0, symbolAfter: true },
+  ARS: { symbol: 'ARS', decimals: 2, symbolAfter: true },
+  PEN: { symbol: 'S/', decimals: 2 },
+  NGN: { symbol: '₦', decimals: 2 },
+  SAR: { symbol: 'SAR', decimals: 2, symbolAfter: true },
+  ILS: { symbol: 'ILS', decimals: 2, symbolAfter: true },
+  AED: { symbol: 'AED', decimals: 2, symbolAfter: true },
+  TWD: { symbol: 'NT$', decimals: 2 },
+  NOK: { symbol: 'kr', decimals: 2 },
+  KWD: { symbol: 'KD', decimals: 2 },
+  JOD: { symbol: 'JD', decimals: 2 },
+  CRC: { symbol: '₡', decimals: 2 },
+  TND: { symbol: 'TND', decimals: 2, symbolAfter: true },
+  SGD: { symbol: 'SG$', decimals: 2 },
+  MYR: { symbol: 'RM', decimals: 2 },
+  OMR: { symbol: 'OMR', decimals: 2, symbolAfter: true },
+  QAR: { symbol: 'QAR', decimals: 2, symbolAfter: true },
+  BHD: { symbol: 'BD', decimals: 2 },
+  XGC: { symbol: 'GC', decimals: 2, symbolAfter: true },
+  XSC: { symbol: 'SC', decimals: 2, symbolAfter: true },
+};
+
+/** RGS precision: 6 decimal places */
+const PRECISION = 1_000_000;
+
+interface Balance {
+  amount: number;   // raw integer from RGS
+  currency: Currency;
+}
+
+/**
+ * Converts a raw RGS amount to a display-ready number.
+ * e.g. 1000000 → 1.0
+ */
+function toDisplay(raw: number): number {
+  return raw / PRECISION;
+}
+
+/**
+ * Formats a Balance for display, respecting symbol placement and decimals.
+ *
+ * DisplayBalance({ amount: 10000000, currency: 'USD' })  → "$10.00"
+ * DisplayBalance({ amount: 10000000, currency: 'JPY' })  → "¥10"
+ * DisplayBalance({ amount: 10000000, currency: 'DKK' })  → "10.00 KR"
+ * DisplayBalance({ amount: 10000000, currency: 'XSC' })  → "10.00 SC"
+ */
+function DisplayBalance(balance: Balance): string {
+  const meta = CurrencyMeta[balance.currency] ?? {
+    symbol: balance.currency,
+    decimals: 2,
+    symbolAfter: true,
+  };
+
+  const displayAmount = toDisplay(balance.amount);
+  const formatted = displayAmount.toFixed(meta.decimals);
+
+  return meta.symbolAfter
+    ? `${formatted} ${meta.symbol}`
+    : `${meta.symbol}${formatted}`;
+}
+```
+
+</Collapsible>

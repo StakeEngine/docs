@@ -1,0 +1,94 @@
+---
+title: Balance
+description: Retrieve the player's current wallet balance.
+order: 2
+---
+
+<script>
+import ApiTester from '$lib/components/docs/ApiTester.svelte';
+import ApiParamTable from '$lib/components/docs/ApiParamTable.svelte';
+import ApiResponseSection from '$lib/components/docs/ApiResponseSection.svelte';
+
+import Callout from '$lib/components/docs/Callout.svelte';
+
+const endpoint = {
+  method: 'POST',
+  path: '/wallet/balance',
+  baseUrl: 'https://rgs.stake-engine.com',
+  title: 'Balance',
+  description: 'Retrieve the player\'s current wallet balance.',
+  params: [
+    {
+      name: 'sessionID',
+      type: 'string',
+      location: 'body',
+      required: true,
+      description: 'The session ID issued by the operator platform.',
+      example: ''
+    }
+  ],
+  responses: [
+    {
+      status: 200,
+      statusText: 'OK',
+      description: 'Returns the player\'s current balance.',
+      exampleBody: JSON.stringify({
+        balance: {
+          amount: 1000000000,
+          currency: "USD"
+        }
+      })
+    },
+    {
+      status: 401,
+      statusText: 'Unauthorized',
+      description: 'The session ID is missing, expired, or invalid.',
+      exampleBody: JSON.stringify({
+        error: "ERR_IS",
+        message: "Invalid or expired sessionID."
+      })
+    },
+    {
+      status: 500,
+      statusText: 'Internal Server Error',
+      description: 'An unexpected error occurred on the server.',
+      exampleBody: JSON.stringify({
+        error: "ERR_GEN",
+        message: "An unexpected error occurred. Please try again later."
+      })
+    }
+  ]
+};
+</script>
+
+<ApiTester {endpoint}>
+
+# Balance
+
+Retrieve the player's current wallet balance. Useful for periodic balance updates during gameplay.
+
+<Callout type="info">
+
+A valid session must be established via the <a href="/docs/api/authenticate">Authenticate</a> endpoint before calling this endpoint.
+
+</Callout>
+
+## Body Parameters
+
+<ApiParamTable params={endpoint.params} />
+
+## Response Fields
+
+### `balance`
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `amount` | `integer` | Balance in minor currency units (e.g. 1000000000 = $1,000.00 for USD with 6 decimal places). |
+| `currency` | `string` | ISO 4217 currency code. |
+
+## Responses
+
+<ApiResponseSection responses={endpoint.responses} />
+
+
+</ApiTester>

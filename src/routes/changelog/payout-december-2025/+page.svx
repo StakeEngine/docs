@@ -1,0 +1,15 @@
+---
+title: December 2025 Publisher Payments
+date: "2026-01-01"
+type: payout
+payoutValue: 4200000
+description: "Happy New Year! Another record month - over $4.2M USD paid in publisher profit across 116 teams with 458 active games."
+---
+
+# December 2025 Publisher Payments
+
+Hi Everyone and Happy New Year!
+
+We've just processed payments for December 2025. Again another "biggest month" with over **$4.2 Million USD** paid in publisher profit, spanning over **116 teams** with a total of **458 active games**.
+
+Be sure to check out the [/insights](/insights) page for more details on bet-count and turnover to see who came out on top for the past month.

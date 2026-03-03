@@ -1,0 +1,19 @@
+---
+title: January 2026 Publisher Payments
+date: "2026-02-01"
+type: payout
+payoutValue: 5000000
+description: "Payments processed for January - ~$5M USD paid out among 170+ active publishers totaling 580+ games. Over 650 million bets placed on the RGS."
+---
+
+# January 2026 Publisher Payments
+
+Hi Everyone,
+
+Time marches on, and we are again at the 1st of the month. A big thanks to all those we were able to meet at ICE Barcelona. Great to be able to meet face-to-face.
+
+Payments have now been processed for all teams for the month of January. Some big numbers nowadays - with around **~$5 Million USD** paid out among the **170+ active publishers**, totaling **580+ games**.
+
+In total there were over **650 Million bets** placed on the Stake Engine RGS in January. Also a notable increase in profits paid out to non-internal teams, more than doubling that from last month.
+
+Looking forward to bringing out some new features when the team is all back in the office this week.

@@ -1,0 +1,15 @@
+---
+title: Source
+description: Core SDK modules - output files, state management, executables, events, and win tracking
+order: 7
+---
+
+# Source
+
+Core SDK module reference.
+
+- [Outputs](/docs/math-sdk/source/outputs) - Books, force files, lookup tables, and configs
+- [State](/docs/math-sdk/source/state) - GeneralGameState abstract base class
+- [Executables](/docs/math-sdk/source/executables) - Reusable game actions
+- [Events](/docs/math-sdk/source/events) - Event recording functions
+- [Win Manager](/docs/math-sdk/source/win-manager) - Cumulative win tracking

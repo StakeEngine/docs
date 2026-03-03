@@ -1,0 +1,15 @@
+---
+title: November 2025 Publisher Payments
+date: "2025-12-01"
+type: payout
+payoutValue: 2800000
+description: "Kicking off December with an early Christmas present - $2.8M USD paid out to publishers across 116 teams with 357 live games on Stake."
+---
+
+# November 2025 Publisher Payments
+
+Hi everyone,
+
+Kicking off December with an early Christmas present!
+
+Payments have been sent out for the month of November - a big month with a total of **$2.8 Million USD** paid out to publishers, spread across **116 teams** with a total of **357 live games** on Stake.

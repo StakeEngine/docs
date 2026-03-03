@@ -1,0 +1,1202 @@
+[
+    {
+        "team": {
+            "image": "019b219b-20c5-71b6-a6be-6a71bfd5acb8",
+            "name": "Titan Gaming"
+        },
+        "game": {
+            "image": "019c2c34-f8c3-7b9f-a511-a77427edf40a",
+            "name": "Dojo Duel"
+        },
+        "turnover": 35176303250887,
+        "betCount": 10636188
+    },
+    {
+        "team": {
+            "image": "019b0bc1-9f1c-7dda-ad3c-e01787265fd1",
+            "name": "Paperclip Gaming"
+        },
+        "game": {
+            "image": "019b2729-24e9-72b1-adee-0382d34c6afc",
+            "name": "Dragonspire"
+        },
+        "turnover": 13183351072698,
+        "betCount": 11042629
+    },
+    {
+        "team": {
+            "image": "019b0bc1-9f1c-7dda-ad3c-e01787265fd1",
+            "name": "Paperclip Gaming"
+        },
+        "game": {
+            "image": "01996149-0b0d-7e25-b79f-efa9fd31351b",
+            "name": "Candy Rush"
+        },
+        "turnover": 12950048212050,
+        "betCount": 3150992
+    },
+    {
+        "team": {
+            "image": "019b219a-e39e-7899-9c54-d0e6788ed104",
+            "name": "Twist Gaming"
+        },
+        "game": {
+            "image": "019b9c3b-0eb0-74db-9a1c-7c8914b80d0a",
+            "name": "Bank Basher"
+        },
+        "turnover": 9836812182966,
+        "betCount": 10254352
+    },
+    {
+        "team": {
+            "image": "019b219a-e39e-7899-9c54-d0e6788ed104",
+            "name": "Twist Gaming"
+        },
+        "game": {
+            "image": "019b9bb3-28b1-7ce2-b935-b4f438cf708e",
+            "name": "Wicked Brew"
+        },
+        "turnover": 9025078395220,
+        "betCount": 22505300
+    },
+    {
+        "team": {
+            "image": "019b0bc1-9f1c-7dda-ad3c-e01787265fd1",
+            "name": "Paperclip Gaming"
+        },
+        "game": {
+            "image": "019b82ca-48f7-737b-8390-8c5de78651be",
+            "name": "Ritual"
+        },
+        "turnover": 8449466077195,
+        "betCount": 2495712
+    },
+    {
+        "team": {
+            "image": "019b219b-60ed-79af-a84d-7f12839df250",
+            "name": "Massive Studios"
+        },
+        "game": {
+            "image": "019a4c43-5978-7801-ad64-063d67d718b5",
+            "name": "Funkenstein"
+        },
+        "turnover": 6536787427563,
+        "betCount": 184764
+    },
+    {
+        "team": {
+            "image": "019b219b-20c5-71b6-a6be-6a71bfd5acb8",
+            "name": "Titan Gaming"
+        },
+        "game": {
+            "image": "019aff47-af53-75bb-b110-414e99fb8776",
+            "name": "Airstrike"
+        },
+        "turnover": 6131978536217,
+        "betCount": 372060
+    },
+    {
+        "team": {
+            "image": "019b219b-60ed-79af-a84d-7f12839df250",
+            "name": "Massive Studios"
+        },
+        "game": {
+            "image": "019bfbc2-6da1-705a-bbe1-7319889905e6",
+            "name": "Wild Don Donkey"
+        },
+        "turnover": 5966063838607,
+        "betCount": 2774644
+    },
+    {
+        "team": {
+            "image": "01975e9b-bb65-7075-b84c-e3580ae0033f",
+            "name": "Valkyrie"
+        },
+        "game": {
+            "image": "019b1cf6-062b-7325-b751-736e49db69d4",
+            "name": "Lokis Vault"
+        },
+        "turnover": 5906971087857,
+        "betCount": 3073442
+    },
+    {
+        "team": {
+            "image": "019ad383-2e74-72f8-a132-be2609333dcd",
+            "name": "Degen Lab"
+        },
+        "game": {
+            "image": "019c110e-8685-75f9-a9ce-3209a143af03",
+            "name": "Keno Xtreme"
+        },
+        "turnover": 5763302609794,
+        "betCount": 2697163
+    },
+    {
+        "team": {
+            "image": "019b219b-20c5-71b6-a6be-6a71bfd5acb8",
+            "name": "Titan Gaming"
+        },
+        "game": {
+            "image": "019b4a8b-e50d-758f-9423-3498fa339aa8",
+            "name": "Puffer Stacks 2"
+        },
+        "turnover": 5157054267720,
+        "betCount": 683837
+    },
+    {
+        "team": {
+            "image": "019b219b-60ed-79af-a84d-7f12839df250",
+            "name": "Massive Studios"
+        },
+        "game": {
+            "image": "0198c6c8-e514-742e-abe5-9c6cf6d762c3",
+            "name": "Wild Cat"
+        },
+        "turnover": 5028553508973,
+        "betCount": 377340
+    },
+    {
+        "team": {
+            "image": "01987055-fc9b-770d-8f45-ab16bc773b6d",
+            "name": "Coreffect Interactive"
+        },
+        "game": {
+            "image": "019b6d1e-864e-7516-8dc7-8e7941155c2e",
+            "name": "Angry Balls"
+        },
+        "turnover": 4440891566050,
+        "betCount": 1522873
+    },
+    {
+        "team": {
+            "image": "019b219b-20c5-71b6-a6be-6a71bfd5acb8",
+            "name": "Titan Gaming"
+        },
+        "game": {
+            "image": "019810b5-255a-7cd2-bc5f-cac3733c6cd6",
+            "name": "Underworld"
+        },
+        "turnover": 4034888365464,
+        "betCount": 82390
+    },
+    {
+        "team": {
+            "image": "019b219b-60ed-79af-a84d-7f12839df250",
+            "name": "Massive Studios"
+        },
+        "game": {
+            "image": "0198c6c5-66be-7316-9a2d-b5f78ca10c9a",
+            "name": "Hexappeal"
+        },
+        "turnover": 4029586583242,
+        "betCount": 332208
+    },
+    {
+        "team": {
+            "image": "019b0bc1-9f1c-7dda-ad3c-e01787265fd1",
+            "name": "Paperclip Gaming"
+        },
+        "game": {
+            "image": "019892ac-ef8f-7463-8e91-5b0a9a88ebd7",
+            "name": "Minedrop"
+        },
+        "turnover": 3958178775697,
+        "betCount": 752318
+    },
+    {
+        "team": {
+            "image": "0199b4c6-4c45-7c55-8ffc-5a1fc4497c8c",
+            "name": "Uppercut Gaming"
+        },
+        "game": {
+            "image": "019b2c00-b2c6-78c1-a4a1-fa859328f755",
+            "name": "Phoenix 1000"
+        },
+        "turnover": 3765700274949,
+        "betCount": 2390776
+    },
+    {
+        "team": {
+            "image": "0199b4c6-4c45-7c55-8ffc-5a1fc4497c8c",
+            "name": "Uppercut Gaming"
+        },
+        "game": {
+            "image": "019b2e54-1499-7c79-8d59-5fe66d6a2cde",
+            "name": "Mines Rush"
+        },
+        "turnover": 3621406015500,
+        "betCount": 2175459
+    },
+    {
+        "team": {
+            "image": "019b0bc1-9f1c-7dda-ad3c-e01787265fd1",
+            "name": "Paperclip Gaming"
+        },
+        "game": {
+            "image": "019b1b0e-5077-7671-a2c6-d7e767d76b94",
+            "name": "Lazy Viking"
+        },
+        "turnover": 2935744566847,
+        "betCount": 2111573
+    },
+    {
+        "team": {
+            "image": "019b219b-60ed-79af-a84d-7f12839df250",
+            "name": "Massive Studios"
+        },
+        "game": {
+            "image": "0198c6c5-db44-76a6-ac09-89f484d10d9e",
+            "name": "Jawsome"
+        },
+        "turnover": 2844424045630,
+        "betCount": 91666
+    },
+    {
+        "team": {
+            "image": "019b219a-e39e-7899-9c54-d0e6788ed104",
+            "name": "Twist Gaming"
+        },
+        "game": {
+            "image": "019b101f-789a-7c3b-b217-45ca2e9d9cbb",
+            "name": "Hen's Night"
+        },
+        "turnover": 2811194285029,
+        "betCount": 3953958
+    },
+    {
+        "team": {
+            "image": "019b219b-60ed-79af-a84d-7f12839df250",
+            "name": "Massive Studios"
+        },
+        "game": {
+            "image": "019a4c43-1834-7409-b302-263e91b5c876",
+            "name": "Roosters 3"
+        },
+        "turnover": 2577798114742,
+        "betCount": 651765
+    },
+    {
+        "team": {
+            "image": "019b219b-60ed-79af-a84d-7f12839df250",
+            "name": "Massive Studios"
+        },
+        "game": {
+            "image": "019be160-bc63-7c43-a138-6dab2347ad75",
+            "name": "Cashtopher Columbus"
+        },
+        "turnover": 2566257276696,
+        "betCount": 1023842
+    },
+    {
+        "team": {
+            "image": "019b219b-20c5-71b6-a6be-6a71bfd5acb8",
+            "name": "Titan Gaming"
+        },
+        "game": {
+            "image": "019c302e-12cc-7f0d-9977-63f1eb5a778f",
+            "name": "Duel of Olympus"
+        },
+        "turnover": 2510238673748,
+        "betCount": 1354445
+    },
+    {
+        "team": {
+            "image": "019b0bc1-9f1c-7dda-ad3c-e01787265fd1",
+            "name": "Paperclip Gaming"
+        },
+        "game": {
+            "image": "019b2702-c767-70b1-bf92-6270e8523230",
+            "name": "Forged in Plasma"
+        },
+        "turnover": 2497725048210,
+        "betCount": 1598481
+    },
+    {
+        "team": {
+            "image": "019ad383-2e74-72f8-a132-be2609333dcd",
+            "name": "Degen Lab"
+        },
+        "game": {
+            "image": "019a8f6d-e992-786b-afa5-bdb1de3cf396",
+            "name": "Plinko Xtreme"
+        },
+        "turnover": 2379118478325,
+        "betCount": 2033984
+    },
+    {
+        "team": {
+            "image": "019b0bc1-9f1c-7dda-ad3c-e01787265fd1",
+            "name": "Paperclip Gaming"
+        },
+        "game": {
+            "image": "01994d66-fc5b-760f-9224-df0fed6c1bcb",
+            "name": "Knight Shift"
+        },
+        "turnover": 2376054816503,
+        "betCount": 515775
+    },
+    {
+        "team": {
+            "image": "019b219b-20c5-71b6-a6be-6a71bfd5acb8",
+            "name": "Titan Gaming"
+        },
+        "game": {
+            "image": "019c2c35-eedc-70f4-8eb1-35fd2698272f",
+            "name": "Magic 1000"
+        },
+        "turnover": 2327466864856,
+        "betCount": 1406780
+    },
+    {
+        "team": {
+            "image": "019a0175-3893-7660-b05d-881affb0963d",
+            "name": "skygaming"
+        },
+        "game": {
+            "image": "019b9802-e5ef-78bb-8f9e-4d5d84190461",
+            "name": "Obey The Reptillians"
+        },
+        "turnover": 2184412709357,
+        "betCount": 413163
+    },
+    {
+        "team": {
+            "image": "019b219b-20c5-71b6-a6be-6a71bfd5acb8",
+            "name": "Titan Gaming"
+        },
+        "game": {
+            "image": "019b1cf8-6381-7c2d-9a32-9a3e153d3570",
+            "name": "Akimbo Outlaw"
+        },
+        "turnover": 2171862133044,
+        "betCount": 314164
+    },
+    {
+        "team": {
+            "image": "019b219b-60ed-79af-a84d-7f12839df250",
+            "name": "Massive Studios"
+        },
+        "game": {
+            "image": "019b2984-ce8d-765d-8c26-d195794983ff",
+            "name": "Swamp Things"
+        },
+        "turnover": 2056215166261,
+        "betCount": 337471
+    },
+    {
+        "team": {
+            "image": "019b219b-20c5-71b6-a6be-6a71bfd5acb8",
+            "name": "Titan Gaming"
+        },
+        "game": {
+            "image": "019b0c44-6a7d-7b00-9255-7df2e913079d",
+            "name": "Million X"
+        },
+        "turnover": 1977760069967,
+        "betCount": 1442577
+    },
+    {
+        "team": {
+            "image": "019b219b-20c5-71b6-a6be-6a71bfd5acb8",
+            "name": "Titan Gaming"
+        },
+        "game": {
+            "image": "019bbe0c-b841-7074-ae59-e242b26d467e",
+            "name": "Zeus God of Thunder"
+        },
+        "turnover": 1969900657946,
+        "betCount": 1035124
+    },
+    {
+        "team": {
+            "image": "0199b4c6-4c45-7c55-8ffc-5a1fc4497c8c",
+            "name": "Uppercut Gaming"
+        },
+        "game": {
+            "image": "019b2e55-b4f6-7cb8-95b4-b7f607572782",
+            "name": "Vulcans Wrath"
+        },
+        "turnover": 1872588698619,
+        "betCount": 1094736
+    },
+    {
+        "team": {
+            "image": "019b219b-60ed-79af-a84d-7f12839df250",
+            "name": "Massive Studios"
+        },
+        "game": {
+            "image": "0198c6c5-1fda-7ade-96b3-79235191da6f",
+            "name": "License to Squirrel"
+        },
+        "turnover": 1855472917877,
+        "betCount": 241396
+    },
+    {
+        "team": {
+            "image": "019b219b-60ed-79af-a84d-7f12839df250",
+            "name": "Massive Studios"
+        },
+        "game": {
+            "image": "0198c6c4-62ea-7304-a44b-af9ad35d24b1",
+            "name": "Drac's Stacks"
+        },
+        "turnover": 1837824495120,
+        "betCount": 436261
+    },
+    {
+        "team": {
+            "image": "0199b4c6-4c45-7c55-8ffc-5a1fc4497c8c",
+            "name": "Uppercut Gaming"
+        },
+        "game": {
+            "image": "019ab922-07aa-79e1-9346-89ce6692b8e2",
+            "name": "Kings Tribute"
+        },
+        "turnover": 1706792118993,
+        "betCount": 733677
+    },
+    {
+        "team": {
+            "image": "019852aa-5060-7012-97b9-8aa53c41f446",
+            "name": "Mirror Image Gaming"
+        },
+        "game": {
+            "image": "019b7c47-765b-715b-9242-f081eba277c6",
+            "name": "Drop The Boss"
+        },
+        "turnover": 1695371544642,
+        "betCount": 846437
+    },
+    {
+        "team": {
+            "image": "019b219b-60ed-79af-a84d-7f12839df250",
+            "name": "Massive Studios"
+        },
+        "game": {
+            "image": "0198c6c7-4072-7bd8-8ac0-4ee135fa0392",
+            "name": "Roosters Return"
+        },
+        "turnover": 1694406486536,
+        "betCount": 345515
+    },
+    {
+        "team": {
+            "image": "0199b4c6-4c45-7c55-8ffc-5a1fc4497c8c",
+            "name": "Uppercut Gaming"
+        },
+        "game": {
+            "image": "019b2e55-5b97-7ef6-9c1b-4c5e1ed35d7f",
+            "name": "Olympus Doubles"
+        },
+        "turnover": 1669609151716,
+        "betCount": 708234
+    },
+    {
+        "team": {
+            "image": "019b0bc1-9f1c-7dda-ad3c-e01787265fd1",
+            "name": "Paperclip Gaming"
+        },
+        "game": {
+            "image": "01979f47-8c8e-75f3-9485-a1b3bc3169a0",
+            "name": "Candy Party"
+        },
+        "turnover": 1602642142112,
+        "betCount": 246139
+    },
+    {
+        "team": {
+            "image": "019b219b-20c5-71b6-a6be-6a71bfd5acb8",
+            "name": "Titan Gaming"
+        },
+        "game": {
+            "image": "019a4c47-9a73-7d33-b76b-14e39fc04a22",
+            "name": "Farmageddon"
+        },
+        "turnover": 1587028372036,
+        "betCount": 582953
+    },
+    {
+        "team": {
+            "image": "019b219b-20c5-71b6-a6be-6a71bfd5acb8",
+            "name": "Titan Gaming"
+        },
+        "game": {
+            "image": "019b229f-e31f-7a8a-b792-915a9b8459ac",
+            "name": "Eye of Anubis"
+        },
+        "turnover": 1547608591911,
+        "betCount": 209959
+    },
+    {
+        "team": {
+            "image": "019b219a-e39e-7899-9c54-d0e6788ed104",
+            "name": "Twist Gaming"
+        },
+        "game": {
+            "image": "0198c6bb-309f-752c-ab36-93db4e351454",
+            "name": "Biker Bucks"
+        },
+        "turnover": 1546679043362,
+        "betCount": 1698021
+    },
+    {
+        "team": {
+            "image": "019b0bc1-9f1c-7dda-ad3c-e01787265fd1",
+            "name": "Paperclip Gaming"
+        },
+        "game": {
+            "image": "019785e1-cac4-751d-b549-57bd0dc6faad",
+            "name": "Bluebeard's Ghost"
+        },
+        "turnover": 1537155843965,
+        "betCount": 44294
+    },
+    {
+        "team": {
+            "image": "019b6c3c-791e-7e60-8292-558b936fe402",
+            "name": "Sidequest Studios"
+        },
+        "game": {
+            "image": "019b883e-fff5-7e3b-a8ad-623883e4ffcd",
+            "name": "Pirate Legends"
+        },
+        "turnover": 1458201756319,
+        "betCount": 968311
+    },
+    {
+        "team": {
+            "image": "019a7f9b-4137-7ed0-86cf-1f3a6e816395",
+            "name": "SlotGPT"
+        },
+        "game": {
+            "image": "019b4e43-92cd-7de5-b952-64161ade219f",
+            "name": "SlotGPT"
+        },
+        "turnover": 1407890535202,
+        "betCount": 69165
+    },
+    {
+        "team": {
+            "image": "019afc28-1cc0-79de-8e58-b3453755fc3a",
+            "name": "Incredible Gaming"
+        },
+        "game": {
+            "image": "019ba2a4-f13c-7a05-a1e5-623f8a4fa446",
+            "name": "Jelly Fever"
+        },
+        "turnover": 1372766331536,
+        "betCount": 348031
+    },
+    {
+        "team": {
+            "image": "019b219b-60ed-79af-a84d-7f12839df250",
+            "name": "Massive Studios"
+        },
+        "game": {
+            "image": "0198c6c3-447b-7ccc-91da-e1d0f67c8b3c",
+            "name": "Bonsai Banzai"
+        },
+        "turnover": 1371691814471,
+        "betCount": 654911
+    },
+    {
+        "team": {
+            "image": "019b219b-20c5-71b6-a6be-6a71bfd5acb8",
+            "name": "Titan Gaming"
+        },
+        "game": {
+            "image": "0198c6c2-62b9-78cd-a1f3-d4d41720a45c",
+            "name": "Wizard 1000"
+        },
+        "turnover": 1368314277303,
+        "betCount": 444464
+    },
+    {
+        "team": {
+            "image": "019b0bc1-9f1c-7dda-ad3c-e01787265fd1",
+            "name": "Paperclip Gaming"
+        },
+        "game": {
+            "image": "01975e29-84ba-7de0-a687-3ea376b9f86e",
+            "name": "Deadspin Bonanza"
+        },
+        "turnover": 1364087193281,
+        "betCount": 45473
+    },
+    {
+        "team": {
+            "image": "019b05ac-31e1-715e-bc4f-fb62f80245de",
+            "name": "Virtual Gold Studios"
+        },
+        "game": {
+            "image": "019c0576-7863-7a00-b053-6fd1c65c7f44",
+            "name": "Bonus Keno 2"
+        },
+        "turnover": 1335805828136,
+        "betCount": 556985
+    },
+    {
+        "team": {
+            "image": "019b219a-e39e-7899-9c54-d0e6788ed104",
+            "name": "Twist Gaming"
+        },
+        "game": {
+            "image": "0199984a-b42f-7018-9453-711cf5811750",
+            "name": "Golden Boy"
+        },
+        "turnover": 1286400783724,
+        "betCount": 993912
+    },
+    {
+        "team": {
+            "image": "019b219b-20c5-71b6-a6be-6a71bfd5acb8",
+            "name": "Titan Gaming"
+        },
+        "game": {
+            "image": "019810b4-c668-7db5-8a5a-cb38b39bd11d",
+            "name": "Puffer Stacks"
+        },
+        "turnover": 1277164064043,
+        "betCount": 110166
+    },
+    {
+        "team": {
+            "image": "019b0bc1-9f1c-7dda-ad3c-e01787265fd1",
+            "name": "Paperclip Gaming"
+        },
+        "game": {
+            "image": "019ac7e7-90af-7b73-965c-a2a9c1f4e05b",
+            "name": "Afternoon Nap"
+        },
+        "turnover": 1265023145672,
+        "betCount": 1822572
+    },
+    {
+        "team": {
+            "image": "019b219b-60ed-79af-a84d-7f12839df250",
+            "name": "Massive Studios"
+        },
+        "game": {
+            "image": "0198c6c7-b3af-7451-9ed3-58952e4066ff",
+            "name": "Mac and Cheese"
+        },
+        "turnover": 1253573565225,
+        "betCount": 18320
+    },
+    {
+        "team": {
+            "image": "019b0bc1-9f1c-7dda-ad3c-e01787265fd1",
+            "name": "Paperclip Gaming"
+        },
+        "game": {
+            "image": "0199fa83-2758-7204-b2c6-95412f6c247f",
+            "name": "Konbini"
+        },
+        "turnover": 1249918489540,
+        "betCount": 157747
+    },
+    {
+        "team": {
+            "image": "019b219b-20c5-71b6-a6be-6a71bfd5acb8",
+            "name": "Titan Gaming"
+        },
+        "game": {
+            "image": "019a4c69-cd62-745e-9274-be7a3ae47ed0",
+            "name": "The Bandit"
+        },
+        "turnover": 1235885159407,
+        "betCount": 89444
+    },
+    {
+        "team": {
+            "image": "019b219b-60ed-79af-a84d-7f12839df250",
+            "name": "Massive Studios"
+        },
+        "game": {
+            "image": "0198c6c3-dd16-76fc-8d23-b523ffa22677",
+            "name": "Roosters Revenge"
+        },
+        "turnover": 1181000723216,
+        "betCount": 257982
+    },
+    {
+        "team": {
+            "image": "019be508-e37f-7cc3-9acc-699cddec76b7",
+            "name": "Donut Gaming"
+        },
+        "game": {
+            "image": "019c2e95-819f-7cd1-82b7-c097e8d8bd86",
+            "name": "Hot College"
+        },
+        "turnover": 1160815608979,
+        "betCount": 272488
+    },
+    {
+        "team": {
+            "image": "019b219b-20c5-71b6-a6be-6a71bfd5acb8",
+            "name": "Titan Gaming"
+        },
+        "game": {
+            "image": "019b92d6-1b45-7c5f-aadf-d93a862a104c",
+            "name": "Dust Devil"
+        },
+        "turnover": 1141404806254,
+        "betCount": 304099
+    },
+    {
+        "team": {
+            "image": "0199b4c6-4c45-7c55-8ffc-5a1fc4497c8c",
+            "name": "Uppercut Gaming"
+        },
+        "game": {
+            "image": "019aa14a-0ad0-7e8e-a2bb-622032abca46",
+            "name": "Mystery Circus"
+        },
+        "turnover": 1120521222752,
+        "betCount": 498919
+    },
+    {
+        "team": {
+            "image": "019b01af-1f3f-7704-a170-8d374c6c1271",
+            "name": "Shift Gaming"
+        },
+        "game": {
+            "image": "019c1e02-581f-7c56-8ae6-655e875163a5",
+            "name": "Spellburst"
+        },
+        "turnover": 1120024702629,
+        "betCount": 1171214
+    },
+    {
+        "team": {
+            "image": "019b0bc1-9f1c-7dda-ad3c-e01787265fd1",
+            "name": "Paperclip Gaming"
+        },
+        "game": {
+            "image": "019b8af7-5077-7d5d-9cb1-914539c55bfd",
+            "name": "Motor Ways"
+        },
+        "turnover": 1068173592427,
+        "betCount": 1079955
+    },
+    {
+        "team": {
+            "image": "019b0bc1-9f1c-7dda-ad3c-e01787265fd1",
+            "name": "Paperclip Gaming"
+        },
+        "game": {
+            "image": "019a7596-18d5-7343-9d52-a3d4fc2bfc3e",
+            "name": "Xmas Link"
+        },
+        "turnover": 1015607323386,
+        "betCount": 288406
+    },
+    {
+        "team": {
+            "image": "019b0bc1-9f1c-7dda-ad3c-e01787265fd1",
+            "name": "Paperclip Gaming"
+        },
+        "game": {
+            "image": "019a4715-322f-7adb-90a3-9f5290954883",
+            "name": "Solar Eclipse"
+        },
+        "turnover": 954517660699,
+        "betCount": 431082
+    },
+    {
+        "team": {
+            "image": "019b219b-60ed-79af-a84d-7f12839df250",
+            "name": "Massive Studios"
+        },
+        "game": {
+            "image": "0198c6ca-7243-754f-b4db-6bf45cd0ab93",
+            "name": "Bling King Camel"
+        },
+        "turnover": 883242035552,
+        "betCount": 123306
+    },
+    {
+        "team": {
+            "image": "01980ac3-7679-72ce-853e-9b58225a4a30",
+            "name": "High Noon Studios"
+        },
+        "game": {
+            "image": "019c2102-bc42-7b82-9600-0c9a1d124dc5",
+            "name": "Dead by Dusk"
+        },
+        "turnover": 882580886003,
+        "betCount": 438358
+    },
+    {
+        "team": {
+            "image": "019b0bc1-9f1c-7dda-ad3c-e01787265fd1",
+            "name": "Paperclip Gaming"
+        },
+        "game": {
+            "image": "019a341c-3a27-710c-aa93-01624e4b4397",
+            "name": "Eggventure"
+        },
+        "turnover": 882538577175,
+        "betCount": 352487
+    },
+    {
+        "team": {
+            "image": "0199b4c6-4c45-7c55-8ffc-5a1fc4497c8c",
+            "name": "Uppercut Gaming"
+        },
+        "game": {
+            "image": "019b2e56-379e-760b-b529-b6377952dc0d",
+            "name": "Lost Forest"
+        },
+        "turnover": 848923238317,
+        "betCount": 535060
+    },
+    {
+        "team": {
+            "image": "019b219b-20c5-71b6-a6be-6a71bfd5acb8",
+            "name": "Titan Gaming"
+        },
+        "game": {
+            "image": "019810b1-12e5-7667-952e-a93e2d40ebde",
+            "name": "Ninja Rabbit"
+        },
+        "turnover": 839913407178,
+        "betCount": 205309
+    },
+    {
+        "team": {
+            "image": "019807ac-0e89-7d70-a78e-7facb7299a6b",
+            "name": "MadLab Gaming"
+        },
+        "game": {
+            "image": "019c0a9c-7e6a-74da-842a-da66d5c97a91",
+            "name": "Aegis Of Athena"
+        },
+        "turnover": 839544012613,
+        "betCount": 640298
+    },
+    {
+        "team": {
+            "image": "01994c80-866e-7b2d-9f0a-eaad8bbb7ae4",
+            "name": "Vault Gaming"
+        },
+        "game": {
+            "image": "019bad1b-ec6a-75ec-b9bb-892d62764d3a",
+            "name": "Space Party 1024"
+        },
+        "turnover": 830909401829,
+        "betCount": 708178
+    },
+    {
+        "team": {
+            "image": "019b219b-20c5-71b6-a6be-6a71bfd5acb8",
+            "name": "Titan Gaming"
+        },
+        "game": {
+            "image": "019a4c46-f493-70b3-8053-a99566341e33",
+            "name": "Sweet Boom"
+        },
+        "turnover": 769766095101,
+        "betCount": 122779
+    },
+    {
+        "team": {
+            "image": "019be508-e37f-7cc3-9acc-699cddec76b7",
+            "name": "Donut Gaming"
+        },
+        "game": {
+            "image": "019c1a00-d682-7172-95c0-e243deda1f05",
+            "name": "Crown Quest"
+        },
+        "turnover": 753267514191,
+        "betCount": 289297
+    },
+    {
+        "team": {
+            "image": "0197cd8c-8c10-7965-829d-c466e7b8d7b1",
+            "name": "ZeroEdge Studios"
+        },
+        "game": {
+            "image": "019c0927-7983-7201-b181-bb1f62beab49",
+            "name": "Blood Rush 1000"
+        },
+        "turnover": 735571599553,
+        "betCount": 267388
+    },
+    {
+        "team": {
+            "image": "019b6c3c-791e-7e60-8292-558b936fe402",
+            "name": "Sidequest Studios"
+        },
+        "game": {
+            "image": "019babbb-1ddc-78d9-93a8-0710d9c2b8e0",
+            "name": "Castle Clash"
+        },
+        "turnover": 682919954039,
+        "betCount": 526887
+    },
+    {
+        "team": {
+            "image": "019ae58f-6005-7017-83e5-4a6c49d0d246",
+            "name": "Ornate Square"
+        },
+        "game": {
+            "image": "019b07aa-bac5-71e6-b97e-f3bd888f6b02",
+            "name": "SPINSHOT"
+        },
+        "turnover": 665690177444,
+        "betCount": 423664
+    },
+    {
+        "team": {
+            "image": "0199dee0-b531-78c1-be8a-9c5d43a7be29",
+            "name": "Black Coffee Studios"
+        },
+        "game": {
+            "image": "019a9e12-9854-7c6b-9471-ea93abaa0daa",
+            "name": "Big Lunker Bass Clusters"
+        },
+        "turnover": 655285634150,
+        "betCount": 2123181
+    },
+    {
+        "team": {
+            "image": "019b6c3c-791e-7e60-8292-558b936fe402",
+            "name": "Sidequest Studios"
+        },
+        "game": {
+            "image": "019b8268-6607-70ba-9a0c-4b744b46cc50",
+            "name": "Grand Orb Project"
+        },
+        "turnover": 648145731119,
+        "betCount": 307906
+    },
+    {
+        "team": {
+            "image": "019afd7e-d9ee-7b1d-a4ae-f7c260c1332c",
+            "name": "Colorful Play"
+        },
+        "game": {
+            "image": "019c246e-15f9-76bb-9900-27a02f60dd6c",
+            "name": "Aztec 1000"
+        },
+        "turnover": 629429902359,
+        "betCount": 535896
+    },
+    {
+        "team": {
+            "image": "019b219b-60ed-79af-a84d-7f12839df250",
+            "name": "Massive Studios"
+        },
+        "game": {
+            "image": "019b0c8b-451b-7e45-8835-0577653eeba1",
+            "name": "Five Little Pigs"
+        },
+        "turnover": 599644993747,
+        "betCount": 120954
+    },
+    {
+        "team": {
+            "image": "019b219b-60ed-79af-a84d-7f12839df250",
+            "name": "Massive Studios"
+        },
+        "game": {
+            "image": "019b269b-fe98-70e1-afd9-9baa8a83940a",
+            "name": "Incredible X"
+        },
+        "turnover": 596011065642,
+        "betCount": 232596
+    },
+    {
+        "team": {
+            "image": "019b219b-20c5-71b6-a6be-6a71bfd5acb8",
+            "name": "Titan Gaming"
+        },
+        "game": {
+            "image": "019b69c8-2f54-7a88-abc7-339ecb37ea93",
+            "name": "Switchcraft"
+        },
+        "turnover": 595825007642,
+        "betCount": 358785
+    },
+    {
+        "team": {
+            "image": "019b0bc1-9f1c-7dda-ad3c-e01787265fd1",
+            "name": "Paperclip Gaming"
+        },
+        "game": {
+            "image": "0198adab-4bc5-7959-b2fb-557d49ed8272",
+            "name": "Manor Gray"
+        },
+        "turnover": 592116432076,
+        "betCount": 56965
+    },
+    {
+        "team": {
+            "image": "019b219b-20c5-71b6-a6be-6a71bfd5acb8",
+            "name": "Titan Gaming"
+        },
+        "game": {
+            "image": "019a4c45-0fa2-71e7-b1f3-e64e8ced24c9",
+            "name": "Boomtown"
+        },
+        "turnover": 564618161929,
+        "betCount": 66870
+    },
+    {
+        "team": {
+            "image": "019b219b-60ed-79af-a84d-7f12839df250",
+            "name": "Massive Studios"
+        },
+        "game": {
+            "image": "019bbeb5-771a-71b5-af7a-a6e7c40bd1bb",
+            "name": "Maximus Multiplus"
+        },
+        "turnover": 542838634284,
+        "betCount": 227213
+    },
+    {
+        "team": {
+            "image": "019afd7e-d9ee-7b1d-a4ae-f7c260c1332c",
+            "name": "Colorful Play"
+        },
+        "game": {
+            "image": "019b1cf7-66c7-7cc3-85ec-df76e452e18c",
+            "name": "Frosty Gifts 1000"
+        },
+        "turnover": 537896010353,
+        "betCount": 37802
+    },
+    {
+        "team": {
+            "image": "0199b4c6-4c45-7c55-8ffc-5a1fc4497c8c",
+            "name": "Uppercut Gaming"
+        },
+        "game": {
+            "image": "0199b845-db27-7076-83c6-bc9880a81d7a",
+            "name": "Wings of Death"
+        },
+        "turnover": 530338199013,
+        "betCount": 242603
+    },
+    {
+        "team": {
+            "image": "019b219a-e39e-7899-9c54-d0e6788ed104",
+            "name": "Twist Gaming"
+        },
+        "game": {
+            "image": "0198c6b2-baa5-72d3-b9c2-35c7667ca18d",
+            "name": "Samurai Dogs Unleashed"
+        },
+        "turnover": 512702037090,
+        "betCount": 28979
+    },
+    {
+        "team": {
+            "image": "019b0bc1-9f1c-7dda-ad3c-e01787265fd1",
+            "name": "Paperclip Gaming"
+        },
+        "game": {
+            "image": "01990fdb-d5c5-7184-8015-7897b88efac8",
+            "name": "Farm and Merge"
+        },
+        "turnover": 509707899427,
+        "betCount": 51702
+    },
+    {
+        "team": {
+            "image": "019a25ea-4ed9-79da-98c4-075b4b2be7d3",
+            "name": "1 Ace Studios"
+        },
+        "game": {
+            "image": "019a9f43-928f-7e0e-ba28-bd31f0088dbf",
+            "name": "Rail Riches"
+        },
+        "turnover": 491812315228,
+        "betCount": 40297
+    },
+    {
+        "team": {
+            "image": "019b0bc1-9f1c-7dda-ad3c-e01787265fd1",
+            "name": "Paperclip Gaming"
+        },
+        "game": {
+            "image": "01988463-a6ce-7932-9c52-83c691dba64f",
+            "name": "Round Robin"
+        },
+        "turnover": 482517183459,
+        "betCount": 654564
+    },
+    {
+        "team": {
+            "image": "019b219b-20c5-71b6-a6be-6a71bfd5acb8",
+            "name": "Titan Gaming"
+        },
+        "game": {
+            "image": "019b0c8c-13a0-7c67-81d6-c6a1721fffd7",
+            "name": "Juicy Harvest"
+        },
+        "turnover": 482469564394,
+        "betCount": 75740
+    },
+    {
+        "team": {
+            "image": "019b219a-e39e-7899-9c54-d0e6788ed104",
+            "name": "Twist Gaming"
+        },
+        "game": {
+            "image": "0198c6b3-b551-7da1-8eeb-56b9f6e7d086",
+            "name": "Pixel Farm"
+        },
+        "turnover": 467560188042,
+        "betCount": 246738
+    },
+    {
+        "team": {
+            "image": "019b219b-60ed-79af-a84d-7f12839df250",
+            "name": "Massive Studios"
+        },
+        "game": {
+            "image": "0198c6c6-d047-7e2a-a356-bb751bc9ba23",
+            "name": "Jokerjam"
+        },
+        "turnover": 453695615481,
+        "betCount": 77628
+    },
+    {
+        "team": {
+            "image": "019b219b-b21c-768e-804a-6f51371a5890",
+            "name": "Knucklehead Syndicate"
+        },
+        "game": {
+            "image": "019b4e37-2628-7d0f-a5ee-81eb35284338",
+            "name": "The Family Death"
+        },
+        "turnover": 452930314878,
+        "betCount": 195864
+    },
+    {
+        "team": {
+            "image": "019b219a-e39e-7899-9c54-d0e6788ed104",
+            "name": "Twist Gaming"
+        },
+        "game": {
+            "image": "0198c6b7-38a2-7cb1-9170-92f4e7727454",
+            "name": "Cult of Cash"
+        },
+        "turnover": 452764486601,
+        "betCount": 358402
+    },
+    {
+        "team": {
+            "image": "019b219b-20c5-71b6-a6be-6a71bfd5acb8",
+            "name": "Titan Gaming"
+        },
+        "game": {
+            "image": "019810b8-77e4-7299-91a8-f43b01e48f8c",
+            "name": "Wild West Wins"
+        },
+        "turnover": 447997585311,
+        "betCount": 281054
+    }
+]

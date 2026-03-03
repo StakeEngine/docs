@@ -1,0 +1,339 @@
+---
+title: Bet Replay
+description: Implement and test bet replay - fetch round data from the RGS, build the replay UX, and validate scenarios.
+order: 6
+---
+
+<script>
+import { onMount } from 'svelte';
+import ApiTester from '$lib/components/docs/ApiTester.svelte';
+import ApiParamTable from '$lib/components/docs/ApiParamTable.svelte';
+import ApiResponseSection from '$lib/components/docs/ApiResponseSection.svelte';
+
+import Callout from '$lib/components/docs/Callout.svelte';
+import ChecklistNode from '$lib/components/docs/ChecklistNode.svelte';
+import { triggerSend } from '$lib/stores/apiTester';
+
+const endpoint = {
+  method: 'GET',
+  path: '/bet/replay/{game}/{version}/{mode}/{event}',
+  baseUrl: 'https://rgs.stake-engine.com',
+  title: 'Bet Replay',
+  description: 'Fetch replay data for a completed game round by its game, version, mode, and event ID.',
+  params: [
+    {
+      name: 'game',
+      type: 'string',
+      location: 'path',
+      required: true,
+      description: 'The game identifier (UUID).',
+      example: '01996148-eecf-7678-be46-41de88c58951'
+    },
+    {
+      name: 'version',
+      type: 'string',
+      location: 'path',
+      required: true,
+      description: 'The math version of the game.',
+      example: '1'
+    },
+    {
+      name: 'mode',
+      type: 'string',
+      location: 'path',
+      required: true,
+      description: 'The bet mode used in the round.',
+      example: 'SUPER'
+    },
+    {
+      name: 'event',
+      type: 'string',
+      location: 'path',
+      required: true,
+      description: 'The unique simulation/event ID to replay.',
+      example: '55'
+    }
+  ],
+  responses: [
+    {
+      status: 200,
+      statusText: 'OK',
+      description: 'Replay data retrieved successfully.',
+      exampleBody: JSON.stringify({
+        payoutMultiplier: 25.0,
+        costMultiplier: 1.0,
+        state: {}
+      })
+    },
+    {
+      status: 404,
+      statusText: 'Not Found',
+      description: 'No replay data found for the given game, version, mode, and event combination.',
+      exampleBody: JSON.stringify({
+        error: "NOT_FOUND",
+        message: "Replay data not found."
+      })
+    },
+    {
+      status: 500,
+      statusText: 'Internal Server Error',
+      description: 'An unexpected error occurred on the server.',
+      exampleBody: JSON.stringify({
+        error: "ERR_GEN",
+        message: "An unexpected error occurred. Please try again later."
+      })
+    }
+  ]
+};
+
+// Implementation checklist data
+const checklistGroups = [
+  {
+    id: 100, parentId: null, text: 'Detection & Loading', type: 'group', sortOrder: 0,
+    children: [
+      { id: 101, parentId: 100, text: 'Detect replay mode - check for replay=true query param', type: 'item', sortOrder: 0, children: [] },
+      { id: 102, parentId: 100, text: 'Fetch replay data - call the RGS endpoint with correct path parameters', type: 'item', sortOrder: 1, children: [] },
+      { id: 103, parentId: 100, text: 'Show loading state - display a loader while fetching replay data', type: 'item', sortOrder: 2, children: [] },
+    ]
+  },
+  {
+    id: 200, parentId: null, text: 'UI & Controls', type: 'group', sortOrder: 1,
+    children: [
+      { id: 201, parentId: 200, text: 'Display "Play" button - prompt the user to start the replay', type: 'item', sortOrder: 0, children: [] },
+      { id: 202, parentId: 200, text: 'Disable betting UI - hide or disable all bet controls', type: 'item', sortOrder: 1, children: [] },
+      { id: 203, parentId: 200, text: 'Disable session calls - do not make any authenticated API calls (authenticate, balance, play)', type: 'item', sortOrder: 2, children: [] },
+    ]
+  },
+  {
+    id: 300, parentId: null, text: 'Playback & Results', type: 'group', sortOrder: 2,
+    children: [
+      { id: 301, parentId: 300, text: 'Play full animation - show all animations, sounds, and visual effects', type: 'item', sortOrder: 0, children: [] },
+      { id: 302, parentId: 300, text: 'Show results - display bet cost, payout multiplier, and win amount', type: 'item', sortOrder: 1, children: [] },
+      { id: 303, parentId: 300, text: 'Add "Play Again" button - allow rewatching the replay', type: 'item', sortOrder: 2, children: [] },
+    ]
+  },
+  {
+    id: 400, parentId: null, text: 'Error Handling & Safety', type: 'group', sortOrder: 3,
+    children: [
+      { id: 401, parentId: 400, text: 'Handle errors - show an appropriate message if replay data fails to load', type: 'item', sortOrder: 0, children: [] },
+      { id: 402, parentId: 400, text: 'Prevent session transition - no way to start normal play from replay mode', type: 'item', sortOrder: 1, children: [] },
+    ]
+  }
+];
+
+let checked = $state({});
+const STORAGE_KEY = 'replay-impl-checklist';
+
+function save(state) {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch {}
+}
+
+function load() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    return raw ? JSON.parse(raw) : {};
+  } catch { return {}; }
+}
+
+function toggle(id) {
+  checked = { ...checked, [id]: !checked[id] };
+  save(checked);
+}
+
+function countAllItems(nodes) {
+  let count = 0;
+  for (const n of nodes) {
+    if (n.type === 'item') count++;
+    if (n.children?.length) count += countAllItems(n.children);
+  }
+  return count;
+}
+
+function countAllChecked(nodes, state) {
+  let count = 0;
+  for (const n of nodes) {
+    if (n.type === 'item' && state[n.id]) count++;
+    if (n.children?.length) count += countAllChecked(n.children, state);
+  }
+  return count;
+}
+
+const totalItems = countAllItems(checklistGroups);
+const totalChecked = $derived(countAllChecked(checklistGroups, checked));
+const overallPct = $derived(totalItems > 0 ? Math.round((totalChecked / totalItems) * 100) : 0);
+
+function resetAll() {
+  checked = {};
+  save(checked);
+}
+
+onMount(() => { checked = load(); });
+
+function fireTester() {
+  triggerSend.update(n => n + 1);
+}
+</script>
+
+<ApiTester {endpoint}>
+
+# Bet Replay
+
+Bet Replay allows players to view and share the outcome of a completed round. The game loads in a special replay mode, fetches the round data from the RGS, and plays back the animation exactly as it originally occurred.
+
+<Callout type="warning">
+
+Bet Replay is a **mandatory requirement** for all games seeking approval. Games without replay support will not be approved.
+
+</Callout>
+
+<Callout type="info">
+
+No player session is required - replay URLs can be shared publicly (e.g. on social media, in chat, or for support investigations).
+
+</Callout>
+
+## Why Bet Replay?
+
+| | Developers | Operators | Players |
+|---|---|---|---|
+| **Testing** | Replay specific events during development | Investigate player issues quickly | Verify results |
+| **Debugging** | Test rare events (max wins, bonus triggers) | Reproduce crashes for troubleshooting | - |
+| **Sharing** | - | Audit trail for compliance | Share big wins on social media |
+
+## Replay Query Parameters
+
+When loaded in replay mode, your game receives these query parameters in addition to the standard [URL parameters](/docs/reference/url-structure):
+
+| Parameter | Required | Description |
+|-----------|----------|-------------|
+| `replay` | Yes | Always `true` when in replay mode. |
+| `game` | Yes | Game ID (UUID). |
+| `version` | Yes | Math version (e.g. `1`, `2`). |
+| `mode` | Yes | Bet mode used in the round. |
+| `event` | Yes | Event/simulation ID to replay. |
+| `rgs_url` | Yes | RGS server URL to fetch replay data from. |
+| `currency` | No | Currency code for display formatting. |
+| `amount` | No | Bet amount in raw units. |
+| `lang` | No | Language code. |
+| `device` | No | Device type (`desktop` / `mobile`). |
+| `social` | No | Social mode (`true` / `false`). |
+
+## Fetching Replay Data
+
+After parsing the query parameters, fetch the replay state from the RGS.
+
+```
+GET {rgs_url}/bet/replay/{game}/{version}/{mode}/{event}
+```
+
+<div class="not-prose my-4">
+<button onclick={fireTester} class="inline-flex items-center gap-2 rounded-lg border border-emerald-500/30 bg-emerald-500/10 px-4 py-2 text-sm font-medium text-emerald-400 transition-colors hover:bg-emerald-500/20 hover:border-emerald-500/50">
+<svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" /><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+Test this endpoint
+</button>
+</div>
+
+### Path Parameters
+
+<ApiParamTable params={endpoint.params} />
+
+### Response Fields
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `payoutMultiplier` | `float` | Multiplier for calculating total payout from the bet amount. |
+| `costMultiplier` | `float` | Multiplier for calculating the bet cost. |
+| `state` | `object` | Game-specific state data for replaying the round animation. |
+
+### Responses
+
+<ApiResponseSection responses={endpoint.responses} />
+
+## Expected User Experience
+
+### Loading Phase
+
+1. **Auto-load** - Fetch the event data automatically when replay mode is detected.
+2. **Show "Play" button** - Once loaded, display a play button to prompt the user to start the replay.
+
+### During Replay
+
+1. **Play the round as normal** - Show all animations, sounds, and visual effects.
+2. **Display results** - Show the final outcome exactly as the player saw it.
+3. **No betting allowed** - All bet controls must be disabled or hidden.
+
+### After Replay
+
+1. **Show "Play Again" button** - Allow users to restart and watch the replay again.
+2. **Display final results** - Keep the win amount and outcome visible.
+
+### UI Simplification
+
+| Hide / Remove | Keep / Show |
+|---------------|-------------|
+| Balance display | Win amount |
+| Play / bet buttons | Replay controls |
+| Bet amount selector | Replay bet amount |
+| Autoplay settings | Currency display |
+
+## Implementation Checklist
+
+<Callout type="info">
+
+Progress is saved to localStorage in your browser.
+
+</Callout>
+
+<div class="not-prose mb-2 rounded-lg border border-zinc-800 bg-zinc-900/50 p-4">
+  <div class="mb-2 flex items-center justify-between text-sm">
+    <span class="font-medium text-zinc-300">Progress</span>
+    <div class="flex items-center gap-3">
+      <span class="font-mono text-xs" class:text-emerald-400={overallPct === 100} class:text-zinc-400={overallPct !== 100}>
+        {totalChecked}/{totalItems} ({overallPct}%)
+      </span>
+      {#if totalChecked > 0}
+        <button
+          onclick={resetAll}
+          class="rounded px-2 py-0.5 text-xs text-zinc-500 transition-colors hover:bg-zinc-800 hover:text-zinc-300"
+        >
+          Reset
+        </button>
+      {/if}
+    </div>
+  </div>
+  <div class="h-1.5 w-full overflow-hidden rounded-full bg-zinc-800">
+    <div
+      class="h-full rounded-full transition-all duration-300 ease-out"
+      class:bg-indigo-500={overallPct < 100}
+      class:bg-emerald-500={overallPct === 100}
+      style="width: {overallPct}%"
+    ></div>
+  </div>
+</div>
+
+<div class="not-prose space-y-3">
+  {#each checklistGroups as group (group.id)}
+    <ChecklistNode node={group} {checked} onToggle={toggle} />
+  {/each}
+</div>
+
+## Testing & Review
+
+During game review, you will be asked to provide **event IDs** for these scenarios for **every** bet mode:
+
+| Scenario | Description |
+|----------|-------------|
+| Normal win | Standard payout round. |
+| Big win | Large multiplier payout. |
+| Win cap | Maximum possible win amount. |
+| Loss | Zero payout round. |
+| Bonus trigger | Bonus round activation (if applicable). |
+
+<Callout type="warning">
+
+Test edge cases like max wins and rare bonus features before submitting for review. The review team will replay these events to verify correct behavior.
+
+</Callout>
+
+
+</ApiTester>

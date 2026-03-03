@@ -1,0 +1,38 @@
+---
+title: What are the exclusivity requirements?
+description: Originality, content, and post-release requirements for games published on Stake Engine.
+order: 1
+tags: [publishing, approval, exclusivity, requirements]
+---
+
+# What are the exclusivity requirements?
+
+Stake Engine requires all published games to meet strict originality and content standards. Games are reviewed for functionality, clarity, communication, and technical performance before publication.
+
+## Originality
+
+- Games must be **original designs** - pre-purchased or licensed games that exist on other third-party websites are not permitted.
+- Team names, game titles, and assets must comply with intellectual property and copyright law. Infringement is grounds for rejection.
+- Game assets cannot include Stake™ / Kick™ branding or themes.
+
+## Content restrictions
+
+- Games deemed offensive, explicit, or in poor taste may be rejected at the reviewer's discretion.
+- Games that promote, encourage, or are likely to appeal to underage persons are not permitted. This includes artistic depictions of children or child-like characters in any gambling context.
+
+## Post-release restrictions
+
+Ensure your game is **finalized and ready for publication** before submitting for approval. Once a game has been approved:
+
+- Only **minor visual updates** to address cosmetic issues are permitted.
+- Changes to the underlying **math model** are not allowed.
+- Adding **new game modes** is not allowed.
+- Modifications to **gameplay mechanics** are not allowed.
+
+These restrictions apply unless the Stake Engine team specifically requests changes.
+
+## Platform publication
+
+Games are automatically considered for publication on both [stake.com](https://stake.com) and [stake.us](https://stake.us), provided they meet strict language requirements. Stake Engine offers a social mode setting within the play modal to test social casino languages.
+
+For full approval guidelines, see the [Approval documentation](/docs/approval).

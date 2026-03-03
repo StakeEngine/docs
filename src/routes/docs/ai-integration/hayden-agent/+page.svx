@@ -1,0 +1,148 @@
+---
+title: Hayden Agent
+description: Set up the Hayden AI agent - a pre-configured assistant that searches and cites Stake Engine documentation.
+order: 2
+icon: MessageSquare
+tags: [ai, agent, hayden, mcp]
+---
+
+<script>
+import Callout from '$lib/components/docs/Callout.svelte';
+import Collapsible from '$lib/components/docs/Collapsible.svelte';
+import PagePreview from '$lib/components/docs/PagePreview.svelte';
+</script>
+
+# Hayden Agent
+
+**Hayden** is a system prompt that turns any MCP-connected AI assistant into a Stake Engine documentation expert. Instead of relying on training data, the agent uses MCP tools to search docs, read full pages, and answer with source citations.
+
+<Callout type="info">
+
+Hayden requires the [MCP server](/docs/ai-integration/mcp-server) to be configured first. Set up the server, then come back here to add the agent prompt.
+
+</Callout>
+
+## How It Works
+
+1. You paste the agent prompt into your AI client (instructions below)
+2. The agent receives a question about Stake Engine
+3. It calls `search_docs` to find relevant pages
+4. It calls `get_page` to read the full content
+5. It synthesizes an answer citing **Source: /route/path** for every claim
+
+The prompt is intentionally lightweight - it doesn't hardcode the documentation structure. The agent discovers available sections dynamically via `get_section_tree` and `list_pages`, so it stays up to date as docs evolve.
+
+The prompt instructs the model to **never fabricate documentation** - every answer is grounded in the indexed pages.
+
+## Agent Prompt
+
+Copy the prompt below and use it in the setup instructions for your client.
+
+<Collapsible title="Hayden system prompt (click to expand)">
+
+```markdown
+You are Hayden, the Stake Engine boss. You have access to Stake Engine
+docs via MCP tools.
+
+## Your Tools
+
+- **search_docs** - keyword search. Start here when you don't know the
+  exact page.
+- **get_page** - full page content by route. Use after search for details.
+- **list_pages** - browse pages, filter by section ("docs"/"faq") or
+  route prefix.
+- **get_section_tree** - hierarchical navigation tree. Use this to
+  discover docs structure.
+
+## Workflow
+
+1. search_docs with keywords from the question
+2. get_page on the most relevant route(s)
+3. Synthesize a concise answer citing Source: /route/path
+4. If search returns nothing, try broader terms, list_pages, or
+   get_section_tree to explore
+
+## Rules
+
+- ALWAYS use MCP tools. Never fabricate documentation content.
+- For API questions, the route usually contains the endpoint name
+  (e.g. /docs/api/authenticate).
+- Use get_section_tree or list_pages to discover available sections -
+  don't assume the structure.
+```
+
+</Collapsible>
+
+## Setup by Client
+
+### Claude Code
+
+Create a file at `.claude/agents/hayden.md` in your project root and paste the agent prompt above.
+
+```bash
+mkdir -p .claude/agents
+# paste the prompt into this file:
+touch .claude/agents/hayden.md
+```
+
+Once saved, restrt Claude Code, and then invoke Hayden directly in Claude Code something like `@hayden`:
+
+Or mention the agent by asking Claude to "use the Hayden agent" in conversation.
+
+<Callout type="tip">
+
+You can also fetch the prompt programmatically from the MCP server (see [Custom Integration](#custom-integration) below) and write it to a file in your CI or setup script.
+
+</Callout>
+
+### Claude Desktop
+
+1. Open Claude Desktop and create a new **Project**.
+2. In the **Project Instructions** field, paste the full agent prompt.
+3. Start a new conversation inside the project - the model will use MCP tools automatically.
+
+### Cursor
+
+Create `.cursor/rules/stake-docs.mdc` in your project root:
+
+```yaml
+---
+description: Stake Engine documentation agent
+globs:
+alwaysApply: true
+---
+```
+
+Paste the agent prompt below the frontmatter. The model will have the Hayden instructions in every Cursor chat session.
+
+### Windsurf
+
+Create `.windsurf/rules/stake-docs.md` in your project root and paste the agent prompt. The instructions and MCP tools are available automatically in Cascade.
+
+### Custom Integration
+
+For any MCP-compatible client or a custom application, you can fetch the prompt programmatically from the MCP server.
+
+**Via MCP Resource:**
+
+```typescript
+const resource = await client.readResource({
+  uri: 'stake-engine-docs://agent-prompt'
+});
+const systemPrompt = resource.contents[0].text;
+```
+
+**Via MCP Prompt:**
+
+```typescript
+const prompt = await client.getPrompt({
+  name: 'hayden',
+  arguments: {
+    question: 'How do I authenticate a wallet session?'
+  }
+});
+```
+
+This is useful for automation - you can fetch the latest prompt at build time and write it into your client configuration without manually copying.
+
+<PagePreview href="/docs/ai-integration/mcp-server" />

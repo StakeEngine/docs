@@ -1,0 +1,29 @@
+---
+title: How does game ranking work after release?
+description: How newly released games are positioned in the lobby and when rankings are updated.
+order: 2
+tags: [publishing, ranking, release, lobby]
+---
+
+# How does game ranking work after release?
+
+When your game is approved and released, it is placed at the **bottom of the New Releases** list. It will remain there until the next scheduled ranking cycle.
+
+## Weekly ranking schedule
+
+Games are **re-ranked every Friday** (Australian time). During each ranking cycle, all recently released games are evaluated and repositioned within the lobby based on performance and other ranking criteria.
+
+This means:
+
+- If your game is released on a **Monday**, it will sit at the bottom of New Releases until **Friday**.
+- If your game is released on a **Thursday**, it will be re-ranked the following day.
+- Regardless of when your game goes live, the first ranking update happens on the **next Friday** after release.
+
+## What to expect
+
+1. **Release** - your game is approved and goes live at the bottom of the New Releases list.
+2. **Wait** - the game remains in that position until the next Friday ranking cycle.
+3. **Re-rank** - on Friday (Australian time), all games are re-ranked based on their performance.
+4. **Repeat** - rankings are updated every Friday on an ongoing weekly basis.
+
+This weekly cycle applies to all games on the platform, not just new releases.

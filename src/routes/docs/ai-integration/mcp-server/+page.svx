@@ -1,0 +1,217 @@
+---
+title: MCP Server
+description: Install, build, and run the Stake Engine documentation MCP server for AI-powered doc search.
+order: 1
+icon: Server
+tags: [mcp, ai, search]
+---
+
+<script>
+import Callout from '$lib/components/docs/Callout.svelte';
+import Collapsible from '$lib/components/docs/Collapsible.svelte';
+</script>
+
+# MCP Server
+
+The `stake-engine-docs-mcp` server provides full-text search and retrieval of all Stake Engine documentation via the [Model Context Protocol](https://modelcontextprotocol.io). It runs locally as a stdio process and is compatible with any MCP client.
+
+## Prerequisites
+
+- **Node.js** 18+
+- **pnpm** (recommended) or npm
+
+## Build & Run
+
+**1. Clone the repository**
+
+```bash
+git clone https://github.com/stake-engine/docs.git
+cd stake-engine-docs
+```
+
+**2. Install and build the MCP server**
+
+```bash
+cd mcp-server
+pnpm install
+pnpm run build
+```
+
+This runs two steps:
+
+- `build:index` - scans all `.svx` pages and generates `data/docs-index.json`
+- `build:server` - compiles TypeScript to `dist/` and copies the agent prompt
+
+**3. Verify the server starts**
+
+```bash
+node dist/index.js
+```
+
+You should see a message like:
+
+```
+Stake Engine Docs MCP server running - 79 pages indexed (generated 2026-02-28T...)
+```
+
+Press `Ctrl+C` to stop - the server is designed to be launched by MCP clients, not run standalone.
+
+## Client Configuration
+
+The server communicates over **stdio**. Each MCP client has its own config file, but the format is the same - you just need the absolute path to `dist/index.js`.
+
+<Callout type="warning">
+
+Always use the **absolute path** to the built server. Replace `/path/to/stake-engine-docs` with the actual location on your machine.
+
+</Callout>
+
+### Claude Code
+
+Create or edit `.mcp.json` in your project root:
+
+```json
+{
+  "mcpServers": {
+    "stake-engine-docs": {
+      "command": "node",
+      "args": ["/path/to/stake-engine-docs/mcp-server/dist/index.js"]
+    }
+  }
+}
+```
+
+### Claude Desktop
+
+Open **Settings > Developer > Edit Config** and add to `claude_desktop_config.json`:
+
+```json
+{
+  "mcpServers": {
+    "stake-engine-docs": {
+      "command": "node",
+      "args": ["/path/to/stake-engine-docs/mcp-server/dist/index.js"]
+    }
+  }
+}
+```
+
+### Cursor
+
+Add to `.cursor/mcp.json` in your project root:
+
+```json
+{
+  "mcpServers": {
+    "stake-engine-docs": {
+      "command": "node",
+      "args": ["/path/to/stake-engine-docs/mcp-server/dist/index.js"]
+    }
+  }
+}
+```
+
+### Windsurf
+
+Add to `.windsurf/mcp.json` in your project root:
+
+```json
+{
+  "mcpServers": {
+    "stake-engine-docs": {
+      "command": "node",
+      "args": ["/path/to/stake-engine-docs/mcp-server/dist/index.js"]
+    }
+  }
+}
+```
+
+## Tools Reference
+
+Once connected, the MCP server exposes four tools.
+
+<Collapsible title="search_docs - Full-text keyword search">
+
+Full-text keyword search with weighted scoring.
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `query` | string | Yes | Search query (keywords or phrase) |
+| `section` | `"docs"` \| `"faq"` | No | Filter results to a section |
+| `limit` | number (1–50) | No | Max results to return (default: 10) |
+
+**Scoring weights:** title match (15), tags (6), description (4–6), route path (2), body term frequency (up to 5 per term).
+
+</Collapsible>
+
+<Collapsible title="get_page - Retrieve full page content">
+
+Retrieve the full content of a documentation page.
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `route` | string | Yes | Route path, e.g. `/docs/api/play` |
+
+Returns the page title, metadata, and full body text. If the exact route is not found, suggests partial matches.
+
+</Collapsible>
+
+<Collapsible title="list_pages - List all pages with metadata">
+
+List all pages with metadata.
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `section` | `"docs"` \| `"faq"` | No | Filter to a section |
+| `prefix` | string | No | Filter by route prefix, e.g. `/docs/api` |
+
+</Collapsible>
+
+<Collapsible title="get_section_tree - Navigation tree">
+
+Get the hierarchical navigation tree.
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `section` | `"docs"` \| `"faq"` | No | Filter to a section |
+
+</Collapsible>
+
+## Rebuilding the Index
+
+When documentation pages are added, edited, or removed, regenerate the search index:
+
+```bash
+cd mcp-server
+pnpm run build:index
+```
+
+This re-scans all `+page.svx` files in `src/routes/docs/` and `src/routes/faq/`, parses frontmatter, cleans SVX markup, and writes `data/docs-index.json`.
+
+<Callout type="tip">
+
+The full `pnpm run build` command runs both `build:index` and `build:server`. Use `build:index` alone when only content changed and the server code is unchanged.
+
+</Callout>
+
+## Troubleshooting
+
+<Collapsible title="Could not find docs-index.json">
+
+The server can't locate the generated index. Make sure you ran `pnpm run build:index` first. The file should exist at `mcp-server/data/docs-index.json`.
+
+</Collapsible>
+
+<Collapsible title="Could not find hayden.md">
+
+The agent prompt file is missing from the build output. Run `pnpm run build:server` - it compiles TypeScript and copies `src/hayden.md` to `dist/hayden.md`.
+
+</Collapsible>
+
+<Collapsible title="Tools not appearing in client">
+
+- Verify the server starts without errors: `node /path/to/stake-engine-docs/mcp-server/dist/index.js`
+- Check that the path in your client config is correct and absolute
+- Restart the MCP client after changing configuration
+
+</Collapsible>

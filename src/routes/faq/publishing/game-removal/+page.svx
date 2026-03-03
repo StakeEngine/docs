@@ -1,0 +1,36 @@
+---
+title: Why was my game removed from Stake?
+description: Why games may be temporarily removed from Stake and what to do if your game disappears.
+order: 3
+tags: [publishing, removal, bugs, issues]
+---
+
+# Why was my game removed from Stake?
+
+Stake Engine reserves the right to disable any published game if issues are discovered after release. If your game has disappeared from [stake.com](https://stake.com) or [stake.us](https://stake.us), it has most likely been removed due to a detected problem.
+
+## Why games get disabled
+
+Games may be removed for reasons including but not limited to:
+
+- **Bugs or errors** - gameplay-breaking issues, crashes, or unexpected behavior reported by players or detected internally.
+- **Math or payout discrepancies** - irregularities in the game's math model or RTP that deviate from the approved specification.
+- **Performance issues** - excessive load times, memory leaks, or rendering failures affecting the player experience.
+- **Compliance concerns** - content or behavior that no longer meets platform or regulatory requirements.
+
+## What happens next
+
+When a game is disabled:
+
+1. The game is **removed from the lobby** and is no longer accessible to players.
+2. Your **approval thread will be reopened** so the Stake Engine team can communicate the issue to you directly.
+3. You will need to **identify and fix** the reported problem.
+4. Once fixed, submit the updated build for **re-review** through the same thread.
+
+## What you should do
+
+If your game has disappeared from Stake:
+
+- Check your **approval thread** for messages from the Stake Engine team describing the issue.
+- Fix the reported problems and submit an updated build.
+- Do **not** create a new submission - use the existing reopened thread.

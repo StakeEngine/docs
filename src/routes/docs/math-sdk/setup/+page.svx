@@ -1,0 +1,13 @@
+---
+title: Setup
+description: Installation, configuration files, bet modes, and distribution conditions
+order: 3
+---
+
+# Setup
+
+Configure your game's mathematical foundation.
+
+- [Game Config](/docs/math-sdk/setup/configs) - GameConfig parameters, reels, paytable, and symbols
+- [Bet Mode](/docs/math-sdk/setup/betmode) - Max win, RTP, cost multiplier, and distributions
+- [Distribution](/docs/math-sdk/setup/distribution) - Win criteria, quotas, and force conditions

@@ -1,0 +1,29 @@
+---
+title: Dimensions
+description: Standard viewport dimensions for desktop, mobile, and popout game modes.
+order: 2
+---
+
+<script>
+import Callout from '$lib/components/docs/Callout.svelte';
+</script>
+
+# Viewport Dimensions
+
+Games must support the following standard viewport sizes. These define the target resolutions for each device category and popout mode.
+
+<Callout type="info">
+
+The `device` query parameter indicates the current device type when the game loads. Your game should adapt its layout to fit the corresponding viewport dimensions.
+
+</Callout>
+
+| Mode | Width | Height | Aspect Ratio |
+|------|------:|-------:|--------------|
+| Desktop | 1200 | 675 | 16:9 |
+| Laptop | 1024 | 576 | 16:9 |
+| Popout L | 800 | 450 | 16:9 |
+| Popout S | 400 | 225 | 16:9 |
+| Mobile L | 425 | 812 | ~1:1.9 |
+| Mobile M | 375 | 667 | ~9:16 |
+| Mobile S | 320 | 568 | ~9:16 |

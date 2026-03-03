@@ -1,0 +1,37 @@
+---
+title: Replay Mode
+date: "2025-11-09"
+type: feature
+description: "Bet Replay is now a mandatory requirement for all games. Rounds can be shared and viewed via replay URLs."
+---
+
+# Replay Mode
+
+Replay mode is now live!
+
+## Start Replay Button Requirements
+
+When displaying the "Start Replay" button, please include:
+
+- The **game mode**
+- The **base bet amount**, **cost multiplier** and **currency symbol** (if provided)
+- Show the **amount spent on the bet** - i.e. if the replay is a bonus buy and there is a cost multiplier being used, show the amount spent on the buy by the user, not just the base bet amount
+- If currency/amount are not provided, default to **1 USD** (non-social) or **1 SC** (social) bet for display purposes
+- There is **no need to display the event id**
+
+## Documentation
+
+For full implementation details, API reference, query parameters, and the implementation checklist, see the [Bet Replay documentation](/docs/api/bet-replay).
+
+## Questions?
+
+This feature is now live, and over the next few days we will update the approval checklist to include the requirements for the replay feature, and will update our documentation with the above.
+
+If you have any queries or hit any issues along the way, feel free to post in `general` or `published-creators` as these questions and conversations will likely benefit the whole community.
+
+## Examples
+
+Some fun early examples:
+
+- [Paperclip / Candy Rush](https://paperclip.live.stake-engine.com/candy-rush/v16/?replay=true&game=01996148-eecf-7678-be46-41de88c58951&version=1&mode=SUPER&event=55&currency=USD&amount=100000000&lang=en&rgs_url=rgs.stake-engine.com)
+- [Madlab / Nights Of Shinjuku](https://madlab-gaming.live.stake-engine.com/nights-of-shinjuku/v47/?replay=true&game=01994cfd-5de8-7bd4-8c6a-33eb8bb62b7e&version=26&mode=bonus2&event=0&currency=USD&amount=100000000&lang=en&device=desktop&social=false&demo=true&rgs_url=rgs.stake-engine.com)

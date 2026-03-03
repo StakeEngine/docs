@@ -1,0 +1,32 @@
+---
+title: How do I start building a game?
+description: A step-by-step overview of how to begin developing a game on Stake Engine.
+order: 1
+tags: [getting-started, setup, sdk]
+---
+
+<script>
+import Callout from '$lib/components/docs/Callout.svelte';
+</script>
+
+# How do I start building a game?
+
+To start building a game on Stake Engine, follow these steps:
+
+1. **Register** - create an account at [stake-engine.com](https://stake-engine.com) and set up your team profile.
+
+2. **Define your game math** - build the math model for your game: symbol distributions, paylines, win conditions, RTP, and hit frequency. Run simulations to validate the numbers.
+
+3. **Build the frontend** - create the visual presentation of your game. The frontend connects to the RGS to authenticate sessions, place bets, and display results.
+
+4. **Test with the RGS** - integrate your game with the Remote Gaming Server using the API endpoints ([Authenticate](/docs/api/authenticate), [Play](/docs/api/play), [End Round](/docs/api/end-round)) to test the full round lifecycle.
+
+5. **Submit for approval** - upload your game build via the dashboard and go through the [approval checklist](/docs/approval) to get your game live.
+
+<Callout type="tip">
+
+You can develop your game using **any technology stack** you prefer, but the final build must be **fully static** (HTML, CSS, JS, assets only) - no server-side rendering or backend processes. The build is hosted on the Stake Engine CDN. For a faster start, try the Stake Engine SDKs - [Math SDK](/docs/math-sdk) for game math and [Web SDK](/docs/web-sdk) for the frontend - which handle common patterns out of the box.
+
+</Callout>
+
+For detailed instructions, see the [Documentation](/docs).

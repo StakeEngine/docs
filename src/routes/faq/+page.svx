@@ -1,0 +1,48 @@
+---
+title: Frequently Asked Questions
+description: Answers to common questions about Stake Engine development and integration.
+---
+
+<script>
+import { HelpCircle, Rocket, Server, Calculator, BookCheck } from '@lucide/svelte';
+import FaqSearch from '$lib/components/faq/FaqSearch.svelte';
+</script>
+
+# Frequently Asked Questions
+
+Find answers to common questions about Stake Engine development, integration, and the RGS platform.
+
+<div class="not-prose mt-6 mb-8">
+  <FaqSearch />
+</div>
+
+<div class="not-prose grid gap-4 sm:grid-cols-2">
+  <a href="/faq/getting-started" class="group rounded-lg border border-zinc-800 p-5 transition-colors hover:border-zinc-700 hover:bg-zinc-800/50">
+    <div class="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-500/10">
+      <Rocket class="h-5 w-5 text-emerald-400" />
+    </div>
+    <h3 class="text-sm font-semibold text-zinc-200 group-hover:text-white">Getting Started</h3>
+    <p class="mt-1 text-sm text-zinc-400">Common questions about setting up and building your first game.</p>
+  </a>
+  <a href="/faq/rgs" class="group rounded-lg border border-zinc-800 p-5 transition-colors hover:border-zinc-700 hover:bg-zinc-800/50">
+    <div class="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-500/10">
+      <Server class="h-5 w-5 text-blue-400" />
+    </div>
+    <h3 class="text-sm font-semibold text-zinc-200 group-hover:text-white">RGS</h3>
+    <p class="mt-1 text-sm text-zinc-400">Questions about the Remote Gaming Server, sessions, and API integration.</p>
+  </a>
+  <a href="/faq/math" class="group rounded-lg border border-zinc-800 p-5 transition-colors hover:border-zinc-700 hover:bg-zinc-800/50">
+    <div class="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-amber-500/10">
+      <Calculator class="h-5 w-5 text-amber-400" />
+    </div>
+    <h3 class="text-sm font-semibold text-zinc-200 group-hover:text-white">Math</h3>
+    <p class="mt-1 text-sm text-zinc-400">Questions about math file formats, simulations, and game logic.</p>
+  </a>
+  <a href="/faq/publishing" class="group rounded-lg border border-zinc-800 p-5 transition-colors hover:border-zinc-700 hover:bg-zinc-800/50">
+    <div class="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-purple-500/10">
+      <BookCheck class="h-5 w-5 text-purple-400" />
+    </div>
+    <h3 class="text-sm font-semibold text-zinc-200 group-hover:text-white">Publishing</h3>
+    <p class="mt-1 text-sm text-zinc-400">Questions about game publishing, approval requirements, and submission guidelines.</p>
+  </a>
+</div>

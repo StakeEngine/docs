@@ -1,0 +1,12 @@
+---
+title: RGS
+nav_title: RGS
+description: Questions about the Remote Gaming Server, sessions, and API integration.
+order: 2
+icon: Server
+tags: [rgs, api, server]
+---
+
+# RGS
+
+Common questions about the Remote Gaming Server (RGS), session management, and API integration.

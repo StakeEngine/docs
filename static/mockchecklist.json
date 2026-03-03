@@ -1,0 +1,548 @@
+[
+    {
+        "id": 1,
+        "parentId": null,
+        "text": "PreChecks",
+        "type": "group",
+        "sortOrder": 1,
+        "children": [
+            {
+                "id": 181,
+                "parentId": 1,
+                "text": "Game authenticates with RGS sucessfully on game launch",
+                "type": "item",
+                "sortOrder": 1,
+                "children": []
+            },
+            {
+                "id": 183,
+                "parentId": 1,
+                "text": "Clicking on the bet button sends a successful play request to RGS",
+                "type": "item",
+                "sortOrder": 2,
+                "children": []
+            },
+            {
+                "id": 190,
+                "parentId": 1,
+                "text": "Is the game title unique and does not contain terms such as Megaways, Xways ",
+                "type": "item",
+                "sortOrder": 3,
+                "children": []
+            },
+            {
+                "id": 12,
+                "parentId": 1,
+                "text": "Ensure game assets and imagery do not contain offensive, discriminatory, or inappropriate content",
+                "type": "item",
+                "sortOrder": 7,
+                "children": []
+            }
+        ]
+    },
+    {
+        "id": 14,
+        "parentId": null,
+        "text": "Game Thumbnail",
+        "type": "group",
+        "sortOrder": 2,
+        "children": [
+            {
+                "id": 175,
+                "parentId": 14,
+                "text": "Ensure that the game tile is generally bright and does not clash with the Stake Background (Be careful of dark edges).",
+                "type": "item",
+                "sortOrder": 1,
+                "children": []
+            },
+            {
+                "id": 176,
+                "parentId": 14,
+                "text": "Ensure that the background image is bright and is appropriate for the game",
+                "type": "item",
+                "sortOrder": 2,
+                "children": []
+            },
+            {
+                "id": 177,
+                "parentId": 14,
+                "text": "Ensure that the foreground image is appropriate for the game and the key focus area correctly filled.",
+                "type": "item",
+                "sortOrder": 3,
+                "children": []
+            },
+            {
+                "id": 178,
+                "parentId": 14,
+                "text": "Ensure that the gradient is a similar colour to the background.",
+                "type": "item",
+                "sortOrder": 4,
+                "children": []
+            },
+            {
+                "id": 179,
+                "parentId": 14,
+                "text": "Ensure that the game title fits within the inner guidelines, it can't be too close to the edges",
+                "type": "item",
+                "sortOrder": 5,
+                "children": []
+            }
+        ]
+    },
+    {
+        "id": 45,
+        "parentId": null,
+        "text": "Math Requirements",
+        "type": "group",
+        "sortOrder": 3,
+        "children": [
+            {
+                "id": 48,
+                "parentId": 45,
+                "text": "RTP 90 -\u003E 98%",
+                "type": "item",
+                "sortOrder": 3,
+                "children": []
+            },
+            {
+                "id": 49,
+                "parentId": 45,
+                "text": "All modes must have an RTP within 0.5% of each other (97% RTP game must be within 96.5% - 97.5%)",
+                "type": "item",
+                "sortOrder": 4,
+                "children": []
+            },
+            {
+                "id": 51,
+                "parentId": 45,
+                "text": "Advertised max-win is achievable (hit-rate 1 in 20,000,000 or more frequent)",
+                "type": "item",
+                "sortOrder": 6,
+                "children": []
+            },
+            {
+                "id": 52,
+                "parentId": 45,
+                "text": "Reasonable \u003E 0-win hit-rate (typically around 3-8, not  \u003E 20 for base)",
+                "type": "item",
+                "sortOrder": 7,
+                "children": []
+            }
+        ]
+    },
+    {
+        "id": 57,
+        "parentId": null,
+        "text": "RGS Requirements",
+        "type": "group",
+        "sortOrder": 4,
+        "children": [
+            {
+                "id": 58,
+                "parentId": 57,
+                "text": "Bet Levels",
+                "type": "group",
+                "sortOrder": 1,
+                "children": [
+                    {
+                        "id": 59,
+                        "parentId": 58,
+                        "text": "Ensure that all of the bet levels are being respected (USD $0.10 -\u003E $1,000, Defaults to USD $1.00)",
+                        "type": "item",
+                        "sortOrder": 1,
+                        "children": []
+                    },
+                    {
+                        "id": 63,
+                        "parentId": 58,
+                        "text": "Ensure that all of the bet levels are being respected (JPY Y10 -\u003E Y150,000, Defaults to Y100)",
+                        "type": "item",
+                        "sortOrder": 2,
+                        "children": []
+                    },
+                    {
+                        "id": 191,
+                        "parentId": 58,
+                        "text": "Ensure that all of the bet levels are being respected (MXN MX1 -\u003E MX15,000, Defaults to MX10)",
+                        "type": "item",
+                        "sortOrder": 3,
+                        "children": []
+                    },
+                    {
+                        "id": 187,
+                        "parentId": 58,
+                        "text": "Refreshing game mid-spin should preserve the selected bet-amount, and not revert back the default value",
+                        "type": "item",
+                        "sortOrder": 4,
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "id": 65,
+                "parentId": 57,
+                "text": "RGS URL",
+                "type": "group",
+                "sortOrder": 2,
+                "children": [
+                    {
+                        "id": 66,
+                        "parentId": 65,
+                        "text": "Ensure that the game uses the rgs_url query parameter to determine which server its calls. Test case: Change the RGS URL and ensure the game calls that url",
+                        "type": "item",
+                        "sortOrder": 1,
+                        "children": []
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 16,
+        "parentId": null,
+        "text": "Frontend Requirements",
+        "type": "group",
+        "sortOrder": 5,
+        "children": [
+            {
+                "id": 23,
+                "parentId": 16,
+                "text": "Game Rules",
+                "type": "group",
+                "sortOrder": 4,
+                "children": [
+                    {
+                        "id": 24,
+                        "parentId": 23,
+                        "text": "Payout information per symbol must be clearly communicated",
+                        "type": "item",
+                        "sortOrder": 1,
+                        "children": []
+                    },
+                    {
+                        "id": 25,
+                        "parentId": 23,
+                        "text": "Max multiplier and RTP displayed (if games have different modes, this must be clearly stated for each one)",
+                        "type": "item",
+                        "sortOrder": 2,
+                        "children": []
+                    },
+                    {
+                        "id": 26,
+                        "parentId": 23,
+                        "text": "Win combinations are displayed in game-rules (which lines pay if lines game, cluster sizes, number of symbols for scatter pays, possible prize payouts etc.. )",
+                        "type": "item",
+                        "sortOrder": 3,
+                        "children": []
+                    },
+                    {
+                        "id": 27,
+                        "parentId": 23,
+                        "text": "Descriptions and cost for each game mode that is available",
+                        "type": "item",
+                        "sortOrder": 4,
+                        "children": []
+                    },
+                    {
+                        "id": 29,
+                        "parentId": 23,
+                        "text": "Are there free-games? If so - it should state what conditions are required to trigger this feature. Likewise if there are re-triggers in the bonus mode - what are the conditions. I.e 2 Scatters award +5 spins, 3 Scatters award +10 spins etc…",
+                        "type": "item",
+                        "sortOrder": 6,
+                        "children": []
+                    },
+                    {
+                        "id": 185,
+                        "parentId": 23,
+                        "text": "Disclaimer required, something in the means of - “Malfunction voids all pays and plays. A consistent internet connection is required. In the event of a disconnection, reload the game to finish any uncompleted bets. The expected return is calculated over many spins. Animations are not representative of any physical device, and are for illustrative purposes only. TM and © 2025 Stake Engine.”",
+                        "type": "item",
+                        "sortOrder": 7,
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "id": 192,
+                "parentId": 16,
+                "text": "Responsive Checks",
+                "type": "group",
+                "sortOrder": 6,
+                "children": [
+                    {
+                        "id": 193,
+                        "parentId": 192,
+                        "text": "Game functions correctly on Desktop",
+                        "type": "item",
+                        "sortOrder": 1,
+                        "children": []
+                    },
+                    {
+                        "id": 194,
+                        "parentId": 192,
+                        "text": "Game functions correctly on Mobile",
+                        "type": "item",
+                        "sortOrder": 2,
+                        "children": []
+                    },
+                    {
+                        "id": 195,
+                        "parentId": 192,
+                        "text": "Game functions correctly on Popout S/M",
+                        "type": "item",
+                        "sortOrder": 3,
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "id": 31,
+                "parentId": 16,
+                "text": "Confirmation shows up when changing to bet-modes with a \u003E 2x cost. I.e. If there is a 50x bonus mode, this cannot be activated with a single button",
+                "type": "item",
+                "sortOrder": 6,
+                "children": []
+            },
+            {
+                "id": 103,
+                "parentId": 16,
+                "text": "Auto Play",
+                "type": "group",
+                "sortOrder": 6,
+                "children": [
+                    {
+                        "id": 104,
+                        "parentId": 103,
+                        "text": "There should be a confirmation step, do not allow the case where a player can start auto-bet with just a single click",
+                        "type": "item",
+                        "sortOrder": 1,
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "id": 106,
+                "parentId": 16,
+                "text": "Sounds / Music",
+                "type": "group",
+                "sortOrder": 7,
+                "children": [
+                    {
+                        "id": 107,
+                        "parentId": 106,
+                        "text": "There should be an option in the UI to disable sounds",
+                        "type": "item",
+                        "sortOrder": 1,
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "id": 44,
+                "parentId": 16,
+                "text": "Is space bar bound to the bet button?",
+                "type": "item",
+                "sortOrder": 7,
+                "children": []
+            },
+            {
+                "id": 43,
+                "parentId": 16,
+                "text": "Check 10 wins for each game mode against the Game Rules and ensure that the win that is displayed is the same as payout.",
+                "type": "item",
+                "sortOrder": 12,
+                "children": []
+            }
+        ]
+    },
+    {
+        "id": 75,
+        "parentId": null,
+        "text": "Jurisdiction Requirements",
+        "type": "group",
+        "sortOrder": 6,
+        "children": [
+            {
+                "id": 76,
+                "parentId": 75,
+                "text": "Stake.US",
+                "type": "group",
+                "sortOrder": 1,
+                "children": [
+                    {
+                        "id": 77,
+                        "parentId": 76,
+                        "text": "Is the game compliant with the required translations for a social game?",
+                        "type": "item",
+                        "sortOrder": 1,
+                        "children": [
+                            {
+                                "id": 88,
+                                "parentId": 77,
+                                "text": "The bet button does not say bet",
+                                "type": "item",
+                                "sortOrder": 1,
+                                "children": []
+                            },
+                            {
+                                "id": 90,
+                                "parentId": 77,
+                                "text": "Game Info does not contain any restricted word",
+                                "type": "item",
+                                "sortOrder": 2,
+                                "children": []
+                            },
+                            {
+                                "id": 91,
+                                "parentId": 77,
+                                "text": "The bet amount  field is not labeled bet amount",
+                                "type": "item",
+                                "sortOrder": 3,
+                                "children": []
+                            },
+                            {
+                                "id": 92,
+                                "parentId": 77,
+                                "text": "Auto bet feature is not labeled AutoBET and any popups don't contain the word bet.",
+                                "type": "item",
+                                "sortOrder": 4,
+                                "children": []
+                            },
+                            {
+                                "id": 94,
+                                "parentId": 77,
+                                "text": "Bonus Buy label does not contain the word BUY",
+                                "type": "item",
+                                "sortOrder": 5,
+                                "children": [
+                                    {
+                                        "id": 96,
+                                        "parentId": 94,
+                                        "text": "Confirmation step does not include the words buy or bet",
+                                        "type": "item",
+                                        "sortOrder": 1,
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "id": 97,
+                                "parentId": 77,
+                                "text": "Check if the insufficient funds error has any restricted words",
+                                "type": "item",
+                                "sortOrder": 6,
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": 78,
+                        "parentId": 76,
+                        "text": "Does the game support SC and GC?",
+                        "type": "item",
+                        "sortOrder": 2,
+                        "children": [
+                            {
+                                "id": 79,
+                                "parentId": 78,
+                                "text": "Does it display these values (without $ sign prefix) ?",
+                                "type": "item",
+                                "sortOrder": 1,
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": 188,
+                        "parentId": 76,
+                        "text": "The Replay window does not contain any restricted words",
+                        "type": "item",
+                        "sortOrder": 3,
+                        "children": []
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 170,
+        "parentId": null,
+        "text": "Replay Support",
+        "type": "group",
+        "sortOrder": 7,
+        "children": [
+            {
+                "id": 171,
+                "parentId": 170,
+                "text": "Supports replay urls, loads and plays desired event",
+                "type": "item",
+                "sortOrder": 1,
+                "children": []
+            },
+            {
+                "id": 172,
+                "parentId": 170,
+                "text": "Supports all optional parameters like, currency, language, amount",
+                "type": "item",
+                "sortOrder": 2,
+                "children": []
+            },
+            {
+                "id": 173,
+                "parentId": 170,
+                "text": "Allows replaying \"event\" at the end of replay",
+                "type": "item",
+                "sortOrder": 3,
+                "children": []
+            },
+            {
+                "id": 174,
+                "parentId": 170,
+                "text": "UI clearly displays bet cost, including any multiplier applied to the bet, and \"real\" bet cost. eg:  BONUS 1USD, 250USD REAL COST",
+                "type": "item",
+                "sortOrder": 4,
+                "children": []
+            }
+        ]
+    },
+    {
+        "id": 80,
+        "parentId": null,
+        "text": "Final approval  checklist",
+        "type": "group",
+        "sortOrder": 8,
+        "children": [
+            {
+                "id": 168,
+                "parentId": 80,
+                "text": "Ensure game has bet-level templates applied (Stake US must use a template with the us_ prefix)",
+                "type": "item",
+                "sortOrder": 3,
+                "children": []
+            },
+            {
+                "id": 83,
+                "parentId": 80,
+                "text": "Both Front and Math requests have been set as 'Approved' & ‘Active’",
+                "type": "item",
+                "sortOrder": 4,
+                "children": []
+            },
+            {
+                "id": 84,
+                "parentId": 80,
+                "text": "Check to make sure game has appeared in the stake-engine-game-approved + stake-engine-us-game-approved channels",
+                "type": "item",
+                "sortOrder": 5,
+                "children": []
+            },
+            {
+                "id": 86,
+                "parentId": 80,
+                "text": "Approval request should both be closed once the game has the rocket-ship emoji, meaning it is live on Stake",
+                "type": "item",
+                "sortOrder": 7,
+                "children": []
+            }
+        ]
+    }
+]

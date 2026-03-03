@@ -1,0 +1,126 @@
+---
+title: Checklist
+description: Interactive game approval checklist - all requirements for launching on Stake Engine.
+order: 1
+---
+
+<script>
+import { onMount } from 'svelte';
+import ChecklistNode from '$lib/components/docs/ChecklistNode.svelte';
+import Callout from '$lib/components/docs/Callout.svelte';
+
+let groups = $state([]);
+let checked = $state({});
+let totalItems = $state(0);
+let totalChecked = $state(0);
+let loading = $state(true);
+
+function countAllItems(nodes) {
+  let count = 0;
+  for (const n of nodes) {
+    if (n.type === 'item') count++;
+    if (n.children?.length) count += countAllItems(n.children);
+  }
+  return count;
+}
+
+function countAllChecked(nodes, state) {
+  let count = 0;
+  for (const n of nodes) {
+    if (n.type === 'item' && state[n.id]) count++;
+    if (n.children?.length) count += countAllChecked(n.children, state);
+  }
+  return count;
+}
+
+const STORAGE_KEY = 'approval-checklist';
+
+function save(state) {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch {}
+}
+
+function load() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    return raw ? JSON.parse(raw) : {};
+  } catch { return {}; }
+}
+
+function toggle(id) {
+  checked = { ...checked, [id]: !checked[id] };
+  totalChecked = countAllChecked(groups, checked);
+  save(checked);
+}
+
+function resetAll() {
+  checked = {};
+  totalChecked = 0;
+  save(checked);
+}
+
+onMount(async () => {
+  const res = await fetch('/mockchecklist.json');
+  groups = await res.json();
+  totalItems = countAllItems(groups);
+  checked = load();
+  totalChecked = countAllChecked(groups, checked);
+  loading = false;
+});
+
+const overallPct = $derived(totalItems > 0 ? Math.round((totalChecked / totalItems) * 100) : 0);
+</script>
+
+# Approval Checklist
+
+Use this checklist to track your game's approval progress. All items must be verified before submitting for review.
+
+<Callout type="info">
+
+Progress is saved to localStorage in your browser.
+
+</Callout>
+
+{#if loading}
+<div class="flex items-center justify-center py-12 text-zinc-500">
+  <svg class="mr-2 h-5 w-5 animate-spin" viewBox="0 0 24 24" fill="none">
+    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
+    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+  </svg>
+  Loading checklist...
+</div>
+{:else}
+
+<div class="not-prose mb-6 rounded-lg border border-zinc-800 bg-zinc-900/50 p-4">
+  <div class="mb-2 flex items-center justify-between text-sm">
+    <span class="font-medium text-zinc-300">Overall Progress</span>
+    <div class="flex items-center gap-3">
+      <span class="font-mono text-xs" class:text-emerald-400={overallPct === 100} class:text-zinc-400={overallPct !== 100}>
+        {totalChecked}/{totalItems} ({overallPct}%)
+      </span>
+      {#if totalChecked > 0}
+        <button
+          onclick={resetAll}
+          class="rounded px-2 py-0.5 text-xs text-zinc-500 transition-colors hover:bg-zinc-800 hover:text-zinc-300"
+        >
+          Reset
+        </button>
+      {/if}
+    </div>
+  </div>
+  <div class="h-2 w-full overflow-hidden rounded-full bg-zinc-800">
+    <div
+      class="h-full rounded-full transition-all duration-300 ease-out"
+      class:bg-indigo-500={overallPct < 100}
+      class:bg-emerald-500={overallPct === 100}
+      style="width: {overallPct}%"
+    ></div>
+  </div>
+</div>
+
+<div class="not-prose space-y-4">
+  {#each groups as group (group.id)}
+    <ChecklistNode node={group} {checked} onToggle={toggle} />
+  {/each}
+</div>
+
+{/if}

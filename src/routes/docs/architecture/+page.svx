@@ -1,0 +1,12 @@
+---
+title: Architecture
+nav_title: Architecture
+description: How Stake Engine works under the hood - outcome selection, stateless design, and data formats.
+order: 1
+icon: Layers
+badge: New
+---
+
+# Architecture
+
+Technical overview of how the Stake Engine platform works internally.

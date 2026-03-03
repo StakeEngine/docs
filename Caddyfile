@@ -1,0 +1,40 @@
+:4173 {
+	bind 0.0.0.0
+
+	root * {$SITE_ROOT:./build}
+
+	# --- Server protection ---
+
+	# Block path traversal
+	@traversal path_regexp \.\.
+	respond @traversal 403
+
+	# Block encoded traversal (%2e = .)
+	@encoded_traversal path_regexp (?i)(%2e%2e|%252e%252e)
+	respond @encoded_traversal 403
+
+	# Block null bytes
+	@nullbyte path_regexp %00
+	respond @nullbyte 403
+
+	# Block dotfiles (.git, .env, etc.)
+	@hidden path_regexp /\.
+	respond @hidden 403
+
+	# SPA fallback
+	try_files {path} {path}.html {path}/index.html /404.html
+
+	# Static files (no directory listing)
+	file_server
+
+	# Hide server identity
+	header -Server
+
+	# Short cache for preview — 3 minutes
+	header Cache-Control "public, max-age=180"
+
+	log {
+		output stdout
+		format console
+	}
+}

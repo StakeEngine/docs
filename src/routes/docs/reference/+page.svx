@@ -1,0 +1,29 @@
+---
+title: Reference
+nav_title: Reference
+description: Reference tables for supported currencies, languages, viewport dimensions, and social mode restrictions.
+order: 4
+icon: BookOpen
+---
+
+<script>
+import Callout from '$lib/components/docs/Callout.svelte';
+</script>
+
+# Reference
+
+Configuration reference for game development on the Stake Engine platform. These tables define the supported values for currencies, languages, viewport sizes, and social casino restrictions.
+
+| Page | Description |
+|------|-------------|
+| [URL Structure](/docs/reference/url-structure) | Game launch URL format, path segments, and query parameters. |
+| [Currencies](/docs/reference/currencies) | All supported currency codes, symbols, and display formats. |
+| [Dimensions](/docs/reference/dimensions) | Standard viewport sizes for desktop, mobile, and popout modes. |
+| [Languages](/docs/reference/languages) | Supported language codes and localization info. |
+| [Social Mode](/docs/reference/social-mode) | Restricted phrases and replacements for social casino compliance. |
+
+<Callout type="info">
+
+Currency codes are returned in the `balance.currency` field from the <a href="/docs/api/authenticate">Authenticate</a> and other wallet endpoints. Language and social mode are passed as URL query parameters when the game loads.
+
+</Callout>

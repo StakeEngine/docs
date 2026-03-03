@@ -1,0 +1,12 @@
+---
+title: Publishing
+nav_title: Publishing
+description: Questions about game publishing, approval requirements, and submission guidelines.
+order: 4
+icon: BookCheck
+tags: [publishing, approval, submission]
+---
+
+# Publishing
+
+Common questions about game publishing requirements, the approval process, and submission guidelines for Stake Engine.

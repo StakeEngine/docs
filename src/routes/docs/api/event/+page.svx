@@ -1,0 +1,98 @@
+---
+title: Event
+description: Track in-progress player actions during a round for state recovery.
+order: 5
+---
+
+<script>
+import ApiTester from '$lib/components/docs/ApiTester.svelte';
+import ApiParamTable from '$lib/components/docs/ApiParamTable.svelte';
+import ApiResponseSection from '$lib/components/docs/ApiResponseSection.svelte';
+
+import Callout from '$lib/components/docs/Callout.svelte';
+
+const endpoint = {
+  method: 'POST',
+  path: '/bet/event',
+  baseUrl: 'https://rgs.stake-engine.com',
+  title: 'Event',
+  description: 'Track in-progress player actions during a round for state recovery.',
+  params: [
+    {
+      name: 'sessionID',
+      type: 'string',
+      location: 'body',
+      required: true,
+      description: 'The session ID issued by the operator platform.',
+      example: ''
+    },
+    {
+      name: 'event',
+      type: 'string',
+      location: 'body',
+      required: true,
+      description: 'The event identifier representing the player action to track.',
+      example: ''
+    }
+  ],
+  responses: [
+    {
+      status: 200,
+      statusText: 'OK',
+      description: 'Event tracked successfully.',
+      exampleBody: JSON.stringify({
+        event: "event_id_here"
+      })
+    },
+    {
+      status: 401,
+      statusText: 'Unauthorized',
+      description: 'The session ID is missing, expired, or invalid.',
+      exampleBody: JSON.stringify({
+        error: "ERR_IS",
+        message: "Invalid or expired sessionID."
+      })
+    },
+    {
+      status: 500,
+      statusText: 'Internal Server Error',
+      description: 'An unexpected error occurred on the server.',
+      exampleBody: JSON.stringify({
+        error: "ERR_GEN",
+        message: "An unexpected error occurred. Please try again later."
+      })
+    }
+  ]
+};
+</script>
+
+<ApiTester {endpoint}>
+
+# Event
+
+Track in-progress player actions during a round. This is useful for resuming gameplay if a player disconnects mid-round - the recorded events allow the frontend to reconstruct the round state.
+
+<Callout type="info">
+
+Events are associated with the player's current active round. A valid session must be established via the <a href="/docs/api/authenticate">Authenticate</a> endpoint, and a round must be in progress via the <a href="/docs/api/play">Play</a> endpoint.
+
+</Callout>
+
+## Body Parameters
+
+<ApiParamTable params={endpoint.params} />
+
+## Response Fields
+
+### `event`
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `event` | `string` | The event identifier that was recorded. |
+
+## Responses
+
+<ApiResponseSection responses={endpoint.responses} />
+
+
+</ApiTester>

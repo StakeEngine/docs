@@ -1,0 +1,173 @@
+---
+title: Authenticate
+nav_title: API Tester
+description: Authenticate a wallet session and retrieve game configuration.
+order: 2
+icon: Server
+badge: New
+updated: 2026-02-08
+---
+
+<script>
+import ApiTester from '$lib/components/docs/ApiTester.svelte';
+import ApiParamTable from '$lib/components/docs/ApiParamTable.svelte';
+import ApiResponseSection from '$lib/components/docs/ApiResponseSection.svelte';
+import Callout from '$lib/components/docs/Callout.svelte';
+import ApiAiPrompt from '$lib/components/docs/ApiAiPrompt.svelte';
+
+const endpoint = {
+  method: 'POST',
+  path: '/wallet/authenticate',
+  baseUrl: 'https://rgs.stake-engine.com',
+  title: 'Authenticate',
+  description: 'Authenticate a wallet session and retrieve balance, game configuration, and jurisdiction settings.',
+  params: [
+    {
+      name: 'sessionID',
+      type: 'string',
+      location: 'body',
+      required: true,
+      description: 'The session ID issued by the operator platform.',
+      example: ''
+    }
+  ],
+  responses: [
+    {
+      status: 200,
+      statusText: 'OK',
+      description: 'Session authenticated successfully. Returns current balance, active round (if any), and game configuration.',
+      exampleBody: JSON.stringify({
+        balance: {
+          amount: 1000000000,
+          currency: "USD"
+        },
+        round: null,
+        config: {
+          gameID: "",
+          minBet: 100000,
+          maxBet: 10000000,
+          stepBet: 100000,
+          defaultBetLevel: 1000000,
+          betLevels: [
+            100000, 200000, 400000, 600000, 800000,
+            1000000, 1200000, 1400000, 1600000, 1800000,
+            2000000, 3000000, 4000000, 5000000, 6000000,
+            7000000, 8000000, 9000000, 10000000
+          ],
+          betModes: {},
+          jurisdiction: {
+            socialCasino: false,
+            disabledFullscreen: false,
+            disabledTurbo: false,
+            disabledSuperTurbo: false,
+            disabledAutoplay: false,
+            disabledSlamstop: false,
+            disabledSpacebar: false,
+            disabledBuyFeature: false,
+            displayNetPosition: false,
+            displayRTP: false,
+            displaySessionTimer: false,
+            minimumRoundDuration: 0
+          }
+        },
+        meta: null
+      })
+    },
+    {
+      status: 401,
+      statusText: 'Unauthorized',
+      description: 'The session ID is missing, expired, or invalid.',
+      exampleBody: JSON.stringify({
+        error: {
+          code: "UNAUTHORIZED",
+          message: "Invalid or expired sessionID."
+        }
+      })
+    },
+    {
+      status: 500,
+      statusText: 'Internal Server Error',
+      description: 'An unexpected error occurred on the server.',
+      exampleBody: JSON.stringify({
+        error: {
+          code: "INTERNAL_ERROR",
+          message: "An unexpected error occurred. Please try again later."
+        }
+      })
+    }
+  ]
+};
+</script>
+
+<ApiTester {endpoint}>
+
+# Authenticate
+
+Authenticate a wallet session with the RGS. Returns the player's current balance, any active round, game configuration including bet levels, and jurisdiction-specific settings.
+
+<Callout type="info">
+
+This is typically the first request made when a game client loads. The returned `config` defines the bet structure and jurisdiction rules for the session.
+
+</Callout>
+
+## Body Parameters
+
+<ApiParamTable params={endpoint.params} />
+
+## Response Fields
+
+### `balance`
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `amount` | `integer` | Balance in minor currency units (e.g. 1000000000 = $1,000.00 for USD with 6 decimal places). |
+| `currency` | `string` | ISO 4217 currency code. |
+
+### `round`
+
+Active round data if the player has an incomplete round. `null` if no round is in progress. Type varies by game.
+
+### `config`
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `gameID` | `string` | The game identifier for this session. |
+| `minBet` | `integer` | Minimum allowed bet in minor currency units. |
+| `maxBet` | `integer` | Maximum allowed bet in minor currency units. |
+| `stepBet` | `integer` | Bet increment step size. |
+| `defaultBetLevel` | `integer` | Default bet level on session start. |
+| `betLevels` | `integer[]` | All available bet levels. |
+| `betModes` | `object` | Game-specific bet mode configuration. |
+| `jurisdiction` | `object` | Jurisdiction-specific feature flags (see below). |
+
+### `config.jurisdiction`
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `socialCasino` | `boolean` | Whether the session is in social casino mode. |
+| `disabledFullscreen` | `boolean` | Disable fullscreen toggle. |
+| `disabledTurbo` | `boolean` | Disable turbo spin mode. |
+| `disabledSuperTurbo` | `boolean` | Disable super turbo mode. |
+| `disabledAutoplay` | `boolean` | Disable autoplay functionality. |
+| `disabledSlamstop` | `boolean` | Disable slam stop (tap to skip animations). |
+| `disabledSpacebar` | `boolean` | Disable spacebar as spin trigger. |
+| `disabledBuyFeature` | `boolean` | Disable bonus buy feature. |
+| `displayNetPosition` | `boolean` | Show net win/loss position to the player. |
+| `displayRTP` | `boolean` | Show RTP information to the player. |
+| `displaySessionTimer` | `boolean` | Show a session duration timer. |
+| `minimumRoundDuration` | `integer` | Minimum round duration in milliseconds. `0` for no minimum. |
+
+### `meta`
+
+Optional metadata object. Content varies by operator integration. `null` when no metadata is provided.
+
+## Responses
+
+<ApiResponseSection responses={endpoint.responses} />
+
+## AI Integration
+
+<ApiAiPrompt {endpoint} />
+
+</ApiTester>

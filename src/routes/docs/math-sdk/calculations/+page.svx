@@ -1,0 +1,16 @@
+---
+title: Calculations
+description: Win evaluation algorithms - lines, ways, cluster, scatter, tumble, and board generation
+order: 6
+---
+
+# Calculations
+
+Built-in win evaluation methods and board mechanics.
+
+- [Lines](/docs/math-sdk/calculations/lines) - Line wins with paylines and wild handling
+- [Ways](/docs/math-sdk/calculations/ways) - Ways wins with multiplicative multipliers
+- [Cluster](/docs/math-sdk/calculations/cluster) - Cluster pays using BFS algorithm
+- [Scatter](/docs/math-sdk/calculations/scatter) - Scatter pays with multipliers and wilds
+- [Tumble](/docs/math-sdk/calculations/tumble) - Tumbling boards mechanic
+- [Board](/docs/math-sdk/calculations/board) - Board generation from reelstrips

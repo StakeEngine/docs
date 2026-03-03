@@ -1,0 +1,24 @@
+---
+title: Math Requirements
+description: Math verification - RTP range, max win, hit-rate, volatility, and simulation criteria
+order: 3
+---
+
+# Math Verification
+
+Summary statistics and hit-rate tables will be analyzed to ensure the game adheres to industry standards for chance-based casino games and is not misleading.
+
+## Summary Statistics
+- Verify the mode cost is correctly represented in the game rules for each mode.
+- The calculated Return to Player (RTP) must be within 90.0%–98.0%. For multiple modes, all must fall within a 0.5% variation (e.g., base game at 97% RTP requires other modes to be between 96.5% and 97.5%).
+- Ensure the maximum win amount matches the description in the game rules for each mode.
+- The maximum win must be realistically obtainable (typically more frequent than 1 in 10,000,000, depending on payout amount).
+- For slot-type games, run 100,000–1,000,000 simulations to ensure sufficient outcome diversity and avoid repeated results in a single session.
+- A reasonable portion of simulations should yield paying results (e.g., 90,000 non-paying results out of 100,000 may be grounds for rejection).
+- The hit-rate of the most likely single simulation should not be overwhelmingly dominant if there is a visual expectation that results are sufficiently varied.
+
+## Other Considerations
+- The hit-rate of non-zero wins should align with industry standards (&lt;1 in 20 bets, or more frequent).
+- For "BASE" modes (1x cost), the standard deviation should be within industry norms to ensure reasonable volatility for slot-type games.
+- List the number of non-zero weight payouts. Zero-weight payouts should not dominate the provided simulations.
+- Inspect hit-rates for win-ranges to avoid gaps where expected win amounts are unobtainable (e.g., intermediate wins should exist between small payouts and the maximum payout amount).

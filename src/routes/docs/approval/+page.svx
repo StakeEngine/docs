@@ -1,0 +1,46 @@
+---
+title: Approval
+nav_title: Approval
+description: Game approval process, requirements, and checklist for launching on Stake Engine.
+order: 3
+icon: Shield
+---
+
+<script>
+import Callout from '$lib/components/docs/Callout.svelte';
+</script>
+
+# Approval
+
+Before a game can go live on the Stake platform, it must pass a structured approval process covering math validation, frontend quality, RGS integration, jurisdiction compliance, and replay support.
+
+## Key Restrictions
+
+- Stake Engine games are strictly *stateless*: Each bet must be independent of previous outcomes. Games cannot include jackpots, gamble features, continuation, or early cashout options.
+- Team names, game titles, and assets must comply with intellectual property/copyright law. Infringement is grounds for rejection.
+- Games must be original designs. Pre-purchased or licensed games existing on other third-party websites will not be permitted.
+- Game assets cannot include material with Stake™ / Kick™ branding or themes.
+- Approval is at the discretion of the reviewer. Games deemed offensive, explicit, in poor taste, or of insufficient quality may be rejected.
+- Games that promote, encourage, or are likely to appeal to underage persons are not permitted. This includes artistic depictions of children or child-like characters in any gambling context.
+
+## Post Release
+
+Once a game has been approved, only minor updates to address visual issues are permitted. Changes to the underlying math model, the addition of new game modes, or modifications to gameplay mechanics will not be allowed.
+
+## Sections
+
+| Page | Description |
+|------|-------------|
+| [Checklist](/docs/approval/checklist) | Interactive approval checklist with all requirements grouped by category. |
+| [Game Tile](/docs/approval/game-tile) | Game tile asset requirements - background, foreground, and provider logo. |
+| [Math Requirements](/docs/approval/math-requirements) | RTP range, max win, hit-rate, volatility, and simulation criteria. |
+| [Frontend Requirements](/docs/approval/frontend-requirements) | UI components, rules display, paytable, and mobile support. |
+| [RGS Requirements](/docs/approval/rgs-requirements) | XSS policy, bet levels, localization, and currency support. |
+| [Quality Rankings](/docs/approval/quality) | Star rating tiers, promotion visibility, and category placement. |
+| [Game Disclaimer](/docs/approval/disclaimer) | Required legal disclaimer text for game rules and information popups. |
+
+<Callout type="info">
+
+The checklist covers all areas reviewed during approval: pre-checks, game thumbnail, math requirements, RGS integration, frontend quality, jurisdiction compliance, replay support, and final sign-off.
+
+</Callout>

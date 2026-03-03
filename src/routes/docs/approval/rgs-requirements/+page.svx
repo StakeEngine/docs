@@ -1,0 +1,31 @@
+---
+title: RGS Requirements
+description: RGS approval - XSS policy, bet levels, localization, and currency support
+order: 5
+---
+
+<script>
+import PagePreview from '$lib/components/docs/PagePreview.svelte';
+</script>
+
+# Remote Game Server (RGS) Communication
+
+Session authentication and bet transactions are handled exclusively through the Stake Engine RGS. The RGS manages session token generation, *play/* responses, and optional parameters like supported currencies and languages.
+
+## RGS Authentication
+- **Bet Level Verification:** The *authenticate* HTTP response returns default bet levels, supported bet levels for a specified currency, and minimum/maximum bet amounts. The frontend must respect these values. Example: If the default bet size is 1 unit but the session uses JPY (minimum bet size: 10 units), the *play/* request will fail.
+- Bet increments must reflect allowed values within *authenticate/config/minStep*.
+- Minimum and maximum bet levels must be available for selection as dictated by the RGS.
+
+## Cross-Site-Scripting (XSS)
+- Stake Engine enforces a strict XSS policy. The game build must consist only of static files and cannot reach external sources. Common issues include downloading fonts from external servers, which logs console errors.
+
+## RGS URL
+- The game must use the *rgs_url* query parameter to determine the server to call.
+
+## Currency and Language
+English is the only required language. If only English (en) is supported, on-screen text must not corrupt when other language parameters are passed.
+
+<PagePreview href="/docs/reference/languages" expanded />
+
+<PagePreview href="/docs/reference/currencies" expanded />

@@ -1,0 +1,53 @@
+---
+title: What is a sessionID?
+description: Understanding the sessionID used in Stake Engine RGS API calls and how it relates to player authentication.
+order: 1
+tags: [rgs, session, authentication]
+---
+
+# What is a sessionID?
+
+A `sessionID` is a unique token issued by the operator platform that identifies a player session. It is the primary credential used to authorize all API calls to the Remote Gaming Server (RGS).
+
+## How it works
+
+1. **Operator issues the token** - When a player opens a game on the operator's platform, the operator generates a `sessionID` and embeds it in the [game launch URL](/docs/reference/url-structure) as a query parameter.
+
+2. **Frontend reads it from the URL** - Your game reads `sessionID` (along with `rgs_url`, `currency`, etc.) from `window.location.search` on startup.
+
+3. **Authenticate with the RGS** - The frontend sends the `sessionID` to the [Authenticate](/docs/api/authenticate) endpoint. This is the first API call your game must make - without it, all other endpoints will return `ERR_IS` (Invalid Session). On success, the RGS returns the player's balance, game configuration, bet levels, and jurisdiction settings.
+
+4. **Use in all subsequent calls** - Every API call after authentication ([Play](/docs/api/play), [End Round](/docs/api/end-round), [Balance](/docs/api/balance)) must include the same `sessionID`.
+
+5. **Expiration** - Session IDs have a limited lifetime. If a session expires, the player must relaunch the game to get a new one.
+
+## Example flow
+
+```
+┌──────────┐       ┌──────────────┐       ┌─────┐
+│ Operator │──────▶│ Game (iframe) │──────▶│ RGS │
+└──────────┘       └──────────────┘       └─────┘
+  1. Launch URL        2. Read params       3. POST /authenticate
+  with sessionID       from URL                { sessionID }
+```
+
+```typescript
+// 1. Parse the sessionID from URL
+const params = new URLSearchParams(window.location.search);
+const sessionID = params.get('sessionID')!;
+const rgsUrl = `https://${params.get('rgs_url')}`;
+
+// 2. Authenticate - must be the first API call
+const res = await fetch(`${rgsUrl}/wallet/authenticate`, {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ sessionID })
+});
+
+const { balance, config, round } = await res.json();
+```
+
+## Related
+
+- [URL Structure](/docs/reference/url-structure) - full list of launch URL parameters
+- [Authenticate API](/docs/api/authenticate) - endpoint reference and response format

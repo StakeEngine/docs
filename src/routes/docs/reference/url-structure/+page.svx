@@ -1,0 +1,87 @@
+---
+title: URL Structure
+description: Game launch URL format, path segments, and query parameters for Stake Engine games.
+order: 0
+---
+
+<script>
+import Callout from '$lib/components/docs/Callout.svelte';
+import PagePreview from '$lib/components/docs/PagePreview.svelte';
+</script>
+
+# URL Structure
+
+Games are loaded via a standardized URL. The host, path, and query parameters tell your game which server to talk to, who the player is, and how to configure the display.
+
+## Full URL
+
+<div class="not-prose my-4 overflow-x-auto rounded-lg border border-zinc-800 bg-zinc-900/60">
+<div class="flex items-center gap-2 border-b border-zinc-800 px-4 py-2">
+<span class="text-[11px] font-medium uppercase tracking-wider text-zinc-500">Game Launch URL</span>
+</div>
+<div class="px-4 py-3">
+<code class="block whitespace-nowrap text-sm leading-relaxed">
+<span class="text-blue-400">https://</span><span class="text-yellow-300">{`{team}`}</span><span class="text-zinc-500">.live.stake-engine.com/</span><span class="text-yellow-300">{`{game}`}</span><span class="text-zinc-500">/v</span><span class="text-yellow-300">{`{version}`}</span><span class="text-zinc-500">/?</span><span class="text-emerald-400">sessionID</span><span class="text-zinc-500">=</span><span class="text-orange-300">...</span><span class="text-zinc-500">&</span><span class="text-emerald-400">rgs_url</span><span class="text-zinc-500">=</span><span class="text-orange-300">...</span><span class="text-zinc-500">&</span><span class="text-emerald-400">lang</span><span class="text-zinc-500">=</span><span class="text-orange-300">...</span><span class="text-zinc-500">&</span><span class="text-emerald-400">currency</span><span class="text-zinc-500">=</span><span class="text-orange-300">...</span><span class="text-zinc-500">&</span><span class="text-emerald-400">device</span><span class="text-zinc-500">=</span><span class="text-orange-300">...</span><span class="text-zinc-500">&</span><span class="text-emerald-400">social</span><span class="text-zinc-500">=</span><span class="text-orange-300">...</span><span class="text-zinc-500">&</span><span class="text-emerald-400">demo</span><span class="text-zinc-500">=</span><span class="text-orange-300">...</span>
+</code>
+</div>
+</div>
+
+### Example
+
+```
+https://acme-games.live.stake-engine.com/treasure-hunt/v1/?sessionID=abc123&rgs_url=rgs.stake-engine.com&lang=en&currency=USD&device=desktop&social=false&demo=true
+```
+
+## Path Segments
+
+| Segment | Description |
+|---------|-------------|
+| `{team}` | Your studio/team name. Assigned during onboarding. |
+| `{game}` | The game slug (e.g. `treasure-hunt`). |
+| `v{version}` | Frontend version number (e.g. `v1`, `v2`). |
+
+## Query Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `sessionID` | `string` | Yes | Unique player session token. Used for all RGS API calls ([Authenticate](/docs/api/authenticate), [Play](/docs/api/play), etc.). |
+| `rgs_url` | `string` | Yes | RGS server hostname. **Do not hardcode** - this value may change between environments. |
+| `lang` | `string` | Yes | Display language as an [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes) code. See [supported languages](/docs/reference/languages). |
+| `currency` | `string` | Yes | Currency code for display formatting. See [supported currencies](/docs/reference/currencies). |
+| `device` | `string` | Yes | `desktop` or `mobile`. Use this to adapt your UI layout. See [dimensions](/docs/reference/dimensions). |
+| `social` | `boolean` | Yes | `true` when loaded in a social casino context (Stake.us). Restricted phrases must be replaced. See [social mode](/docs/reference/social-mode). |
+| `demo` | `boolean` | No | `true` for demo/free-play mode. When `true`, no real balance is affected. |
+| `replay` | `boolean` | No | `true` when loaded in replay mode. Additional replay-specific parameters (`game`, `version`, `mode`, `event`) are also passed. See [Bet Replay](/docs/api/bet-replay). |
+
+<Callout type="warning">
+
+The `rgs_url` parameter must not be hardcoded in your game. Always read it from the query string and use it as the base URL for all API calls. It differs between staging, production, and replay environments.
+
+</Callout>
+
+<Callout type="info">
+
+The `sessionID` must be passed to the <a href="/docs/api/authenticate">Authenticate</a> endpoint on game load. All subsequent API calls use the same `sessionID`.
+
+</Callout>
+
+## Parsing Example
+
+```typescript
+const params = new URLSearchParams(window.location.search);
+
+const sessionID = params.get('sessionID')!;
+const rgsUrl    = `https://${params.get('rgs_url')}`;
+const lang      = params.get('lang') ?? 'en';
+const currency  = params.get('currency') ?? 'USD';
+const device    = params.get('device') ?? 'desktop';
+const social    = params.get('social') === 'true';
+const demo      = params.get('demo') === 'true';
+const replay    = params.get('replay') === 'true';
+```
+
+## Replay Mode
+
+When `replay=true` is present, the game is loaded in a read-only replay mode. No session or balance calls should be made - instead the game fetches round data from the RGS and plays back the animation.
+
+<PagePreview href="/docs/api/bet-replay" badge="New" />

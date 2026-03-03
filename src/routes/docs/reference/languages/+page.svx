@@ -1,0 +1,32 @@
+---
+title: Languages
+description: Supported language codes for game localization on Stake Engine.
+order: 3
+---
+
+<script>
+import Callout from '$lib/components/docs/Callout.svelte';
+</script>
+
+# Supported Languages
+
+Games receive the language code via the `lang` URL query parameter when loaded. All player-facing text should be localized according to the provided language code.
+
+| Language | Code |
+|----------|------|
+| Arabic | `ar` |
+| Chinese | `zh` |
+| English | `en` |
+| Finnish | `fi` |
+| French | `fr` |
+| German | `de` |
+| Hindi | `hi` |
+| Indonesian | `id` |
+| Japanese | `ja` |
+| Korean | `ko` |
+| Polish | `po` |
+| Portuguese | `pt` |
+| Russian | `ru` |
+| Spanish | `es` |
+| Turkish | `tr` |
+| Vietnamese | `vi` |

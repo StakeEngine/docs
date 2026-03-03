@@ -1,0 +1,65 @@
+---
+title: Quick Start
+nav_title: Getting Started
+description: Get started with the Stake Engine SDK - prerequisites, setup for Math and Web SDK
+order: 0
+icon: Rocket
+---
+
+# Quick Start
+
+Get up and running with the Stake Engine SDK quickly.
+
+## Prerequisites
+
+Before you begin, ensure you have:
+
+- **Python 3.12+** for the Math SDK
+- **Node.js 18.18.0** for the Web SDK
+- **pnpm 10.5.0** (recommended package manager)
+- **Rust/Cargo** (only if using the optimization algorithm)
+
+## Math SDK Setup
+
+### Clone and Install
+
+```bash
+git clone git@github.com:StakeEngine/math-sdk.git
+cd math-sdk
+make setup
+```
+
+This will create a Python virtual environment and install all dependencies.
+
+### Run Your First Game
+
+```bash
+make run GAME=0_0_lines
+```
+
+See the [Math SDK Quick Start](/docs/math-sdk/quick-start) for detailed instructions.
+
+## Web SDK Setup
+
+### Clone and Install
+
+```bash
+git clone <REPO_CLONE_URL>
+cd web-sdk
+pnpm install
+```
+
+### Run Storybook
+
+```bash
+pnpm run storybook --filter=lines
+```
+
+See the [Web SDK Getting Started](/docs/web-sdk/getting-started) for detailed instructions.
+
+## Next Steps
+
+- [Math SDK Overview](/docs/math-sdk) - Learn about the math framework
+- [Web SDK Overview](/docs/web-sdk) - Learn about the frontend framework
+- [API Methods](/docs/api) - RGS endpoint reference
+- [Approval Guidelines](/docs/approval) - Requirements for game publication

@@ -1,0 +1,16 @@
+---
+title: How does the RGS work?
+description: How game outcomes are selected using pre-generated Lookup Tables and simulation books.
+order: 1
+tags: [rgs, lut, books, outcomes, weighted-random, stateless]
+---
+
+<script>
+import PagePreview from '$lib/components/docs/PagePreview.svelte';
+</script>
+
+# How does the RGS work?
+
+This topic has been moved to the main documentation.
+
+<PagePreview href="/docs/architecture/how-rgs-works" expanded />

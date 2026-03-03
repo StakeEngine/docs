@@ -1,0 +1,20 @@
+---
+title: February 2026 Publisher Payments
+date: "2026-03-01"
+type: payout
+payoutValue: 6000000
+description: "Pay day! Publisher payouts exceeded $6M USD - 211 active providers, 738 live games, 560M+ bets accepted, and the largest single payout to a non-affiliate was $7.5M USD."
+---
+
+# February 2026 Publisher Payments
+
+First of March! Meaning it's pay day... the gift that keeps on giving. Publisher payments have now been processed and deposited to your respective USDT/USDC wallets.
+
+## February Fun Facts
+
+- There were **>470,000 unique users** who played on Stake Engine
+- Publisher payouts exceeded **$6M USD**
+- There are now **211 active providers** on the platform, with a combined total of **738 live games**
+- We accepted **>560 Million bets** in the last 4 weeks through the RGS
+- In February, the biggest bet accepted by the RGS, placed by a non-affiliate was **$395K USD**
+- Separately, the largest single payout to a non-affiliate was **$7.5M USD**

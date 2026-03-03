@@ -1,0 +1,94 @@
+---
+title: End Round
+description: Complete a game round and trigger the final payout.
+order: 4
+---
+
+<script>
+import ApiTester from '$lib/components/docs/ApiTester.svelte';
+import ApiParamTable from '$lib/components/docs/ApiParamTable.svelte';
+import ApiResponseSection from '$lib/components/docs/ApiResponseSection.svelte';
+
+import Callout from '$lib/components/docs/Callout.svelte';
+
+const endpoint = {
+  method: 'POST',
+  path: '/wallet/end-round',
+  baseUrl: 'https://rgs.stake-engine.com',
+  title: 'End Round',
+  description: 'Complete a game round and trigger the final payout.',
+  params: [
+    {
+      name: 'sessionID',
+      type: 'string',
+      location: 'body',
+      required: true,
+      description: 'The session ID issued by the operator platform.',
+      example: ''
+    }
+  ],
+  responses: [
+    {
+      status: 200,
+      statusText: 'OK',
+      description: 'Round completed successfully. Returns the updated balance after payout.',
+      exampleBody: JSON.stringify({
+        balance: {
+          amount: 1002500000,
+          currency: "USD"
+        }
+      })
+    },
+    {
+      status: 401,
+      statusText: 'Unauthorized',
+      description: 'The session ID is missing, expired, or invalid.',
+      exampleBody: JSON.stringify({
+        error: "ERR_IS",
+        message: "Invalid or expired sessionID."
+      })
+    },
+    {
+      status: 500,
+      statusText: 'Internal Server Error',
+      description: 'An unexpected error occurred on the server.',
+      exampleBody: JSON.stringify({
+        error: "ERR_GEN",
+        message: "An unexpected error occurred. Please try again later."
+      })
+    }
+  ]
+};
+</script>
+
+<ApiTester {endpoint}>
+
+# End Round
+
+Complete an active game round, triggering the final payout and ending all activity for that round. The updated balance reflects any winnings credited to the player.
+
+<Callout type="info">
+
+This should be called after all round activity (including any bonus rounds or free spins) has completed. A valid session must be established via the <a href="/docs/api/authenticate">Authenticate</a> endpoint.
+
+</Callout>
+
+## Body Parameters
+
+<ApiParamTable params={endpoint.params} />
+
+## Response Fields
+
+### `balance`
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `amount` | `integer` | Updated balance after payout, in minor currency units. |
+| `currency` | `string` | ISO 4217 currency code. |
+
+## Responses
+
+<ApiResponseSection responses={endpoint.responses} />
+
+
+</ApiTester>

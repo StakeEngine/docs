@@ -1,0 +1,17 @@
+---
+title: Game State
+nav_title: Game State
+description: Symbols, board, events, wins, simulation criteria, and force files
+order: 5
+---
+
+# Game State
+
+Runtime game state management and data structures.
+
+- [Symbols](/docs/math-sdk/gamestate/symbols) - Symbol class, attributes, and paytable values
+- [Active Board](/docs/math-sdk/gamestate/board) - Board display, tumbling, and padding
+- [Game Events](/docs/math-sdk/gamestate/events) - Event JSON structure and indexing
+- [Wins](/docs/math-sdk/gamestate/wins) - Win calculation, multipliers, and wallet manager
+- [Simulation](/docs/math-sdk/gamestate/simulation) - Acceptance criteria and quotas
+- [Force Files](/docs/math-sdk/gamestate/force-files) - Custom events for testing

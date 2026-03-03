@@ -1,0 +1,64 @@
+---
+title: API Methods
+nav_title: API Methods
+description: Complete reference for all Stake Engine RGS API endpoints - wallet operations, game events, and bet replay.
+order: 7
+icon: Server
+---
+
+<script>
+import Callout from '$lib/components/docs/Callout.svelte';
+</script>
+
+# API Methods
+
+The Stake Engine RGS exposes a set of HTTP endpoints for wallet operations, game events, and bet replay. All wallet endpoints require a valid `sessionID` obtained from the operator platform.
+
+**Base URL:** `https://rgs.stake-engine.com`
+
+## Endpoints
+
+| Method | Path | Description |
+|--------|------|-------------|
+| **POST** | [`/wallet/authenticate`](/docs/api/authenticate) | Validate a session and retrieve balance, game config, and jurisdiction settings. |
+| **POST** | [`/wallet/balance`](/docs/api/balance) | Retrieve the player's current balance. |
+| **POST** | [`/wallet/play`](/docs/api/play) | Initiate a game round and debit the bet amount. |
+| **POST** | [`/wallet/end-round`](/docs/api/end-round) | Complete a round and trigger payout. |
+| **POST** | [`/bet/event`](/docs/api/event) | Track in-progress player actions during a round. |
+| **GET** | [`/bet/replay/{game}/{version}/{mode}/{event}`](/docs/api/bet-replay) | Fetch replay data for a completed round. |
+
+## Authentication
+
+All wallet endpoints (`/wallet/*`) and the event endpoint (`/bet/event`) require a `sessionID` in the request body. This session ID is issued by the operator platform and must be validated via the [Authenticate](/docs/api/authenticate) endpoint before calling any other endpoint.
+
+<Callout type="warning">
+
+Calling wallet endpoints without first authenticating will return `ERR_IS` (Invalid Session).
+
+</Callout>
+
+## Response Codes
+
+Stake Engine uses standard HTTP response codes with specific error codes for client and server errors.
+
+### 400 - Client Errors
+
+| Error Code | Description |
+|------------|-------------|
+| `ERR_VAL` | Invalid Request |
+| `ERR_IPB` | Insufficient Player Balance |
+| `ERR_IS` | Invalid Session Token / Session Timeout |
+| `ERR_ATE` | Failed User Authentication / Token Expired |
+| `ERR_GLE` | Gambling Limits Exceeded |
+| `ERR_LOC` | Invalid Player Location |
+
+### 500 - Server Errors
+
+| Error Code | Description |
+|------------|-------------|
+| `ERR_GEN` | General Server Error |
+| `ERR_MAINTENANCE` | RGS Under Planned Maintenance |
+
+## Currency Units
+
+All monetary values are expressed in **minor currency units**. For example, with USD using 6 decimal places of precision, `1000000` equals `$1.00`.

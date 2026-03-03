@@ -1,0 +1,35 @@
+{
+  "name": "stake-engine-docs-mcp",
+  "version": "1.0.0",
+  "description": "MCP server for Stake Engine documentation - search, browse, and retrieve docs content",
+  "type": "module",
+  "bin": {
+    "stake-engine-docs-mcp": "dist/index.js"
+  },
+  "files": [
+    "dist",
+    "data/docs-index.json"
+  ],
+  "scripts": {
+    "build:index": "tsx scripts/build-index.ts",
+    "build:server": "tsc && cp src/hayden.md dist/hayden.md",
+    "build": "pnpm run build:index && pnpm run build:server",
+    "prepublishOnly": "pnpm run build"
+  },
+  "keywords": [
+    "mcp",
+    "stake-engine",
+    "documentation",
+    "model-context-protocol"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.1",
+    "zod": "^3.25.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24",
+    "tsx": "^4.19.4",
+    "typescript": "^5.9.3"
+  }
+}

@@ -1,0 +1,63 @@
+---
+title: Game Disclaimer
+description: Required legal disclaimer text for game rules and information popups on Stake Engine.
+order: 7
+---
+
+<script>
+import Callout from '$lib/components/docs/Callout.svelte';
+import Collapsible from '$lib/components/docs/Collapsible.svelte';
+</script>
+
+# Game Disclaimer
+
+Every game must include a legal disclaimer in its rules or information popup. This disclaimer explains how the game operates and sets player expectations around connectivity, payouts, and display accuracy.
+
+<Callout type="warning">
+
+Games submitted without a disclaimer in the rules/info popup will not pass approval.
+
+</Callout>
+
+## Why a Disclaimer?
+
+Stake Engine uses **pre-calculated game results** - the RGS determines all outcomes before they are displayed. The frontend is purely an animation layer. The disclaimer must communicate this clearly so players understand:
+
+- Payouts come from the **server response**, not from visual events in the browser.
+- The game display is **illustrative only** and does not represent a physical device.
+- Network issues may interrupt a round, but it can be resumed by reloading.
+
+## Template Disclaimer
+
+You may use the official template below, or write your own as long as it conveys the same message.
+
+<div class="not-prose my-4 rounded-lg border border-zinc-800 bg-zinc-900/60 p-5">
+<p class="mb-2 text-xs font-medium uppercase tracking-wider text-zinc-500">Official Template</p>
+<p class="text-sm leading-relaxed text-zinc-300">
+Malfunction voids all wins and plays. A consistent internet connection is required. In the event of a disconnection, reload the game to finish any uncompleted rounds. The expected return is calculated over many plays. The game display is not representative of any physical device and is for illustrative purposes only. Winnings are settled according to the amount received from the Remote Game Server and not from events within the web browser. TM and &copy; 2025 Stake Engine.
+</p>
+</div>
+
+## Required Points
+
+Your disclaimer (whether custom or template) must cover all of the following:
+
+| Point | Description |
+|-------|-------------|
+| Malfunction clause | Malfunctions void all wins and plays. |
+| Internet requirement | A stable connection is required for gameplay. |
+| Disconnection recovery | Players can reload the game to finish uncompleted rounds. |
+| Expected return | RTP is calculated over many plays, not per session. |
+| Display accuracy | The game display is illustrative and not a physical device. |
+| Payout source | Winnings are determined by the RGS, not browser events. |
+| Copyright | Include appropriate trademark and copyright notice. |
+
+## Placement
+
+The disclaimer should be accessible from the game's **rules** or **information** screen - typically the `i` or `?` button. It does not need to be shown on every screen, but it must be easily reachable by the player at all times during gameplay.
+
+<Callout type="info">
+
+You can use your own wording, but the approval team will verify that all required points are covered. When in doubt, use the template.
+
+</Callout>

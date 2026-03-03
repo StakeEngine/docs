@@ -1,0 +1,70 @@
+---
+title: Social Mode
+description: Social casino compliance - restricted phrases and required replacements for stake.us.
+order: 4
+---
+
+<script>
+import Callout from '$lib/components/docs/Callout.svelte';
+</script>
+
+# Social Mode
+
+Social mode is used for games available on stake.us. US requirements prohibit the use of certain gambling terms in game rules, UI elements, and imagery.
+
+The RGS indicates social mode via the `social=true` URL query parameter. The `lang` parameter is still sent as usual (e.g. `en`, `ru`, etc.) - there is no special language code for social mode.
+
+<Callout type="warning">
+
+Games that contain any restricted phrases listed below will **not be approved** for release on stake.us. This applies to game rules, images, and UI elements.
+
+</Callout>
+
+<Callout type="info">
+
+When `social=true`, your game should use English with the restricted phrase replacements below - regardless of the `lang` value. Other languages can be ignored in social mode.
+
+</Callout>
+
+## Restricted Phrases
+
+All instances of the following terms must be replaced with the corresponding phrase:
+
+| Restricted Phrase | Replacement |
+|-------------------|-------------|
+| bet | play |
+| bets | plays |
+| bet/s | play/s |
+| betting | playing |
+| bonus buy | bonus / feature |
+| bought | instantly triggered |
+| buy | play |
+| buy bonus | get bonus |
+| cash | coins |
+| cost of | can be played for |
+| at the cost of | for |
+| credit | coins |
+| currency | token |
+| deposit | get coins |
+| gamble | play |
+| loss limit | stop limit |
+| loss streak | miss streak |
+| money | coins |
+| paid | won |
+| paid out | won |
+| pay | win |
+| pay out | win / won |
+| pay table | win table |
+| payer | winner |
+| pays | wins |
+| pays out | win |
+| place your bets | come and play / join in the game |
+| profit | net gain |
+| purchase | play |
+| rebet | respin |
+| stake | play amount |
+| total bet | total play |
+| wager | play |
+| win feature | play feature |
+| withdraw | redeem |
+| be awarded to player's accounts | appear in player's accounts |

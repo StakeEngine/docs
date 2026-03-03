@@ -1,0 +1,12 @@
+---
+title: Math
+nav_title: Math
+description: Questions about math file formats, simulations, and game logic for Stake Engine.
+order: 3
+icon: Calculator
+tags: [math, sdk, simulations]
+---
+
+# Math
+
+Common questions about math file formats, simulation outputs, and game logic requirements for Stake Engine.

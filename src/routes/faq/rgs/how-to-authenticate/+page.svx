@@ -1,0 +1,139 @@
+---
+title: How do I authenticate with the RGS?
+description: How to authenticate a player session with the Stake Engine Remote Gaming Server using the wallet API.
+order: 2
+tags: [rgs, authentication, session, wallet]
+---
+
+<script>
+import ApiTester from '$lib/components/docs/ApiTester.svelte';
+import Callout from '$lib/components/docs/Callout.svelte';
+
+const endpoint = {
+  method: 'POST',
+  path: '/wallet/authenticate',
+  baseUrl: 'https://rgs.stake-engine.com',
+  title: 'Authenticate',
+  description: 'Validate a session and retrieve balance, game config, and jurisdiction settings.',
+  params: [
+    {
+      name: 'sessionID',
+      type: 'string',
+      location: 'body',
+      required: true,
+      description: 'The session ID issued by the operator platform.',
+      example: ''
+    }
+  ],
+  responses: [
+    {
+      status: 200,
+      statusText: 'OK',
+      description: 'Session authenticated successfully. Returns balance, active round, and game configuration.',
+      exampleBody: JSON.stringify({
+        balance: {
+          amount: 1000000000,
+          currency: "USD"
+        },
+        round: null,
+        config: {
+          minBet: 100000,
+          maxBet: 10000000,
+          stepBet: 100000,
+          defaultBetLevel: 1000000,
+          betLevels: [100000, 200000, 400000, 600000, 800000, 1000000],
+          jurisdiction: {
+            socialCasino: false,
+            disabledFullscreen: false,
+            disabledTurbo: false
+          }
+        }
+      })
+    },
+    {
+      status: 401,
+      statusText: 'Unauthorized',
+      description: 'The session ID is missing, expired, or invalid.',
+      exampleBody: JSON.stringify({
+        error: "ERR_IS",
+        message: "Invalid or expired sessionID."
+      })
+    }
+  ]
+};
+</script>
+
+<ApiTester {endpoint}>
+
+# How do I authenticate with the RGS?
+
+Authentication is performed by calling `POST /wallet/authenticate` with a valid `sessionID`. This must be the first API call before any other wallet endpoints can be used.
+
+## Authentication flow
+
+1. **Obtain a sessionID** - The `sessionID` is issued by the operator platform when a player launches a game. Your frontend receives it as a query parameter.
+
+2. **Determine the RGS URL** - The frontend must read the `rgs_url` query parameter to determine which RGS server to call. Do not hardcode the server address.
+
+3. **Call `/wallet/authenticate`** - Send a POST request with the `sessionID`:
+
+```json
+{
+  "sessionID": "xxxxxxx"
+}
+```
+
+4. **Handle the response** - A successful authentication returns the player's balance, game configuration, and any active round:
+
+```json
+{
+  "balance": {
+    "amount": 100000,
+    "currency": "USD"
+  },
+  "config": {
+    "minBet": 100000,
+    "maxBet": 1000000000,
+    "stepBet": 100000,
+    "defaultBetLevel": 1000000,
+    "betLevels": [],
+    "jurisdiction": {
+      "socialCasino": false,
+      "disabledFullscreen": false,
+      "disabledTurbo": false
+    }
+  },
+  "round": {}
+}
+```
+
+## What you get from authentication
+
+- **Balance** - The player's current balance in minor currency units.
+- **Config** - Bet levels (min, max, step, defaults) and jurisdiction settings such as social casino mode, fullscreen restrictions, and turbo restrictions.
+- **Round** - If the player has an active (incomplete) round, it is returned here. The frontend should resume it rather than starting a new one.
+
+## After authentication
+
+All subsequent API calls require the same `sessionID`:
+
+| Endpoint | Purpose |
+|----------|---------|
+| `POST /wallet/play` | Start a round and debit the bet |
+| `POST /wallet/end-round` | Complete a round and trigger payout |
+| `POST /wallet/balance` | Retrieve current balance |
+| `POST /bet/event` | Track in-progress player actions |
+
+<Callout type="info">
+
+You can call `/wallet/authenticate` multiple times with the same `sessionID` without any issues. Re-authenticating will simply return the current balance and session state - it will not create a duplicate session or reset the active round.
+
+</Callout>
+
+## Common error
+
+Calling any wallet endpoint without authenticating first returns **`ERR_IS`** (Invalid Session). Always authenticate before making other API calls.
+
+For full endpoint details, see the [API documentation](/docs/api).
+
+</ApiTester>

@@ -1,0 +1,10 @@
+---
+title: Getting Started
+description: Common questions about setting up and building your first Stake Engine game.
+order: 1
+tags: [getting-started, setup]
+icon: Rocket
+---
+# Getting Started
+
+Common questions about setting up your development environment and building your first game on Stake Engine!

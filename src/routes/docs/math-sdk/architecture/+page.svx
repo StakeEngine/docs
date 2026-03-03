@@ -1,0 +1,13 @@
+---
+title: Architecture
+description: High-level game structure, format patterns, and the state machine
+order: 4
+---
+
+# Architecture
+
+Understand how the Math SDK organizes game logic.
+
+- [Game Structure](/docs/math-sdk/architecture/game-structure) - File layout and run-file parameters
+- [Game Format](/docs/math-sdk/architecture/game-format) - Configuration, gamestate, and runfile pattern
+- [State Machine](/docs/math-sdk/architecture/state-machine) - GameState as the central hub
