@@ -1,0 +1,4 @@
+# Redirect bare /docs/ trailing slashes
+/docs/ /docs 301
+/faq/ /faq 301
+/changelog/ /changelog 301
