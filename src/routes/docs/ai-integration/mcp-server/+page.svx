@@ -25,8 +25,8 @@ The `stake-engine-docs-mcp` server provides full-text search and retrieval of al
 **1. Clone the repository**
 
 ```bash
-git clone https://github.com/stake-engine/docs.git
-cd stake-engine-docs
+git clone https://github.com/StakeEngine/docs.git
+cd docs
 ```
 
 **2. Install and build the MCP server**

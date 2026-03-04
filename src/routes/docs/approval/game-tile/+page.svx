@@ -68,10 +68,50 @@ The editor lets you compose the final tile from individual layers:
 | **Download** | Export the composed tile as an image |
 | **Save** | Save the tile to the game record |
 
-## Asset Guidelines
+---
 
-- Use high-quality, visually appealing artwork - games with polished tiles see higher player engagement
-- The **Key Focus Area** shown in the editor indicates the region most visible across all lobby layouts
+## Thumbnail Guidelines
+
+Follow these guidelines to ensure your game tile passes the approval process. Tiles that don't meet these requirements will be rejected.
+
+### Imagery
+
+![Imagery Guidelines](/thumbnail/imagery.jpg)
+
+Your tile is composed from a **background** and a **main object** (foreground character/symbol):
+
+- **Background must be brighter than the Stake platform** - dark backgrounds blend into the site and make the tile invisible
+- **Avoid dark colours around the edges** - edge colours should not blend into the Stake background
+- Both background and foreground images must be **bright and engaging**
+- **Enlarge characters and symbols to fill as much of the key focus area as possible** - use the editor guidelines (red box) to align the focus point of your foreground element
+- **Do not include wording or multipliers** on either the background or foreground image - text is handled separately by the title layer
+
+<Callout type="warning">
+
+Tiles with dark edges, low-contrast backgrounds, or text/multipliers baked into the imagery will be rejected.
+
+</Callout>
+
+### Gradient
+
+![Gradient Guidelines](/thumbnail/gradient.jpg)
+
+The gradient overlay sits between the background and the title text:
+
+- **Pick a prominent colour that already exists on the tile** - the gradient should feel like a natural extension of the artwork
+- The gradient needs to be **light** and help **enhance the text** so it's easier to read
+- **Make sure the text remains readable** - avoid bright yellows, greens, or blues as gradient colours, as they reduce text legibility
+- The gradient should not overpower the imagery - it's there to support readability, not dominate the composition
+
+### Text
+
+![Text Guidelines](/thumbnail/text.jpg)
+
+The title text is the primary identifier for your game on the tile:
+
+- Text must always **fit within the height of the guide** - do not exceed the text area boundaries
+- **Fill as much of the text box width as possible** - small, centred text with large margins looks weak at thumbnail sizes
+- A maximum of **2 text sizes** per thumbnail (e.g. game name large, subtitle smaller)
 
 <Callout type="tip">
 

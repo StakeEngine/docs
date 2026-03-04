@@ -177,7 +177,7 @@
 		<!-- Right: GitHub -->
 		<div class="flex items-center gap-2">
 			<a
-				href="https://github.com/stake-engine/docs"
+				href="https://github.com/StakeEngine/docs"
 				target="_blank"
 				rel="noopener noreferrer"
 				class="rounded-lg p-2 text-zinc-400 hover:bg-zinc-800 hover:text-white transition"
