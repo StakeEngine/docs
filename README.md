@@ -1,42 +1,74 @@
-# sv
+# Stake Engine Docs
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+Documentation site for the Stake Engine game development platform
 
-## Creating a project
-
-If you're seeing this, you've probably already done this step. Congrats!
+## Setup
 
 ```sh
-# create a new project
-npx sv create my-app
+pnpm install
 ```
 
-To recreate this project with the same configuration:
+## Development
 
 ```sh
-# recreate this project
-pnpm dlx sv create --template minimal --types ts --add prettier eslint tailwindcss="plugins:typography,forms" mdsvex --install pnpm .
+pnpm dev
 ```
 
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+## Build
 
 ```sh
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+pnpm build
 ```
 
-## Building
+## MCP Server
 
-To create a production version of your app:
+The `mcp-server/` directory contains a Model Context Protocol server that lets AI assistants search and retrieve documentation content.
+
+### Tools provided
+
+| Tool | Description |
+|---|---|
+| `search_docs` | Keyword search across all docs, returns scored results with snippets |
+| `get_page` | Fetch full page content by route path |
+| `list_pages` | List pages with optional section/prefix filter |
+| `get_section_tree` | Get hierarchical navigation tree |
+
+### Build the server
 
 ```sh
-npm run build
+cd mcp-server
+pnpm install
+pnpm build        # builds the search index + compiles TS
 ```
 
-You can preview the production build with `npm run preview`.
+### Configure in Claude Code
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+Add to your `.claude/settings.json` (project or global):
+
+```json
+{
+  "mcpServers": {
+    "stake-engine-docs": {
+      "command": "node",
+      "args": ["/absolute/path/to/stake-engine-docs/mcp-server/dist/index.js"]
+    }
+  }
+}
+```
+
+### Configure in Claude Desktop
+
+Add to `claude_desktop_config.json`:
+
+```json
+{
+  "mcpServers": {
+    "stake-engine-docs": {
+      "command": "node",
+      "args": ["/absolute/path/to/stake-engine-docs/mcp-server/dist/index.js"]
+    }
+  }
+}
+```
+
+After configuring, the AI assistant can search docs with `search_docs`, retrieve full pages with `get_page`, and browse the doc tree with `get_section_tree`.
