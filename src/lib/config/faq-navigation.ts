@@ -23,20 +23,8 @@ const rawModules = import.meta.glob<string>('/src/routes/faq/**/+page.svx', {
 	import: 'default'
 });
 
-// Custom title overrides for slugs that don't convert cleanly
-const titleOverrides: Record<string, string> = {
-	rgs: 'RGS',
-	'getting-started': 'Getting Started',
-	'how-do-i-start': 'How do I start building a game?',
-	'what-is-session-id': 'What is a sessionID?',
-	'how-to-authenticate': 'How do I authenticate with the RGS?',
-	math: 'Math',
-	'what-files-are-required': 'What format and files are required for math?',
-	publishing: 'Publishing',
-	'exclusivity-requirements': 'What are the exclusivity requirements?',
-	'game-ranking': 'How does game ranking work after release?',
-	'game-removal': 'Why was my game removed from Stake?'
-};
+// Fallback title overrides for slugs that don't convert cleanly via slugToTitle
+const titleOverrides: Record<string, string> = {};
 
 function slugToTitle(slug: string): string {
 	if (titleOverrides[slug]) return titleOverrides[slug];

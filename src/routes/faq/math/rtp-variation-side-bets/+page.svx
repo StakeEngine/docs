@@ -1,0 +1,32 @@
+---
+title: Does the 0.5% RTP variation rule apply to all game modes?
+description: The 0.5% RTP variation requirement applies to every game mode - side bets, bonuses, features, and any other mechanic.
+order: 2
+tags: [math, rtp, side-bets, bonuses, features, variation, modes]
+---
+
+# Does the 0.5% RTP variation rule apply to all game modes?
+
+**Yes.** The 0.5% RTP variation rule applies to **every** mode in your game, regardless of the mechanic.
+
+## The rule
+
+All game modes must fall within a **0.5% RTP variation** of the base game. For example, if your base game has an RTP of 97.0%, every other mode must be between **96.5%** and **97.5%**.
+
+The type of mechanic does not matter - if it is declared as a separate mode, the rule applies.
+
+## Example
+
+A game with the following setup would **not** pass validation:
+
+| Mode | RTP |
+|------|-----|
+| Base game | 97.0% |
+| Side bet | 93.0% |
+| Bonus buy | 95.5% |
+
+Both the side bet (4.0% difference) and the bonus buy (1.5% difference) exceed the allowed 0.5% threshold relative to the base game.
+
+## What to do
+
+If any of your modes have an RTP that deviates more than 0.5% from the base game, adjust their math to bring them within range before submitting.
