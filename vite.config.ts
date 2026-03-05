@@ -7,6 +7,5 @@ export default defineConfig({
 	plugins: [devEditor(), tailwindcss(), sveltekit()],
 	ssr: {
 		noExternal: ['@lucide/svelte']
-	},
-	preview: { allowedHosts: ["atlantic-quite-jpeg-facility.trycloudflare.com"] }
+	}
 });

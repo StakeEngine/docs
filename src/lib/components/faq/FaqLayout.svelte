@@ -7,6 +7,7 @@
 	import type { Heading } from '$lib/types/navigation';
 	import { extractHeadings } from '$lib/utils/headings';
 	import Header from '$lib/components/docs/Header.svelte';
+	import Footer from '$lib/components/docs/Footer.svelte';
 	import FaqSidebar from './FaqSidebar.svelte';
 	import PageTOC from '$lib/components/docs/PageTOC.svelte';
 	import FaqMobileNav from './FaqMobileNav.svelte';
@@ -241,11 +242,11 @@
 <div class="min-h-screen text-white">
 	<Header onMenuClick={() => (mobileNavOpen = true)} />
 
-	<div class="mx-auto max-w-8xl">
+	<div class="mx-auto max-w-7xl">
 		<div class="lg:flex">
 			<!-- Left Sidebar -->
-			<aside class="hidden lg:block lg:w-64 lg:flex-shrink-0">
-				<div class="sticky top-16 h-[calc(100vh-4rem)] border-r border-zinc-800">
+			<aside class="hidden lg:block lg:w-56 lg:flex-shrink-0">
+				<div class="sticky top-20 h-[calc(100vh-5rem)] border-r border-white/[0.06]">
 					<FaqSidebar />
 				</div>
 			</aside>
@@ -282,19 +283,21 @@
 			<!-- Right Column: TOC or API Tester -->
 			{#if $activeEndpoint}
 				<aside class="hidden xl:block xl:w-[420px] xl:flex-shrink-0">
-					<div class="sticky top-16 h-[calc(100vh-4rem)] overflow-y-auto border-l border-zinc-800">
+					<div class="sticky top-20 h-[calc(100vh-5rem)] overflow-y-auto border-l border-white/[0.06]">
 						<ApiTesterPanel endpoint={$activeEndpoint} />
 					</div>
 				</aside>
 			{:else}
 				<aside class="hidden xl:block xl:w-48 xl:flex-shrink-0">
-					<div class="sticky top-20 border-l border-zinc-800">
+					<div class="sticky top-20 border-l border-white/[0.06]">
 						<PageTOC {headings} />
 					</div>
 				</aside>
 			{/if}
 		</div>
 	</div>
+
+	<Footer />
 
 	<FaqMobileNav isOpen={mobileNavOpen} {headings} onclose={() => (mobileNavOpen = false)} />
 

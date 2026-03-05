@@ -7,6 +7,7 @@
 	import type { Heading } from '$lib/types/navigation';
 	import { extractHeadings } from '$lib/utils/headings';
 	import Header from '$lib/components/docs/Header.svelte';
+	import Footer from '$lib/components/docs/Footer.svelte';
 	import PageTOC from '$lib/components/docs/PageTOC.svelte';
 	import ChangelogSidebar from './ChangelogSidebar.svelte';
 	import ChangelogMobileNav from './ChangelogMobileNav.svelte';
@@ -201,11 +202,11 @@
 <div class="min-h-screen text-white">
 	<Header onMenuClick={() => (mobileNavOpen = true)} />
 
-	<div class="mx-auto max-w-8xl">
+	<div class="mx-auto max-w-7xl">
 		<div class="lg:flex">
 			<!-- Left Sidebar -->
-			<aside class="hidden lg:block lg:w-64 lg:flex-shrink-0">
-				<div class="sticky top-16 h-[calc(100vh-4rem)] border-r border-zinc-800">
+			<aside class="hidden lg:block lg:w-56 lg:flex-shrink-0">
+				<div class="sticky top-20 h-[calc(100vh-5rem)] border-r border-white/[0.06]">
 					<ChangelogSidebar />
 				</div>
 			</aside>
@@ -243,7 +244,7 @@
 
 				<!-- Back to changelog link on entry pages -->
 				{#if isEntryPage}
-					<div class="mt-8 border-t border-zinc-800 pt-6">
+					<div class="mt-8 border-t border-white/[0.06] pt-6">
 						<a
 							href="/changelog"
 							class="inline-flex items-center gap-2 rounded-lg border border-zinc-800 px-4 py-2 text-sm text-zinc-400 transition hover:border-zinc-700 hover:text-white"
@@ -260,13 +261,15 @@
 			<!-- Right Column: TOC (only on entry pages) -->
 			{#if isEntryPage}
 				<aside class="hidden xl:block xl:w-48 xl:flex-shrink-0">
-					<div class="sticky top-20 border-l border-zinc-800">
+					<div class="sticky top-20 border-l border-white/[0.06]">
 						<PageTOC {headings} />
 					</div>
 				</aside>
 			{/if}
 		</div>
 	</div>
+
+	<Footer />
 
 	<ChangelogMobileNav isOpen={mobileNavOpen} onclose={() => (mobileNavOpen = false)} />
 

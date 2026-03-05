@@ -14,6 +14,10 @@
 	--gradient-brand: linear-gradient(to right, #5AF9E4 0%, #13AAFC 20%, #1475E1 80%);
 }
 
+.bg-gradient-brand {
+	background: var(--gradient-brand);
+}
+
 .text-gradient-brand {
 	background: var(--gradient-brand);
 	-webkit-background-clip: text;
@@ -23,7 +27,7 @@
 
 html {
 	scroll-behavior: smooth;
-	background-color: #09090b;
+	background-color: #0c0c10;
 }
 
 /* Custom scrollbar for sidebars */

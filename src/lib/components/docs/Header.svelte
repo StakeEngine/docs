@@ -114,13 +114,11 @@
 
 	let searchInput: HTMLInputElement | undefined = $state();
 
-	// Reset selection when results change
 	$effect(() => {
 		results;
 		selectedIndex = 0;
 	});
 
-	// Focus input when modal opens
 	$effect(() => {
 		if (showSearch && searchInput) {
 			searchInput.focus();
@@ -130,57 +128,84 @@
 
 <svelte:window onkeydown={handleKeydown} />
 
-<header class="sticky top-0 z-30 border-b border-zinc-800 bg-zinc-950/80 backdrop-blur-sm">
-	<div class="flex h-16 items-center justify-between px-4 lg:px-6">
-		<!-- Left: Menu + Logo -->
-		<div class="flex items-center gap-4">
+<header class="sticky top-0 z-30 bg-zinc-950/90 backdrop-blur-xl">
+	<div class="bg-gradient-brand h-1"></div>
+	<div class="mx-auto max-w-7xl flex h-20 items-center justify-between px-4 lg:px-6">
+		<!-- Left: Menu + Logo + Nav -->
+		<div class="flex items-center gap-6">
 			<button
 				onclick={onMenuClick}
-				class="rounded-lg p-2 text-zinc-400 hover:bg-zinc-800 hover:text-white lg:hidden"
+				class="rounded-lg p-2 text-zinc-400 hover:bg-zinc-800 hover:text-white lg:hidden transition-colors"
 				aria-label="Open menu"
 			>
 				<svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
 				</svg>
 			</button>
-			<a href="/" class="flex items-center gap-2">
-				<img src="/stake-engine.svg" alt="Stake Engine" class="h-8 invert" />
+
+			<a href="/" class="shrink-0">
+				<img src="/stake-engine.svg" alt="Stake Engine" class="h-12 invert" />
 			</a>
-			<nav class="hidden sm:flex items-center gap-1 ml-4">
+
+			<nav class="hidden lg:flex items-center gap-1 ml-4">
 				<a
 					href="/docs"
-					class="rounded-md px-3 py-1.5 text-sm font-medium transition-colors {!isFaqSection && !isChangelogSection ? 'text-white bg-zinc-800' : 'text-zinc-400 hover:text-zinc-200'}"
+					class="nav-link {!isFaqSection && !isChangelogSection ? 'active' : ''}"
 				>Docs</a>
 				<a
 					href="/faq"
-					class="rounded-md px-3 py-1.5 text-sm font-medium transition-colors {isFaqSection ? 'text-white bg-zinc-800' : 'text-zinc-400 hover:text-zinc-200'}"
+					class="nav-link {isFaqSection ? 'active' : ''}"
 				>FAQ</a>
 				<a
 					href="/changelog"
-					class="rounded-md px-3 py-1.5 text-sm font-medium transition-colors {isChangelogSection ? 'text-white bg-zinc-800' : 'text-zinc-400 hover:text-zinc-200'}"
+					class="nav-link {isChangelogSection ? 'active' : ''}"
 				>Changelog</a>
 			</nav>
 		</div>
 
-		<!-- Center: Search -->
-		<button
-			onclick={openSearch}
-			class="hidden sm:flex items-center gap-2 rounded-lg border border-zinc-800 bg-zinc-900 px-4 py-2 text-sm text-zinc-400 hover:border-zinc-700 hover:text-zinc-300 transition w-64"
-		>
-			<svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-			</svg>
-			<span>Search...</span>
-			<kbd class="ml-auto rounded bg-zinc-800 px-1.5 py-0.5 text-xs text-zinc-500">Cmd K</kbd>
-		</button>
+		<!-- Right: Search + Social -->
+		<div class="flex items-center gap-3">
+			<button
+				onclick={openSearch}
+				class="hidden sm:flex items-center gap-2 rounded-lg border border-zinc-800 bg-zinc-900 px-4 py-2 text-sm text-zinc-400 hover:border-zinc-700 hover:text-zinc-300 transition w-56"
+			>
+				<svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+				</svg>
+				<span>Search...</span>
+				<kbd class="ml-auto rounded bg-zinc-800 px-1.5 py-0.5 text-xs text-zinc-500">&#8984;K</kbd>
+			</button>
 
-		<!-- Right: GitHub -->
-		<div class="flex items-center gap-2">
+			<!-- Mobile search -->
+			<button
+				onclick={openSearch}
+				class="sm:hidden rounded-lg p-2 text-zinc-400 hover:bg-zinc-800 hover:text-white transition-colors"
+				aria-label="Search"
+			>
+				<svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+				</svg>
+			</button>
+
+			<!-- Discord -->
+			<a
+				href="https://discord.gg/stakeengine"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="rounded-lg p-2 text-zinc-400 hover:bg-zinc-800 hover:text-[#5865F2] transition-colors"
+				aria-label="Discord"
+			>
+				<svg class="h-5 w-5" fill="currentColor" viewBox="0 -28.5 256 256">
+					<path d="M216.856339,16.5966031 C200.285002,8.84328665 182.566144,3.2084988 164.041564,0 C161.766523,4.11318106 159.108624,9.64549908 157.276099,14.0464379 C137.583995,11.0849896 118.072967,11.0849896 98.7430163,14.0464379 C96.9108417,9.64549908 94.1925838,4.11318106 91.8971895,0 C73.3526068,3.2084988 55.6133949,8.86399117 39.0420583,16.6376612 C5.61752293,67.146514 -3.4433191,116.400813 1.08711069,164.955721 C23.2560196,181.510915 44.7403634,191.567697 65.8621325,198.148576 C71.0772151,190.971126 75.7283628,183.341335 79.7352139,175.300261 C72.104019,172.400575 64.7949724,168.822202 57.8887866,164.667963 C59.7209612,163.310589 61.5131304,161.891452 63.2445898,160.431257 C105.36741,180.133187 151.134928,180.133187 192.754523,160.431257 C194.506336,161.891452 196.298154,163.310589 198.110326,164.667963 C191.183787,168.842556 183.854737,172.420929 176.223542,175.320965 C180.230393,183.341335 184.861538,190.991831 190.096624,198.16893 C211.238746,191.588051 232.743023,181.531619 254.911949,164.955721 C260.227747,108.668201 245.831087,59.8662432 216.856339,16.5966031 Z M85.4738752,135.09489 C72.8290281,135.09489 62.4592217,123.290155 62.4592217,108.914901 C62.4592217,94.5396472 72.607595,82.7145587 85.4738752,82.7145587 C98.3405064,82.7145587 108.709962,94.5189427 108.488529,108.914901 C108.508531,123.290155 98.3405064,135.09489 85.4738752,135.09489 Z M170.525237,135.09489 C157.88039,135.09489 147.510584,123.290155 147.510584,108.914901 C147.510584,94.5396472 157.658606,82.7145587 170.525237,82.7145587 C183.391518,82.7145587 193.761324,94.5189427 193.539891,108.914901 C193.539891,123.290155 183.391518,135.09489 170.525237,135.09489 Z" />
+				</svg>
+			</a>
+
+			<!-- GitHub -->
 			<a
 				href="https://github.com/StakeEngine/docs"
 				target="_blank"
 				rel="noopener noreferrer"
-				class="rounded-lg p-2 text-zinc-400 hover:bg-zinc-800 hover:text-white transition"
+				class="rounded-lg p-2 text-zinc-400 hover:bg-zinc-800 hover:text-white transition-colors"
 				aria-label="GitHub"
 			>
 				<svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
@@ -194,18 +219,21 @@
 <!-- Search Modal -->
 {#if showSearch}
 	<div
-		class="fixed inset-0 z-50 flex items-start justify-center pt-24 bg-black/50 backdrop-blur-sm"
+		class="fixed inset-0 z-50 flex items-start justify-center pt-24 bg-black/60 backdrop-blur-sm"
 		onclick={closeSearch}
-		onkeydown={(e) => e.key === 'Escape' && closeSearch()}
 		role="button"
-		tabindex="0"
+		tabindex="-1"
+		onkeydown={(e) => e.key === 'Escape' && closeSearch()}
 	>
+		<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
 		<div
-			class="w-full max-w-lg rounded-xl border border-zinc-800 bg-zinc-900 shadow-2xl"
+			class="w-full max-w-lg rounded-2xl border border-white/[0.08] bg-zinc-900/95 shadow-2xl shadow-black/50 backdrop-blur-xl"
 			onclick={(e) => e.stopPropagation()}
+			onkeydown={() => {}}
 			role="dialog"
+			tabindex="-1"
 		>
-			<div class="flex items-center gap-3 border-b border-zinc-800 p-4">
+			<div class="flex items-center gap-3 border-b border-white/[0.06] p-4">
 				<svg class="h-5 w-5 text-zinc-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
 				</svg>
@@ -217,7 +245,7 @@
 					bind:value={query}
 					onkeydown={handleSearchKeydown}
 				/>
-				<kbd class="rounded bg-zinc-800 px-2 py-1 text-xs text-zinc-500">Esc</kbd>
+				<kbd class="rounded-md bg-white/[0.06] px-2 py-1 text-xs text-zinc-500">Esc</kbd>
 			</div>
 			<div class="max-h-80 overflow-y-auto">
 				{#if query.trim() === ''}
@@ -233,7 +261,7 @@
 						{#each results as result, i}
 							<li>
 								<button
-									class="flex w-full flex-col gap-0.5 px-4 py-2.5 text-left transition {i === selectedIndex ? 'bg-zinc-800' : 'hover:bg-zinc-800/50'}"
+									class="flex w-full flex-col gap-0.5 px-4 py-2.5 text-left transition {i === selectedIndex ? 'bg-white/[0.06]' : 'hover:bg-white/[0.03]'}"
 									onclick={() => navigateTo(result.href)}
 									onmouseenter={() => (selectedIndex = i)}
 								>
@@ -261,3 +289,27 @@
 		</div>
 	</div>
 {/if}
+
+<style>
+	:global(.nav-link) {
+		display: inline-flex;
+		align-items: center;
+		padding: 6px 16px;
+		border-radius: 6px;
+		font-size: 14px;
+		font-weight: 500;
+		color: rgba(255, 255, 255, 0.6);
+		transition: color 0.2s ease, background 0.2s ease;
+		text-decoration: none;
+	}
+
+	:global(.nav-link:hover) {
+		color: rgba(255, 255, 255, 0.9);
+		background: rgba(255, 255, 255, 0.06);
+	}
+
+	:global(.nav-link.active) {
+		color: #fff;
+		background: #1F2B37;
+	}
+</style>
