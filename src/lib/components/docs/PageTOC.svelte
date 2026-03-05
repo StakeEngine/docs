@@ -1,8 +1,17 @@
 <script lang="ts">
 	import { onMount, onDestroy } from 'svelte';
 	import type { Heading } from '$lib/types/navigation';
+	import PromptActions from './PromptActions.svelte';
 
-	let { headings = [] }: { headings: Heading[] } = $props();
+	let {
+		headings = [],
+		contentEl = undefined,
+		hidePromptActions = false
+	}: {
+		headings: Heading[];
+		contentEl?: HTMLElement;
+		hidePromptActions?: boolean;
+	} = $props();
 	let activeId = $state('');
 	let observer: IntersectionObserver | null = null;
 
@@ -43,8 +52,8 @@
 	});
 </script>
 
-{#if headings.length > 0}
-	<nav class="py-4 px-3 text-[13px]">
+<nav class="py-4 px-3 text-[13px]">
+	{#if headings.length > 0}
 		<h4 class="mb-3 text-xs font-semibold text-zinc-400 uppercase tracking-wider">On this page</h4>
 		<ul class="space-y-1">
 			{#each headings.filter(h => h.level === 2) as heading}
@@ -61,5 +70,11 @@
 				</li>
 			{/each}
 		</ul>
-	</nav>
-{/if}
+	{/if}
+
+	{#if !hidePromptActions && contentEl}
+		<div class="mt-4 {headings.length > 0 ? 'pt-4 border-t border-white/[0.06]' : ''}">
+			<PromptActions {contentEl} />
+		</div>
+	{/if}
+</nav>

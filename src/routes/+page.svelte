@@ -87,7 +87,7 @@
 		</h1>
 		<p class="mt-2 text-lg text-zinc-400">Developer Documentation</p>
 		<p class="mt-3 max-w-xl text-sm text-zinc-500">
-			Build, simulate, and deploy custom slot games on Stake.com with the Stake Development Kit.
+			Build, simulate, and deploy stateless slot games on Stake.com and Stake.us with the Stake Engine platform.
 		</p>
 		<div class="mt-6 flex items-center gap-3">
 			<a

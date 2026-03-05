@@ -151,7 +151,7 @@
 	}
 
 	.prompt-bar {
-		display: inline-flex;
+		display: flex;
 		align-items: center;
 		border-radius: 9px;
 		border: 1px solid rgba(255, 255, 255, 0.07);
@@ -163,7 +163,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		width: 34px;
+		flex: 1;
 		height: 34px;
 		border: none;
 		background: transparent;

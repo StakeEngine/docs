@@ -11,7 +11,6 @@
 	import Sidebar from './Sidebar.svelte';
 	import PageTOC from './PageTOC.svelte';
 	import MobileNav from './MobileNav.svelte';
-	import PromptActions from './PromptActions.svelte';
 	import Breadcrumb from './Breadcrumb.svelte';
 	import PrevNext from './PrevNext.svelte';
 	import ApiTesterPanel from './ApiTesterPanel.svelte';
@@ -41,24 +40,11 @@
 	let mobileNavOpen = $state(false);
 	let headings = $state<Heading[]>([]);
 	let contentEl: HTMLElement | undefined = $state();
-	let promptActionsEl: HTMLElement | undefined = $state();
 
 	async function updateHeadings() {
 		await tick();
 		if (contentEl) {
 			headings = extractHeadings(contentEl);
-		}
-	}
-
-	async function positionPromptActions() {
-		await tick();
-		if (contentEl && promptActionsEl) {
-			const h1 = contentEl.querySelector('h1');
-			if (h1 && !h1.querySelector('.prompt-actions')) {
-				h1.style.cssText += ';display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:nowrap';
-				promptActionsEl.style.cssText = 'margin:0;padding:0;line-height:0;flex-shrink:0';
-				h1.appendChild(promptActionsEl);
-			}
 		}
 	}
 
@@ -222,7 +208,6 @@
 
 	onMount(() => {
 		updateHeadings();
-		positionPromptActions();
 		addCopyButtons();
 		setupInlineCodeCopy();
 	});
@@ -230,7 +215,6 @@
 	$effect(() => {
 		$page.url.pathname;
 		updateHeadings();
-		positionPromptActions();
 		addCopyButtons();
 		setupInlineCodeCopy();
 	});
@@ -273,11 +257,6 @@
 						prose-pre:rounded-lg prose-pre:border prose-pre:border-zinc-800"
 				>
 					{@render children()}
-					{#if !hidePromptActions}
-						<div bind:this={promptActionsEl}>
-							<PromptActions {contentEl} />
-						</div>
-					{/if}
 				</article>
 				{#if formattedUpdated}
 					<div class="mt-8 flex items-center gap-1.5 border-t border-zinc-800 pt-4 text-sm text-zinc-500">
@@ -300,7 +279,7 @@
 			{:else}
 				<aside class="hidden xl:block xl:w-48 xl:flex-shrink-0">
 					<div class="sticky top-20 border-l border-white/[0.06]">
-						<PageTOC {headings} />
+						<PageTOC {headings} {contentEl} {hidePromptActions} />
 					</div>
 				</aside>
 			{/if}
