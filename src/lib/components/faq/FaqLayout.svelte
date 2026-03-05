@@ -54,8 +54,10 @@
 		await tick();
 		if (contentEl && promptActionsEl) {
 			const h1 = contentEl.querySelector('h1');
-			if (h1 && h1.nextSibling !== promptActionsEl) {
-				h1.after(promptActionsEl);
+			if (h1 && !h1.querySelector('.prompt-actions')) {
+				h1.style.cssText += ';display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:nowrap';
+				promptActionsEl.style.cssText = 'margin:0;padding:0;line-height:0;flex-shrink:0';
+				h1.appendChild(promptActionsEl);
 			}
 		}
 	}

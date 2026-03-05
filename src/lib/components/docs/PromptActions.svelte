@@ -100,59 +100,39 @@
 	}
 </script>
 
-<div class="prompt-actions not-prose flex items-center gap-2 mb-6 mt-2 fade-in">
-	<button
-		bind:this={copyBtnEl}
-		onclick={copyAsPrompt}
-		class="copy-btn relative flex items-center gap-2 px-3.5 py-1.5 text-sm font-medium rounded-md
-			border transition-colors duration-200 overflow-hidden
-			{copied
-				? 'bg-primary-950/50 border-primary-700/50 text-primary-400'
-				: 'bg-zinc-800 hover:bg-primary-950/30 text-zinc-300 hover:text-primary-400 border-zinc-700 hover:border-primary-700/40'}"
-	>
-		<span class="icon-wrap" class:pop={copied}>
-			{#if copied}
-				<svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-					<path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-				</svg>
-			{:else}
-				<svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-						d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
-				</svg>
-			{/if}
-		</span>
-		<span class="label-text" class:label-copied={copied}>{copied ? 'Successful copy!' : 'Copy as prompt'}</span>
-	</button>
-
-	<div class="flex items-center gap-1.5 ml-1">
-		<span class="text-xs text-zinc-500 font-medium mr-0.5">Open in:</span>
-
+<div class="prompt-actions not-prose fade-in">
+	<div class="prompt-bar">
 		<button
-			onclick={openInChatGPT}
-			title="Open in ChatGPT"
-			class="ai-btn flex items-center justify-center w-8 h-8 rounded-md
-				bg-zinc-800 border border-zinc-700 hover:bg-primary-950/30 hover:border-primary-700/40 transition-all"
+			bind:this={copyBtnEl}
+			onclick={copyAsPrompt}
+			class="bar-btn copy-btn"
+			class:copied
+			title="Copy page as AI prompt"
 		>
-			<img src="/icons/chatgpt.svg" alt="ChatGPT" class="w-5 h-5" onerror={(e) => (e.currentTarget as HTMLImageElement).style.display='none'} />
+			<span class="copy-icon" class:pop={copied}>
+				{#if copied}
+					<svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+						<path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+					</svg>
+				{:else}
+					<svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+						<path stroke-linecap="round" stroke-linejoin="round"
+							d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+					</svg>
+				{/if}
+			</span>
 		</button>
 
-		<button
-			onclick={openInClaude}
-			title="Open in Claude"
-			class="ai-btn flex items-center justify-center w-8 h-8 rounded-md
-				bg-zinc-800 border border-zinc-700 hover:bg-primary-950/30 hover:border-primary-700/40 transition-all"
-		>
-			<img src="/icons/claude.svg" alt="Claude" class="w-5 h-5" onerror={(e) => (e.currentTarget as HTMLImageElement).style.display='none'} />
-		</button>
+		<span class="divider"></span>
 
-		<button
-			onclick={openInPerplexity}
-			title="Open in Perplexity"
-			class="ai-btn flex items-center justify-center w-8 h-8 rounded-md
-				bg-zinc-800 border border-zinc-700 hover:bg-primary-950/30 hover:border-primary-700/40 transition-all"
-		>
-			<img src="/icons/perplexity.svg" alt="Perplexity" class="w-5 h-5" onerror={(e) => (e.currentTarget as HTMLImageElement).style.display='none'} />
+		<button onclick={openInChatGPT} title="Open in ChatGPT" class="bar-btn">
+			<img src="/icons/chatgpt.svg" alt="ChatGPT" width="18" height="18" onerror={(e) => (e.currentTarget as HTMLImageElement).style.display='none'} />
+		</button>
+		<button onclick={openInClaude} title="Open in Claude" class="bar-btn">
+			<img src="/icons/claude.svg" alt="Claude" width="18" height="18" onerror={(e) => (e.currentTarget as HTMLImageElement).style.display='none'} />
+		</button>
+		<button onclick={openInPerplexity} title="Open in Perplexity" class="bar-btn">
+			<img src="/icons/perplexity.svg" alt="Perplexity" width="18" height="18" onerror={(e) => (e.currentTarget as HTMLImageElement).style.display='none'} />
 		</button>
 	</div>
 </div>
@@ -166,34 +146,74 @@
 		animation: fadeSlideIn 0.35s ease-out 0.1s both;
 	}
 
-	/* Checkmark pop */
+	.prompt-actions {
+		flex-shrink: 0;
+	}
+
+	.prompt-bar {
+		display: inline-flex;
+		align-items: center;
+		border-radius: 9px;
+		border: 1px solid rgba(255, 255, 255, 0.07);
+		background: rgba(24, 24, 27, 0.5);
+		backdrop-filter: blur(12px);
+	}
+
+	.bar-btn {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 34px;
+		height: 34px;
+		border: none;
+		background: transparent;
+		cursor: pointer;
+		color: rgba(255, 255, 255, 0.45);
+		transition: color 0.15s, background 0.15s;
+	}
+
+	.bar-btn:first-child {
+		border-radius: 8px 0 0 8px;
+	}
+	.bar-btn:last-child {
+		border-radius: 0 8px 8px 0;
+	}
+
+	.bar-btn:hover {
+		background: rgba(255, 255, 255, 0.06);
+		color: rgba(255, 255, 255, 0.9);
+	}
+
+	.bar-btn.copied {
+		color: oklch(89% 0.14 183);
+	}
+
+	.bar-btn img {
+		opacity: 0.45;
+		transition: opacity 0.15s;
+	}
+	.bar-btn:hover img {
+		opacity: 0.95;
+	}
+
+	.copy-icon {
+		display: flex;
+		align-items: center;
+	}
+
 	@keyframes popIn {
 		0% { transform: scale(0); }
 		50% { transform: scale(1.3); }
 		100% { transform: scale(1); }
 	}
-	.icon-wrap {
-		display: flex;
-		align-items: center;
-	}
-	.icon-wrap.pop {
+	.copy-icon.pop {
 		animation: popIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
 	}
 
-	/* Label swap */
-	@keyframes slideUp {
-		from { opacity: 0; transform: translateY(4px); }
-		to { opacity: 1; transform: translateY(0); }
-	}
-	.label-copied {
-		animation: slideUp 0.25s ease-out;
-	}
-
-	.ai-btn img {
-		opacity: 0.6;
-		transition: opacity 0.15s;
-	}
-	.ai-btn:hover img {
-		opacity: 1;
+	.divider {
+		width: 1px;
+		height: 16px;
+		background: rgba(255, 255, 255, 0.08);
+		flex-shrink: 0;
 	}
 </style>
