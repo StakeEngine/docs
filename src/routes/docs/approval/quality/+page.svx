@@ -1,6 +1,6 @@
 ---
 title: Quality Rankings
-description: Game quality ranking tiers, promotion visibility, and category placement guidelines.
+description: Fractional rating process, quality ranking tiers, promotion visibility, and category placement guidelines.
 order: 6
 ---
 
@@ -10,13 +10,35 @@ import Callout from '$lib/components/docs/Callout.svelte';
 
 # Game Quality Rankings
 
-All games deemed suitable for publication on Stake Engine receive a Quality Ranking from **0** to **3** stars. This ranking determines a game's visibility and positioning eligibility.
+All games deemed suitable for publication on Stake Engine receive a Quality Ranking from **0** to **3** stars. This ranking is determined through a **fractional rating process** involving multiple anonymous reviewers and directly affects a game's visibility and positioning eligibility.
 
 <Callout type="info">
 
-When a game is submitted for review, it receives an initial star rating prior to a comprehensive evaluation. Both new and ongoing reviews are prioritized according to the game's current star rating.
+Each game is independently evaluated by **3 anonymous reviewers** who submit fractional scores. The final star rating is the rounded average of all three scores.
 
 </Callout>
+
+## Rating Process
+
+When a game is submitted for review, it is assigned to **three independent reviewers**. Each reviewer evaluates the game anonymously and submits a **fractional score** on a 0–3 scale.
+
+The final star rating is calculated as follows:
+
+1. **Three anonymous reviews** - each reviewer assigns a fractional score based on their assessment of the game's quality, creativity, and polish.
+2. **Average** - the three scores are averaged to produce a single fractional value.
+3. **Round** - the average is rounded to the nearest whole number to determine the final star tier (0, 1, 2, or 3).
+
+**Example:**
+
+| Reviewer | Score |
+|----------|-------|
+| Reviewer A | 2.33 |
+| Reviewer B | 2.33 |
+| Reviewer C | 3.00 |
+| **Average** | **(2.33 + 2.33 + 3.00) / 3 = 2.55** |
+| **Final Rating** | **Rounds to 3 Stars** |
+
+This fractional approach ensures that the final rating reflects a fair and balanced consensus rather than a single opinion.
 
 ## Ranking Tiers
 

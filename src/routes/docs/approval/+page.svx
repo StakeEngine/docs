@@ -36,7 +36,7 @@ Once a game has been approved, only minor updates to address visual issues are p
 | [Math Requirements](/docs/approval/math-requirements) | RTP range, max win, hit-rate, volatility, and simulation criteria. |
 | [Frontend Requirements](/docs/approval/frontend-requirements) | UI components, rules display, paytable, and mobile support. |
 | [RGS Requirements](/docs/approval/rgs-requirements) | XSS policy, bet levels, localization, and currency support. |
-| [Quality Rankings](/docs/approval/quality) | Star rating tiers, promotion visibility, and category placement. |
+| [Quality Rankings](/docs/approval/quality) | Fractional rating process, star tiers, promotion visibility, and category placement. |
 | [Game Disclaimer](/docs/approval/disclaimer) | Required legal disclaimer text for game rules and information popups. |
 
 <Callout type="info">

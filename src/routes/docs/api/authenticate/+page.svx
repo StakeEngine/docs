@@ -135,24 +135,11 @@ Active round data if the player has an incomplete round. `null` if no round is i
 
 ### `config.jurisdiction`
 
-| Field | Type | Description |
-|-------|------|-------------|
-| `socialCasino` | `boolean` | Whether the session is in social casino mode. |
-| `disabledFullscreen` | `boolean` | Disable fullscreen toggle. |
-| `disabledTurbo` | `boolean` | Disable turbo spin mode. |
-| `disabledSuperTurbo` | `boolean` | Disable super turbo mode. |
-| `disabledAutoplay` | `boolean` | Disable autoplay functionality. |
-| `disabledSlamstop` | `boolean` | Disable slam stop (tap to skip animations). |
-| `disabledSpacebar` | `boolean` | Disable spacebar as spin trigger. |
-| `disabledBuyFeature` | `boolean` | Disable bonus buy feature. |
-| `displayNetPosition` | `boolean` | Show net win/loss position to the player. |
-| `displayRTP` | `boolean` | Show RTP information to the player. |
-| `displaySessionTimer` | `boolean` | Show a session duration timer. |
-| `minimumRoundDuration` | `integer` | Minimum round duration in milliseconds. `0` for no minimum. |
+Do not used. Ignore.
 
 ### `meta`
 
-Optional metadata object. Content varies by operator integration. `null` when no metadata is provided.
+Do not used. Ignore.
 
 ## Responses
 
