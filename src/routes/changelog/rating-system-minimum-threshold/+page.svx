@@ -1,0 +1,31 @@
+---
+title: Rating System Update - Minimum Quality Threshold
+date: "2026-03-17"
+type: breaking
+description: "Games with an average rating below 1 star will no longer be approved. A 7-day resubmission window is available after rejection."
+---
+
+# Rating System Update
+
+We're raising the quality bar for games published through Stake Engine.
+
+**Effective immediately**, games that receive an average rating below **1 star** will not be approved for publication.
+
+## What Happens If Your Game Falls Below 1 Star?
+
+1. Your **approval thread will be closed and locked**.
+2. The thread will remain locked for **7 days** to give you time to make improvements.
+3. After 7 days, you'll be able to **resubmit your game** for review.
+
+This is not a permanent rejection - it's a chance to improve and resubmit.
+
+## Why?
+
+- Very low-rated games don't provide value to players or creators.
+- They often require the most review time and resources.
+- We want to maintain a higher quality experience for everyone.
+- This helps creators focus on improving and ultimately earning more from better games.
+
+## Quality Rankings Reference
+
+For full details on the star rating system, tiers, and visibility rules, see the [Quality Rankings](/docs/approval/quality) documentation.

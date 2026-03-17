@@ -10,7 +10,9 @@ import Callout from '$lib/components/docs/Callout.svelte';
 
 # Game Quality Rankings
 
-All games deemed suitable for publication on Stake Engine receive a Quality Ranking from **0** to **3** stars. This ranking is determined through a **fractional rating process** involving multiple anonymous reviewers and directly affects a game's visibility and positioning eligibility.
+All games submitted to Stake Engine receive a Quality Ranking from **0** to **3** stars. This ranking is determined through a **fractional rating process** involving multiple anonymous reviewers and directly affects a game's visibility and positioning eligibility.
+
+Games must achieve a minimum average rating of **1 star** to be approved for publication. Games that fall below this threshold will not be published - see [Minimum Quality Threshold](#minimum-quality-threshold) below.
 
 <Callout type="info">
 
@@ -92,7 +94,7 @@ This fractional approach ensures that the final rating reflects a fair and balan
   </div>
 </div>
 
-<div class="rounded-lg border border-zinc-800 bg-zinc-900/30 p-5 opacity-70">
+<div class="rounded-lg border border-red-500/30 bg-red-500/5 p-5">
   <div class="mb-3 flex items-center gap-3">
     <div class="flex items-center gap-0.5" role="img" aria-label="0 stars">
       <svg class="h-5 w-5 text-yellow-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.34 8.34 2 9.27l5 4.87L5.82 21 12 17.77 18.18 21l-.59-3.43"/><path d="M18.42 12.76 22 9.27l-6.91-1L12 2l-1.44 2.91"/><line x1="2" x2="22" y1="2" y2="22"/></svg>
@@ -100,16 +102,32 @@ This fractional approach ensures that the final rating reflects a fair and balan
       <svg class="h-5 w-5 text-zinc-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>
       <svg class="h-5 w-5 text-zinc-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>
     </div>
-    <span class="text-lg font-semibold text-zinc-400">N/A</span>
-    <span class="rounded-full bg-zinc-800 px-2 py-0.5 text-[10px] font-medium text-zinc-500">0 stars</span>
+    <span class="text-lg font-semibold text-red-400">Not Approved</span>
+    <span class="rounded-full bg-red-500/10 px-2 py-0.5 text-[10px] font-medium text-red-400">Below 1 star</span>
   </div>
-  <p class="mb-3 text-sm text-zinc-500">Games that meet technical requirements but do not receive a star rating.</p>
-  <div class="rounded-md bg-zinc-900/60 px-4 py-2.5 text-sm text-zinc-500">
-    <span class="font-medium text-zinc-400">Visibility:</span> Limited visibility - can only be found if explicitly searched for. Not included in promotional or new-release categories.
+  <p class="mb-3 text-sm text-zinc-300">Games that receive an average rating below 1 star are <strong class="text-red-400">not approved</strong> for publication. The approval thread is closed and locked for 7 days, after which the game may be resubmitted for review.</p>
+  <div class="rounded-md bg-zinc-900/60 px-4 py-2.5 text-sm text-zinc-400">
+    <span class="font-medium text-zinc-300">Visibility:</span> Not published. Game will not appear on the platform.
   </div>
 </div>
 
 </div>
+
+## Minimum Quality Threshold
+
+<Callout type="warning">
+
+Games that receive an average rating **below 1 star** will **not be approved** for publication. This policy is in effect as of March 2026.
+
+</Callout>
+
+If your game does not meet the minimum 1-star threshold, the following process applies:
+
+1. **Thread closed** - your approval thread will be closed and locked.
+2. **7-day improvement window** - the thread remains locked for 7 days, giving you time to improve your game.
+3. **Resubmission** - after 7 days, you can resubmit your game for a new review cycle.
+
+This is not a permanent rejection. The goal is to help creators raise quality and give every game the best chance to succeed.
 
 ## Category Placement Guidelines
 
