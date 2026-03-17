@@ -40,6 +40,9 @@ const config = {
 			fallback: '404.html',
 			strict: false
 		}),
+		paths: {
+			base: process.env.BASE_PATH ?? ''
+		},
 		prerender: {
 			handleHttpError: 'warn',
 			handleMissingId: 'warn',
