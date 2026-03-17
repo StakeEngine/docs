@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
+	import { base } from '$app/paths';
 	import { page } from '$app/stores';
 	import { searchIndex } from '$lib/config/navigation';
 	import { faqSearchIndex } from '$lib/config/faq-navigation';
@@ -10,8 +11,8 @@
 
 	const combinedSearchIndex: SearchEntry[] = [...searchIndex, ...faqSearchIndex, ...changelogSearchIndex];
 
-	const isFaqSection = $derived($page.url.pathname.startsWith('/faq'));
-	const isChangelogSection = $derived($page.url.pathname.startsWith('/changelog'));
+	const isFaqSection = $derived($page.url.pathname.startsWith(`${base}/faq`));
+	const isChangelogSection = $derived($page.url.pathname.startsWith(`${base}/changelog`));
 	let showSearch = $state(false);
 	let query = $state('');
 	let selectedIndex = $state(0);
@@ -145,21 +146,21 @@
 				</svg>
 			</button>
 
-			<a href="/" class="shrink-0">
-				<img src="/stake-engine.svg" alt="Stake Engine" class="h-12 invert" />
+			<a href="{base}/" class="shrink-0">
+				<img src="{base}/stake-engine.svg" alt="Stake Engine" class="h-12 invert" />
 			</a>
 
 			<nav class="hidden lg:flex items-center gap-1 ml-4">
 				<a
-					href="/docs"
+					href="{base}/docs"
 					class="nav-link {!isFaqSection && !isChangelogSection ? 'active' : ''}"
 				>Docs</a>
 				<a
-					href="/faq"
+					href="{base}/faq"
 					class="nav-link {isFaqSection ? 'active' : ''}"
 				>FAQ</a>
 				<a
-					href="/changelog"
+					href="{base}/changelog"
 					class="nav-link {isChangelogSection ? 'active' : ''}"
 				>Changelog</a>
 			</nav>

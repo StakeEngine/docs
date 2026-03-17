@@ -1,11 +1,12 @@
 <script lang="ts">
+	import { base } from '$app/paths';
 	import { page } from '$app/stores';
 	import { changelogEntries, groupByMonth } from '$lib/config/changelog';
 
 	let { isOpen, onclose }: { isOpen: boolean; onclose: () => void } = $props();
 
-	const isFaqSection = $derived($page.url.pathname.startsWith('/faq'));
-	const isChangelogSection = $derived($page.url.pathname.startsWith('/changelog'));
+	const isFaqSection = $derived($page.url.pathname.startsWith(`${base}/faq`));
+	const isChangelogSection = $derived($page.url.pathname.startsWith(`${base}/changelog`));
 
 	const groups = groupByMonth(changelogEntries);
 
@@ -49,22 +50,22 @@
 
 			<div class="flex gap-1 p-3 border-b border-zinc-800">
 				<a
-					href="/docs"
+					href="{base}/docs"
 					class="flex-1 rounded-md px-3 py-2 text-center text-sm font-medium transition-colors {!isFaqSection && !isChangelogSection ? 'bg-zinc-800 text-white' : 'text-zinc-400 hover:text-white hover:bg-zinc-800/50'}"
 				>Docs</a>
 				<a
-					href="/faq"
+					href="{base}/faq"
 					class="flex-1 rounded-md px-3 py-2 text-center text-sm font-medium transition-colors {isFaqSection ? 'bg-zinc-800 text-white' : 'text-zinc-400 hover:text-white hover:bg-zinc-800/50'}"
 				>FAQ</a>
 				<a
-					href="/changelog"
+					href="{base}/changelog"
 					class="flex-1 rounded-md px-3 py-2 text-center text-sm font-medium transition-colors {isChangelogSection ? 'bg-zinc-800 text-white' : 'text-zinc-400 hover:text-white hover:bg-zinc-800/50'}"
 				>Changelog</a>
 			</div>
 
 			<nav class="overflow-y-auto p-4 text-sm" aria-label="Changelog navigation">
 				<a
-					href="/changelog"
+					href="{base}/changelog"
 					class="mb-3 flex items-center gap-2 rounded-md px-3 py-2 font-medium text-white bg-zinc-800"
 				>
 					<svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
@@ -77,7 +78,7 @@
 
 				{#each groups as group}
 					<a
-						href="/changelog#{group.yearMonth}"
+						href="{base}/changelog#{group.yearMonth}"
 						class="flex items-center justify-between rounded-md px-3 py-1.5 text-zinc-400 transition-colors hover:bg-zinc-800/50 hover:text-zinc-200"
 					>
 						<span>{group.label}</span>

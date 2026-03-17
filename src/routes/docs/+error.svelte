@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
+	import { base } from '$app/paths';
 	import { goto } from '$app/navigation';
 	import { searchIndex } from '$lib/config/navigation';
 	import { faqSearchIndex } from '$lib/config/faq-navigation';
@@ -219,13 +220,13 @@
 	{#if suggestions.length === 0 && !query.trim()}
 		<div class="mt-8 flex gap-3">
 			<a
-				href="/docs"
+				href="{base}/docs"
 				class="rounded-lg border border-zinc-700 bg-zinc-800/50 px-5 py-2.5 text-sm font-medium text-zinc-300 transition hover:border-zinc-600 hover:bg-zinc-800 hover:text-white"
 			>
 				Browse Docs
 			</a>
 			<a
-				href="/faq"
+				href="{base}/faq"
 				class="rounded-lg border border-zinc-700 bg-zinc-800/50 px-5 py-2.5 text-sm font-medium text-zinc-300 transition hover:border-zinc-600 hover:bg-zinc-800 hover:text-white"
 			>
 				View FAQ

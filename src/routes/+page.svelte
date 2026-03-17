@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { base } from '$app/paths';
 	import { onMount } from 'svelte';
 	import gsap from 'gsap';
 	import DocsLayout from '$lib/components/docs/DocsLayout.svelte';
@@ -91,7 +92,7 @@
 		</p>
 		<div class="mt-6 flex items-center gap-3">
 			<a
-				href="/docs/getting-started"
+				href="{base}/docs/getting-started"
 				class="rounded-lg bg-primary-500 px-5 py-2.5 text-sm font-semibold text-black transition hover:bg-primary-400"
 			>
 				Get Started

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { base } from '$app/paths';
 	import { onMount, onDestroy } from 'svelte';
 	import gsap from 'gsap';
 	import { gameImageUrl, type GameEntry } from '$lib/types/game';
@@ -305,7 +306,7 @@
 
 	<div class="mt-4">
 		<a
-			href="/docs/getting-started"
+			href="{base}/docs/getting-started"
 			class="inline-flex items-center gap-1.5 text-sm text-primary-500 transition hover:text-primary-400"
 		>
 			Build your next slot game

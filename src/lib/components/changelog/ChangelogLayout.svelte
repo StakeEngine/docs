@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { base } from '$app/paths';
 	import { onMount, tick } from 'svelte';
 	import { page } from '$app/stores';
 	import { afterNavigate, replaceState } from '$app/navigation';
@@ -246,7 +247,7 @@
 				{#if isEntryPage}
 					<div class="mt-8 border-t border-white/[0.06] pt-6">
 						<a
-							href="/changelog"
+							href="{base}/changelog"
 							class="inline-flex items-center gap-2 rounded-lg border border-zinc-800 px-4 py-2 text-sm text-zinc-400 transition hover:border-zinc-700 hover:text-white"
 						>
 							<svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">

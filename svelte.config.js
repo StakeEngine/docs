@@ -3,6 +3,7 @@ import adapter from '@sveltejs/adapter-static';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import { createHighlighter } from 'shiki';
+import { baseRewrite } from './src/lib/preprocess-base-rewrite.js';
 
 const shiki = await createHighlighter({
 	themes: ['github-dark'],
@@ -50,6 +51,7 @@ const config = {
 		}
 	},
 	preprocess: [
+		baseRewrite(),
 		mdsvex({
 			highlight: {
 				highlighter

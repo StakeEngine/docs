@@ -1,3 +1,4 @@
+import { base } from '$app/paths';
 import type { SearchEntry } from '$lib/types/navigation';
 
 export type ChangelogType = 'feature' | 'fix' | 'improvement' | 'breaking' | 'payout';
@@ -74,7 +75,7 @@ function buildEntries(): ChangelogEntry[] {
 		const meta = mod.metadata;
 		if (!meta?.title || !meta?.date || !meta?.type) continue;
 
-		const href = modulePath.replace('/src/routes', '').replace('/+page.svx', '');
+		const href = base + modulePath.replace('/src/routes', '').replace('/+page.svx', '');
 		const raw = rawModules[modulePath] ?? '';
 
 		entries.push({
@@ -141,7 +142,7 @@ function buildSearchIndex(): SearchEntry[] {
 		const meta = mod.metadata;
 		if (!meta?.title || !meta?.date) continue;
 
-		const href = modulePath.replace('/src/routes', '').replace('/+page.svx', '');
+		const href = base + modulePath.replace('/src/routes', '').replace('/+page.svx', '');
 		const raw = rawModules[modulePath] ?? '';
 
 		entries.push({
@@ -164,9 +165,9 @@ export interface BreadcrumbItem {
 }
 
 export function getChangelogBreadcrumbs(pathname: string): BreadcrumbItem[] {
-	if (pathname === '/changelog') return [];
+	if (pathname === `${base}/changelog`) return [];
 
-	const crumbs: BreadcrumbItem[] = [{ title: 'Changelog', href: '/changelog' }];
+	const crumbs: BreadcrumbItem[] = [{ title: 'Changelog', href: `${base}/changelog` }];
 	const entry = changelogEntries.find((e) => e.href === pathname);
 	if (entry) {
 		crumbs.push({ title: entry.title });

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { base } from '$app/paths';
 	const currentYear = new Date().getFullYear();
 </script>
 
@@ -7,8 +8,8 @@
 		<div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
 			<!-- Brand -->
 			<div class="sm:col-span-2 lg:col-span-1">
-				<a href="/" class="inline-flex items-center gap-2">
-					<img src="/stake-engine.svg" alt="Stake Engine" class="h-12 invert opacity-70" />
+				<a href="{base}/" class="inline-flex items-center gap-2">
+					<img src="{base}/stake-engine.svg" alt="Stake Engine" class="h-12 invert opacity-70" />
 				</a>
 				<p class="mt-3 text-sm text-zinc-500 leading-relaxed max-w-xs">
 					Build, simulate, and deploy slot games on the Stake platform.
@@ -19,10 +20,10 @@
 			<div>
 				<h3 class="text-xs font-semibold uppercase tracking-wider text-zinc-400">Documentation</h3>
 				<ul class="mt-3 space-y-2">
-					<li><a href="/docs" class="footer-link">Getting Started</a></li>
-					<li><a href="/docs/math-sdk" class="footer-link">Math SDK</a></li>
-					<li><a href="/docs/web-sdk" class="footer-link">Web SDK</a></li>
-					<li><a href="/docs/api" class="footer-link">API Reference</a></li>
+					<li><a href="{base}/docs" class="footer-link">Getting Started</a></li>
+					<li><a href="{base}/docs/math-sdk" class="footer-link">Math SDK</a></li>
+					<li><a href="{base}/docs/web-sdk" class="footer-link">Web SDK</a></li>
+					<li><a href="{base}/docs/api" class="footer-link">API Reference</a></li>
 				</ul>
 			</div>
 
@@ -30,9 +31,9 @@
 			<div>
 				<h3 class="text-xs font-semibold uppercase tracking-wider text-zinc-400">Resources</h3>
 				<ul class="mt-3 space-y-2">
-					<li><a href="/faq" class="footer-link">FAQ</a></li>
-					<li><a href="/changelog" class="footer-link">Changelog</a></li>
-					<li><a href="/docs/approval" class="footer-link">Approval Process</a></li>
+					<li><a href="{base}/faq" class="footer-link">FAQ</a></li>
+					<li><a href="{base}/changelog" class="footer-link">Changelog</a></li>
+					<li><a href="{base}/docs/approval" class="footer-link">Approval Process</a></li>
 				</ul>
 			</div>
 

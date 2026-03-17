@@ -1,3 +1,4 @@
+import { base } from '$app/paths';
 import type { NavigationConfig, NavSection, NavItem, SearchEntry } from '$lib/types/navigation';
 
 interface SvxModule {
@@ -73,7 +74,7 @@ function buildTree(): TreeNode {
 	const paths = Object.keys(pageModules)
 		.map((p) => ({
 			modulePath: p,
-			href: p.replace('/src/routes', '').replace('/+page.svx', '') || '/docs'
+			href: base + (p.replace('/src/routes', '').replace('/+page.svx', '') || '/docs')
 		}))
 		.sort((a, b) => a.href.localeCompare(b.href));
 
@@ -305,7 +306,7 @@ export interface BreadcrumbItem {
 }
 
 export function getBreadcrumbs(pathname: string): BreadcrumbItem[] {
-	const crumbs: BreadcrumbItem[] = [{ title: 'Docs', href: '/docs' }];
+	const crumbs: BreadcrumbItem[] = [{ title: 'Docs', href: `${base}/docs` }];
 
 	function walk(sections: NavSection[], trail: BreadcrumbItem[]): boolean {
 		for (const section of sections) {

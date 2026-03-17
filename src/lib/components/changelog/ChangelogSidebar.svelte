@@ -1,9 +1,10 @@
 <script lang="ts">
+	import { base } from '$app/paths';
 	import { page } from '$app/stores';
 	import { changelogEntries, groupByMonth } from '$lib/config/changelog';
 
 	const groups = groupByMonth(changelogEntries);
-	const isTimeline = $derived($page.url.pathname === '/changelog');
+	const isTimeline = $derived($page.url.pathname === `${base}/changelog`);
 
 	// Count by type
 	const totalCount = changelogEntries.length;
@@ -12,7 +13,7 @@
 <nav class="overflow-y-auto px-4 py-6 text-sm" aria-label="Changelog navigation">
 	<div class="mb-4">
 		<a
-			href="/changelog"
+			href="{base}/changelog"
 			class="flex items-center gap-2 rounded-md px-3 py-2 font-medium transition-colors
 				{isTimeline ? 'bg-zinc-800 text-white' : 'text-zinc-400 hover:bg-zinc-800/50 hover:text-zinc-200'}"
 		>
@@ -28,7 +29,7 @@
 
 	{#each groups as group}
 		<a
-			href={isTimeline ? `#${group.yearMonth}` : '/changelog'}
+			href={isTimeline ? `#${group.yearMonth}` : `${base}/changelog`}
 			class="flex items-center justify-between rounded-md px-3 py-1.5 text-zinc-400 transition-colors hover:bg-zinc-800/50 hover:text-zinc-200"
 		>
 			<span>{group.label}</span>

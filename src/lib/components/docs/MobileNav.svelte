@@ -1,12 +1,13 @@
 <script lang="ts">
+	import { base } from '$app/paths';
 	import { page } from '$app/stores';
 	import { navigation } from '$lib/config/navigation';
 	import type { Heading, NavSection } from '$lib/types/navigation';
 
 	let { isOpen = false, headings = [], onclose }: { isOpen: boolean; headings: Heading[]; onclose: () => void } = $props();
 
-	const isFaqSection = $derived($page.url.pathname.startsWith('/faq'));
-	const isChangelogSection = $derived($page.url.pathname.startsWith('/changelog'));
+	const isFaqSection = $derived($page.url.pathname.startsWith(`${base}/faq`));
+	const isChangelogSection = $derived($page.url.pathname.startsWith(`${base}/changelog`));
 
 	let previousPathname = $page.url.pathname;
 
@@ -68,7 +69,7 @@
 	<!-- Drawer -->
 	<div class="fixed inset-y-0 left-0 z-50 w-80 bg-zinc-900 border-r border-zinc-800 overflow-y-auto lg:hidden">
 		<div class="flex items-center justify-between p-4 border-b border-zinc-800">
-			<a href="/" class="text-lg font-bold text-white">Stake Engine</a>
+			<a href="{base}/" class="text-lg font-bold text-white">Stake Engine</a>
 			<button onclick={onclose} class="p-2 text-zinc-400 hover:text-white">
 				<svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -78,15 +79,15 @@
 
 		<div class="flex gap-1 p-3 border-b border-zinc-800">
 			<a
-				href="/docs"
+				href="{base}/docs"
 				class="flex-1 rounded-md px-3 py-2 text-center text-sm font-medium transition-colors {!isFaqSection && !isChangelogSection ? 'bg-zinc-800 text-white' : 'text-zinc-400 hover:text-white hover:bg-zinc-800/50'}"
 			>Docs</a>
 			<a
-				href="/faq"
+				href="{base}/faq"
 				class="flex-1 rounded-md px-3 py-2 text-center text-sm font-medium transition-colors {isFaqSection ? 'bg-zinc-800 text-white' : 'text-zinc-400 hover:text-white hover:bg-zinc-800/50'}"
 			>FAQ</a>
 			<a
-				href="/changelog"
+				href="{base}/changelog"
 				class="flex-1 rounded-md px-3 py-2 text-center text-sm font-medium transition-colors {isChangelogSection ? 'bg-zinc-800 text-white' : 'text-zinc-400 hover:text-white hover:bg-zinc-800/50'}"
 			>Changelog</a>
 		</div>
