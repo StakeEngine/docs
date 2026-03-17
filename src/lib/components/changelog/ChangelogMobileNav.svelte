@@ -4,12 +4,20 @@
 
 	let { isOpen, onclose }: { isOpen: boolean; onclose: () => void } = $props();
 
+	const isFaqSection = $derived($page.url.pathname.startsWith('/faq'));
+	const isChangelogSection = $derived($page.url.pathname.startsWith('/changelog'));
+
 	const groups = groupByMonth(changelogEntries);
+
+	let previousPathname = $page.url.pathname;
 
 	// Close on navigation
 	$effect(() => {
-		$page.url.pathname;
-		if (isOpen) onclose();
+		const currentPathname = $page.url.pathname;
+		if (currentPathname !== previousPathname) {
+			previousPathname = currentPathname;
+			onclose();
+		}
 	});
 </script>
 
@@ -37,6 +45,21 @@
 						<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
 					</svg>
 				</button>
+			</div>
+
+			<div class="flex gap-1 p-3 border-b border-zinc-800">
+				<a
+					href="/docs"
+					class="flex-1 rounded-md px-3 py-2 text-center text-sm font-medium transition-colors {!isFaqSection && !isChangelogSection ? 'bg-zinc-800 text-white' : 'text-zinc-400 hover:text-white hover:bg-zinc-800/50'}"
+				>Docs</a>
+				<a
+					href="/faq"
+					class="flex-1 rounded-md px-3 py-2 text-center text-sm font-medium transition-colors {isFaqSection ? 'bg-zinc-800 text-white' : 'text-zinc-400 hover:text-white hover:bg-zinc-800/50'}"
+				>FAQ</a>
+				<a
+					href="/changelog"
+					class="flex-1 rounded-md px-3 py-2 text-center text-sm font-medium transition-colors {isChangelogSection ? 'bg-zinc-800 text-white' : 'text-zinc-400 hover:text-white hover:bg-zinc-800/50'}"
+				>Changelog</a>
 			</div>
 
 			<nav class="overflow-y-auto p-4 text-sm" aria-label="Changelog navigation">
