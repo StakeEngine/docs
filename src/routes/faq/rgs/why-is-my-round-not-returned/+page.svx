@@ -1,0 +1,59 @@
+---
+title: When do I need to call end-round?
+description: Understanding how round completion works in the RGS - when to call /wallet/end-round and when the round is automatically completed.
+order: 3
+tags: [rgs, round, end-round, payout, auto-complete, play]
+---
+
+<script>
+import Callout from '$lib/components/docs/Callout.svelte';
+</script>
+
+# When do I need to call end-round?
+
+The RGS automatically completes rounds that result in **zero winnings**. Only rounds with a non-zero payout require an explicit call to [`/wallet/end-round`](/docs/api/end-round).
+
+## After `/wallet/play`
+
+When you send a [`/wallet/play`](/docs/api/play) request, the response contains the round result including the payout amount. What happens next depends on the payout:
+
+- **Payout = 0** - The round is **already completed**. The RGS automatically finishes it since there is nothing to pay out. You do **not** need to call `/wallet/end-round`.
+- **Payout > 0** - The round remains **active**. You **must** call [`/wallet/end-round`](/docs/api/end-round) to finalize the round and credit the winnings to the player's balance.
+
+<Callout type="info">
+
+Think of it this way: `/wallet/end-round` exists to trigger the payout. If there is no payout, there is nothing to trigger - so the round closes itself.
+
+</Callout>
+
+## After `/wallet/authenticate`
+
+When you call [`/wallet/authenticate`](/docs/api/authenticate), the response includes a `round` field. If the player has an incomplete round from a previous session (e.g. the game was closed before end-round was called), it will be returned here.
+
+If `round` is present:
+
+1. **Display the round result to the player** - show the outcome of the previous round so the player sees what they won.
+2. **Call `/wallet/end-round`** - finalize the payout and credit the winnings.
+
+If `round` is `null`, there is no pending round - proceed with normal game flow.
+
+<Callout type="warning">
+
+If you just played a round but `/wallet/authenticate` returns `round: null`, it means the round had a zero payout and was already auto-completed by the RGS. This is expected behavior.
+
+</Callout>
+
+## Summary
+
+| Scenario | Action required |
+|----------|----------------|
+| `/wallet/play` returns payout = 0 | None - round is auto-completed |
+| `/wallet/play` returns payout > 0 | Call `/wallet/end-round` to credit winnings |
+| `/wallet/authenticate` returns `round` | Display result to player, then call `/wallet/end-round` |
+| `/wallet/authenticate` returns `round: null` | None - no pending round |
+
+## Related
+
+- [Play API](/docs/api/play) - initiating a game round
+- [End Round API](/docs/api/end-round) - completing rounds and triggering payouts
+- [Authenticate API](/docs/api/authenticate) - session authentication and round retrieval

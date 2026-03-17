@@ -120,6 +120,12 @@ This must be called before using other wallet endpoints. Otherwise, they will re
 
 Active round data if the player has an incomplete round. `null` if no round is in progress. The `round` returned may represent a currently active or the last completed round. Frontends should continue the round if it remains active.
 
+<Callout type="info">
+
+**Zero-payout rounds are auto-completed.** If the round resulted in zero winnings (payout = 0), the RGS automatically marks it as completed. You do **not** need to call [`/wallet/end-round`](/docs/api/end-round) for such rounds. Only rounds with a non-zero payout require an explicit end-round call.
+
+</Callout>
+
 ### `config`
 
 | Field | Type | Description |

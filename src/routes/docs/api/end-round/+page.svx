@@ -73,6 +73,12 @@ This should be called after all round activity (including any bonus rounds or fr
 
 </Callout>
 
+<Callout type="warning">
+
+**You only need to call this endpoint for rounds with a non-zero payout.** Rounds that result in zero winnings (payout = 0) are automatically completed by the RGS - no end-round call is required. If you call `/wallet/authenticate` and the returned `round` is `null` despite having played recently, it likely means the round had a zero payout and was already auto-completed.
+
+</Callout>
+
 ## Body Parameters
 
 <ApiParamTable params={endpoint.params} />
