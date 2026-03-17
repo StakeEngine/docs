@@ -6,6 +6,7 @@ order: 6
 
 <script>
 import Callout from '$lib/components/docs/Callout.svelte';
+import RatingCalculator from '$lib/components/docs/RatingCalculator.svelte';
 </script>
 
 # Game Quality Rankings
@@ -16,19 +17,27 @@ Games must achieve a minimum average rating of **1 star** to be approved for pub
 
 <Callout type="info">
 
-Each game is independently evaluated by **3 anonymous reviewers** who submit fractional scores. The final star rating is the rounded average of all three scores.
+Each game is independently evaluated by **3 anonymous reviewers** who each select a score from a fixed fractional scale (0 to 3, in increments of ~0.33). The final star rating is the rounded average of all three scores.
 
 </Callout>
 
 ## Rating Process
 
-When a game is submitted for review, it is assigned to **three independent reviewers**. Each reviewer evaluates the game anonymously and submits a **fractional score** on a 0–3 scale.
+When a game is submitted for review, it is assigned to **three independent reviewers**. Each reviewer evaluates the game anonymously and submits a **fractional score** from the following fixed scale:
 
-The final star rating is calculated as follows:
+> **0** · 0.33 · 0.67 · **1** · 1.33 · 1.67 · **2** · 2.33 · 2.67 · **3**
 
-1. **Three anonymous reviews** - each reviewer assigns a fractional score based on their assessment of the game's quality, creativity, and polish.
+Reviewers select one of these 10 values - they cannot enter arbitrary decimals. The final star rating is then calculated as follows:
+
+1. **Three anonymous reviews** - each reviewer picks a score from the scale above based on their assessment of the game's quality, creativity, and polish.
 2. **Average** - the three scores are averaged to produce a single fractional value.
 3. **Round** - the average is rounded to the nearest whole number to determine the final star tier (0, 1, 2, or 3).
+
+<Callout type="danger">
+
+If the average score is **below 1.0**, the game receives a **0-star rating** and is **not approved** for publication - regardless of rounding. An average of 0.67 does not round up to 1; it is treated as below the minimum threshold.
+
+</Callout>
 
 **Example:**
 
@@ -41,6 +50,10 @@ The final star rating is calculated as follows:
 | **Final Rating** | **Rounds to 3 Stars** |
 
 This fractional approach ensures that the final rating reflects a fair and balanced consensus rather than a single opinion.
+
+### Try It Yourself
+
+<RatingCalculator />
 
 ## Ranking Tiers
 
